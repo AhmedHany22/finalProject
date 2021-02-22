@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
+  "name": "finalproject",
+=======
   "name": "final-project",
+>>>>>>> fc5e89b3bcdea0e8e08acb627c02e1f86d9e65e1
   "type": "module",
   "version": "1.0.0",
   "description": "Ecommerce website like amazon",
@@ -20,6 +24,7 @@
   "homepage": "https://github.com/basir/amazona#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
