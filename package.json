@@ -1,5 +1,5 @@
 {
-  "name": "finalProject",
+  "name": "finalproject",
   "type": "module",
   "version": "1.0.0",
   "description": "Ecommerce website like amazon",
@@ -20,12 +20,13 @@
   "homepage": "https://github.com/basir/amazona#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.7",
+    "mongoose": "^5.11.17",
     "multer": "^1.4.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
