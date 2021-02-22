@@ -148,7 +148,7 @@ const Homenew = () => {
           <ProductItem product={product} />
         </div>
       )
-    })}
+    })}                
     </div>
   </div>
   {/* fourth colums of products */}
@@ -186,7 +186,7 @@ const Homenew = () => {
           <ProductItem product={product} />
         </div>
       )
-    })}
+    })}                
     </div>
   </div>
 

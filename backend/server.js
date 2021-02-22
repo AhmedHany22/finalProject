@@ -4,6 +4,7 @@ import data from '../Techno/src/data.js';
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 const app=express();
+<<<<<<< HEAD
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Techno', {
     useNewUrlParser:true,
     useUnifiedTopology:true,
@@ -12,6 +13,24 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Techno', {
 // app.get('/api/products',(req,res)=>{
 //     res.send(data.products)
 // })
+=======
+
+app.get('/api/products/:id',(req,res)=>{
+    const id=req.params.id
+    const product=data.products.find((x)=> x._id===id)
+
+    if(product){
+        res.send(product)
+    }
+    else{
+        res.status(404).send({message:'product not found'})
+    }
+})
+
+app.get('/api/products',(req,res)=>{
+    res.send(data.products)
+})
+>>>>>>> fc5e89b3bcdea0e8e08acb627c02e1f86d9e65e1
 
 app.get('/api/category',(req,res)=>{
     res.send(data.category)
