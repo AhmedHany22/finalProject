@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "finalproject",
-=======
-  "name": "final-project",
->>>>>>> fc5e89b3bcdea0e8e08acb627c02e1f86d9e65e1
   "type": "module",
   "version": "1.0.0",
   "description": "Ecommerce website like amazon",

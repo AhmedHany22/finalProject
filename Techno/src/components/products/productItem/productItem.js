@@ -8,20 +8,20 @@ export default function ProductItem(props) {
   let discountPresent = 10;
   const { product }  = props;
   const category = data.category;
-  const cateName = category.find( ({ _id }) => _id == product.categoryId.id);
+  
   if (product) { discountPresent = Math.round((product.discount / product.price) * 100); }
 
   return (
     <div className="col-4 col-lg-4 col-md-6 col-sm-6">
       <div className="card" key={product._id}>
-        <img className="card-img-top" src={product.imagesUrls} alt={product.data[0].name} />
+        <img className="card-img-top" src={product.image} alt={product.name} />
         <div className="card-img-overlay image3 imgHeight">
           <div className="present">{product ? discountPresent : 10}%</div>
           <div className="show vImage3" data-toggle="modal" data-target="#myModal"><a className="fas"> QUICK VIEW</a></div>
         </div>
         <div className="card-body">
-          <a className="card-text" href={`/details/${product._id}`}>{product ? product.data[0].name.toUpperCase() : "Name"}</a>
-          , <a href="/shop">{product ? cateName.name : "Cat"}</a>
+          <a className="card-text" href={`/details/${product._id}`}>{product ? product.name.toUpperCase() : "Name"}</a>
+          , <a href="/shop"> Cat</a>
           <div>
             <Rating rating={product.rating} numReviews={product.numReviews}></Rating>
             <a className="fa fa-eye float-right text-secondary mr-2 mt-2"></a>

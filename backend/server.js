@@ -33,6 +33,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Techno', {
 app.get('/api/category',(req,res)=>{
     res.send(data.category)
 })
+
 // userRouter,productRouter
 app.use('/api/users' , userRouter);
 app.use('/api/products' ,productRouter);
