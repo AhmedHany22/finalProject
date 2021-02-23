@@ -7,6 +7,7 @@ import {generateToken} from '../utils.js';
 
 const userRouter = express.Router();
 userRouter.get(
+<<<<<<< HEAD
     '/seed',
     expressAsyncHandler(async (req, res) => {
         await User.remove({})
@@ -33,5 +34,13 @@ userRouter.post(
         res.status(401).send({message:'Invalid email or password'});
     })
 );
+=======
+    '/seed' ,
+    expressAsyncHandler (async(req,res) => {
+        await User.remove({})
+        const createdUsers = await User.insertMany(data.users);
+        res.send({createdUsers});
+}));
+>>>>>>> 13c2efae4ef7d59bd85d290decb810fbd3e3990f
 
 export default userRouter;

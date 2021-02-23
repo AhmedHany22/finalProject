@@ -1,7 +1,11 @@
 {
+<<<<<<< HEAD
 
   "name": "finalproject",
 
+=======
+  "name": "finalproject",
+>>>>>>> 13c2efae4ef7d59bd85d290decb810fbd3e3990f
   "type": "module",
 
   "version": "1.0.0",

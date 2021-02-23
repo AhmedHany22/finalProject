@@ -39,6 +39,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Techno', {
 app.get('/api/category',(req,res)=>{
     res.send(data.category)
 })
+
 // userRouter,productRouter
 app.use('/api/users' , userRouter);
 app.use('/api/products' ,productRouter);
@@ -53,6 +54,6 @@ app.use((err,req,res,next)=>{
 
 const port=process.env.PORT || 5000;
 app.listen(port,()=>{
-    console.log(`server at https://localhost:${port}`)
+    console.log(`server at http://localhost:${port}`)
 })
 
