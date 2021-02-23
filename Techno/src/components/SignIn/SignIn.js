@@ -45,37 +45,38 @@ const SignIn = () => {
 
   return (
     <>
-      <div classNameName="bodyLogin m-0">
-        <div classNameName="row">
+      <div className="container bodyLogin">
+        <div className="row">
 
-          <div classNameName="login bg-white ">
+          <div className="login bg-white ">
             <h1>Login</h1>
             <form>
-              <div classNameName="form-group">
+              <div className="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" classNameName="form-control" placeholder="email id" id="email" classNameNameName={`form-control mt-2 ${registerErrors.emailErrors ? "border-danger" : ""}`}
+                <input type="email" name="email" className="form-control" placeholder="email id" id="email" className={`form-control mt-2 ${registerErrors.emailErrors ? "border-danger" : ""}`}
                 value={registerForm.email} onChange={handleFormChange}/>
-                <small classNameNameName="text-danger mt-2">{registerErrors.emailErrors}</small>
+                <small className="text-danger mt-2">{registerErrors.emailErrors}</small>
               </div>
-              <div classNameName="form-group">
+              <div className="form-group">
                 <label for="pwd">Password</label>
-                <input type="password" classNameName="form-control" placeholder="password" id="pwd"
-                  classNameNameName={`form-control mt-2 ${registerErrors.passwordErrors ? "border-danger" : ""}`}
+                <input type="password" className="form-control" placeholder="password" id="pwd"
+                  className={`form-control mt-2 ${registerErrors.passwordErrors ? "border-danger" : ""}`}
                   value={registerForm.password} onChange={handleFormChange}/>
-                <small classNameNameName="text-danger mt-2">{registerErrors.passwordErrors}</small>
+                <small className="text-danger mt-2">{registerErrors.passwordErrors}</small>
               </div>
-              <div classNameName="form-group form-check">
-                <label classNameName="form-check-label">
-                  <input classNameName="form-check-input" type="checkbox"/>Remember me
+              <div className="form-group form-check">
+                <label className="form-check-label">
+                  <input className="form-check-input" type="checkbox"/>Remember me
                 </label>
               </div>
-              <button type="submit" classNameName="btn btn-primary" onClick={handleSubmit}>Sign In</button>
+              <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Sign In</button>
             </form>
-            <p><a href=""> Forgot your password ?</a></p>
+            <p><a href="/signup"> Forgot your password ?</a></p>
           </div>
         </div>
       </div>
-    </>
+
+     </>
 
   );
 };

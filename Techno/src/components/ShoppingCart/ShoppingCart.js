@@ -1,191 +1,110 @@
 import "./ShoppingCart.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import React,{ useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, removeFromCart } from '../../store/actions/cartActions';
+import { Link } from 'react-router-dom';
+import Rating from '../Rating/Rating';
 
-const ShoppingCart = () => {
+const ShoppingCart = (props) => {
+  const productId = props.match.params.id;
+  const qty = props.location.search ? Number(props.location.search.split('=')[1]) : 1;
+
+  const cart = useSelector((state) => state.cart);
+  //const { cartItems } = cart;
+
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    if(productId){
+      dispatch(addToCart(productId,qty))
+    }
+  }, [dispatch, productId, qty])
+
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const checkoutHandler = () => {
+    props.history.push('/signin?redirect=shoppingCart');
+  };
 
   return (
     <>
-
-      <section class="jumbotron text-white text-center header-section">
-        <div class="container col-lg-5 col-md-6 col-sm-8 col-9 py-4 bg-white text-center myBorder">
-          <h1 class="mb-3 text-dark">Shopping Cart</h1>
-          <div class="msg">Missed something ?
-            <a href="/" class="text-secondary">Continue shopping</a>
+      <section className="jumbotron text-white text-center header-section">
+        <div className="container col-lg-5 col-md-6 col-sm-8 col-9 py-4 bg-white text-center myBorder">
+          <h1 className="mb-3 text-dark">Shopping Cart</h1>
+          <div className="msg">Missed something ?
+            <a href="/" className="text-secondary"> Continue shopping</a>
           </div>
         </div>
       </section>
-      <div class="container p-0">
-        <div class="row mx-1 my-4 bg-white Cart_Row">
-          <div class="col-md-2 col-6 pl-1 border-right">
-            <img src="./assets/Product_1.jpg" class="mt-2 cart_img" />
-          </div>
-          <div class="mt-2 col-md-4 col-6 text-left">
-            <p><a href="#" class="seller_name"> Suspensions</a></p>
-            <p><a href="/details" class="product_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></p>
-          </div>
-          <div class="col-md-6 col-12 row pr-0">
-            <div class="mt-2 col-4">
-              <p class="item_header">Price</p>
-              <p class="price">200$</p>
-            </div>
-            <div class="mt-2 col-4">
-              <p class="item_header">Quantity</p>
-              <div class="quantity"><input type="number"min="1"max="9"step="1"value="1"/></div>
-            </div>
-            <div class="mt-2 col-4">
-              <p class="item_header">Order amount</p>
-              <p class="price">200$</p>
-            </div>
-            <div class="col-12 row p-0">
-              <div class="col-4 p-0">
-                <i class="fa fa-star-o" title="5"></i>
-                <i class="fa fa-star-o" title="4"></i>
-                <i class="fa fa-star-o" title="3"></i>
-                <i class="fa fa-star-o" title="2"></i>
-                <i class="fa fa-star-o" title="1"></i>
-              </div>
-              <p class="col-4"><span>89</span>reviews</p>
-              <p class="col-4 p-0"><a href="#" class="text-danger">Remove from cart</a></p>
-            </div>
+
+      {cart.cartItems.length === 0 ? (
+        <div className="container my-5 text-left">
+          <h4>Shopping Cart (0)</h4>
+          <div className="py-3 bg-warning px-4">
+            <p className="mb-2">Shopping cart is currently empty</p>
+            Add items to your cart and view them here before you checkout.<Link className="text-primary" to="/shop">Go Shopping</Link>
           </div>
         </div>
-      </div>
-      <div class="container p-0">
-        <div class="row mx-1 my-4 bg-white Cart_Row">
-          <div class="col-md-2 col-6 pl-1 border-right"><img src="./assets/Product_1.jpg"class="mt-2 cart_img"/></div>
-          <div class="mt-2 col-md-4 col-6 text-left">
-            <p><a href="#" class="seller_name">Suspensions</a></p>
-            <p>
-              <a href="/details" class="product_name">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </a>
-            </p>
-          </div>
-          <div class="col-md-6 col-12 row pr-0">
-            <div class="mt-2 col-4">
-              <p class="item_header">Price</p>
-              <p class="price">200$</p>
-            </div>
-            <div class="mt-2 col-4">
-              <p class="item_header">Quantity</p>
-              <div class="quantity"><input type="number"min="1"max="9"step="1"value="1"/></div>
-            </div>
-            <div class="mt-2 col-4">
-              <p class="item_header">Order amount</p>
-              <p class="price">200$</p>
-            </div>
-            <div class="col-12 row p-0">
-              <div class="col-4 p-0">
-                <i class="fa fa-star-o" title="5"></i>
-                <i class="fa fa-star-o" title="4"></i>
-                <i class="fa fa-star-o" title="3"></i>
-                <i class="fa fa-star-o" title="2"></i>
-                <i class="fa fa-star-o" title="1"></i>
+      ) : (
+        <ul>
+          {cart.cartItems.map((item) => (
+            <div className="container p-0 mt-4">
+              <div className="row bg-white Cart_Row">
+                <div className="col-md-2 col-6 border-right p-0">
+                  <img src={item.image} className="cart_img" />
+                </div>
+                <div className="my-auto col-md-2 col-6 text-left text-center">
+                  <p><a href="/details" className="product_name">{item.name}</a></p>
+                </div>
+                <div className="col-md-8 col-12 row pr-0 my-auto">
+                  <div className="my-auto col-3 my-1">
+                    <span className="item_header text-center mr-3">Price</span>
+                    <span className="price mb-0 text-center">{item.price}$</span>
+                  </div>
+                  <div className="my-auto col-5 my-1">
+                    <span className="item_header mr-3">Quantity</span>
+                    <select value={item.qty} onChange={(e) =>dispatch(addToCart(item.product, Number(e.target.value)))}>
+                      {[...Array(item.countInStock).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>{x + 1}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="my-auto col-4 my-1">
+                    <p className="item_header mb-1">Order Total</p>
+                    <span className="price">{item.price * item.qty}$</span>
+                  </div>
+                  <div className="col-12 row p-0 mt-3 mx-auto">
+                    <Rating rating={item.rate} numReviews={item.review}></Rating>
+                    <a className="col-4 p-0 text-danger ml-5" onClick={()=>removeFromCartHandler(item.product)}>
+                    Remove from cart</a>
+                  </div>
+                </div>
               </div>
-              <p class="col-4"><span>89</span>reviews</p>
-              <p class="col-4 p-0"><a href="#" class="text-danger">Remove from cart</a></p>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="container p-0">
-        <div class="row mx-1 my-4 bg-white Cart_Row">
-          <div class="col-md-2 col-6 pl-1 border-right">
-            <img src="./assets/Product_1.jpg" class="mt-2 cart_img" />
-          </div>
-          <div class="mt-2 col-md-4 col-6 text-left">
-            <p><a href="#" class="seller_name">Suspensions</a></p>
-            <p>
-              <a href="/details" class="product_name">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </a>
-            </p>
-          </div>
-          <div class="col-md-6 col-12 row pr-0">
-            <div class="mt-2 col-4">
-              <p class="item_header">Price</p>
-              <p class="price">200$</p>
-            </div>
-            <div class="mt-2 col-4">
-              <p class="item_header">Quantity</p>
-              <div class="quantity"><input type="number"min="1"max="9"step="1"value="1"/></div>
-            </div>
-            <div class="mt-2 col-4">
-              <p class="item_header">Order amount</p>
-              <p class="price">200$</p>
-            </div>
-            <div class="col-12 row p-0">
-              <div class="col-4 p-0">
-                <i class="fa fa-star-o" title="5"></i>
-                <i class="fa fa-star-o" title="4"></i>
-                <i class="fa fa-star-o" title="3"></i>
-                <i class="fa fa-star-o" title="2"></i>
-                <i class="fa fa-star-o" title="1"></i>
-              </div>
-              <p class="col-4"><span>89</span>reviews</p>
-              <p class="col-4 p-0"><a href="#" class="text-danger">Remove from cart</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container p-0">
-        <div class="row mx-1 my-4 bg-white Cart_Row">
-          <div class="col-md-2 col-6 pl-1 border-right">
-            <img src="./assets/Product_1.jpg" class="mt-2 cart_img" />
-          </div>
-          <div class="mt-2 col-md-4 col-6 text-left">
-            <p><a href="#" class="seller_name">Suspensions</a></p>
-            <p>
-              <a href="/details" class="product_name">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </a>
-            </p>
-          </div>
-          <div class="col-md-6 col-12 row pr-0">
-            <div class="mt-2 col-4">
-              <p class="item_header">Price</p>
-              <p class="price">200$</p>
-            </div>
-            <div class="mt-2 col-4">
-              <p class="item_header">Quantity</p>
-              <div class="quantity"><input type="number"min="1"max="9"step="1"value="1"/></div>
-            </div>
-            <div class="mt-2 col-4">
-              <p class="item_header">Order amount</p>
-              <p class="price">200$</p>
-            </div>
-            <div class="col-12 row p-0">
-              <div class="col-4 p-0">
-                <i class="fa fa-star-o" title="5"></i>
-                <i class="fa fa-star-o" title="4"></i>
-                <i class="fa fa-star-o" title="3"></i>
-                <i class="fa fa-star-o" title="2"></i>
-                <i class="fa fa-star-o" title="1"></i>
-              </div>
-              <p class="col-4"><span>89</span>reviews</p>
-              <p class="col-4 p-0"><a href="#" class="text-danger">Remove from cart</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row discount_section bg-light Cart_Row py-0">
-        <div class="col-md-6 pt-3 text-left bg-white">
+          ))}
+        </ul>
+      )}
+
+      <div className="row discount_section bg-light Cart_Row py-0">
+        <div className="col-md-6 pt-3 text-left bg-white">
           <h4>DISCOUNT CODES</h4>
           <p>Enter your coupon code if you have one.</p>
-          <div class="form-group">
-            <input type="text"placeholder="Apply Coupon *"class="form-control"name="name"/>
-            <button class="btn rounded-0 btn-outline-dark mt-2 mr-3"type="button">Apply Coupon</button>
-            <button class="btn rounded-0 btn-outline-dark mt-2" type="button">proceed to Checkout</button>
+          <div className="form-group">
+            <input type="text"placeholder="Apply Coupon *"className="form-control"name="name"defaultValue="Apply Coupon *"/>
+            <button className="btn rounded-0 btn-outline-dark mt-2 mr-3"type="button">Apply Coupon</button>
+            <button className="btn rounded-0 btn-outline-dark mt-2" type="button" onClick={checkoutHandler}>proceed to Checkout</button>
           </div>
         </div>
-        <div class="col-md-6 pt-4 bg-dark">
-          <div class="row text-white">
-            <div class="col-6 py-2"><span>Subtotal</span></div>
-            <div class="col-6 py-2"><span>$241.00</span></div>
-            <div class="col-6 py-4"><span>Discount</span></div>
-            <div class="col-6 py-4"><span>$12.00</span></div>
-            <div class="col-6 py-2"><span>Grand Total</span></div>
-            <div class="col-6 py-2"><span>$229.00</span></div>
+        <div className="col-md-6 pt-4 bg-dark">
+          <div className="row text-white">
+            <div className="col-6 py-2"><span>Subtotal</span></div>
+            <div className="col-6 py-2"><span>{cart.cartItems.reduce((a, c) => a + c.qty, 0)} Items</span></div>
+            <div className="col-6 py-4"><span>Discount</span></div>
+            <div className="col-6 py-4"><span>${cart.cartItems.reduce((a, c) => a + c.discount * c.qty, 0)}</span></div>
+            <div className="col-6 py-2"><span>Grand Total</span></div>
+            <div className="col-6 py-2"><span>${cart.cartItems.reduce((a, c) => a + (c.price -c.discount) * c.qty, 0)}</span></div>
           </div>
         </div>
       </div>

@@ -30,7 +30,12 @@ const ProductDetail = (props) => {
 
   const [counter, setCounter] = useState(1);
   const increment =()=> {setCounter(counter +1)};
-  const decrement =()=> {if (counter > 1){setCounter(counter -1)}};
+  const decrement =()=> { counter > 1? setCounter(counter -1):setCounter(counter)};
+
+  const addToCartHandler = () => {
+    props.history.push(`/shoppingCart/${productId}?qty=${counter}`);
+  };
+
   return (
     <>
     {productDetails?.loading? (<LoadingBox/>)
@@ -136,7 +141,7 @@ const ProductDetail = (props) => {
               <a className="is-minus" onClick={decrement}>-</a>
               <input className="quantity-input" type="text" value={counter} />
               <a className="quantity-button is-plus" onClick={increment}>+</a>
-              <a className="btnCard">
+              <a className="btnCard" onClick={addToCartHandler}>
                 <div>ADD TO CARD</div>
               </a>
             </div>
