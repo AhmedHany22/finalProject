@@ -3,7 +3,7 @@ import expressAsyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs';
 import data from '../../Techno/src/data.js'
 import User from '../models/userModel.js';
-import {generateToken} from '../utils.js';
+import { generateToken } from '../utils.js';
 
 const userRouter = express.Router();
 userRouter.get(
@@ -14,7 +14,7 @@ userRouter.get(
         res.send({ createdUsers });
     }));
 
-    //signin api
+//signin api
 userRouter.post(
     '/signin',
     expressAsyncHandler(async (req, res) => {
@@ -31,8 +31,23 @@ userRouter.post(
                 return;
             }
         }
-        res.status(401).send({message:'Invalid email or password'});
+        res.status(401).send({ message: 'Invalid email or password' });
     })
 );
 
+userRouter.post('/signup', expressAsyncHandler(async (req, res) => {
+    const user = new User({
+        name: req.body.name, email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 8)
+    });
+    const createdUsers = await user.save();
+    res.send({
+        _id: uscreatedUserser._id,
+        name: createdUsers.name,
+        email: createdUsers.email,
+        isAdmin: createdUsers.isAdmin,
+        token: generateToken(createdUsers),
+    });
+})
+);
 export default userRouter;

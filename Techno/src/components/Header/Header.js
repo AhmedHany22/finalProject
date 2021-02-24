@@ -1,14 +1,16 @@
 import "./Header.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const Header = () => {
+
 
   return (
     <>
       <nav className="navbar navbar-expand-sm navbar-light py-3 bg-white">
         <div className="container">
-          <a className="navbar-brand font-weight-bold"href="/">
+          <a className="navbar-brand font-weight-bold" href="/">
             <h2>Techno</h2>
           </a>
           <div className="collapse navbar-collapse" id="collapsibleNavId">
