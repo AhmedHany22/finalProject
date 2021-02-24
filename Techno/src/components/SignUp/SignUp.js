@@ -39,6 +39,12 @@ const SignUp = (props) => {
     }
   },[props.history,redirect ,userSignup?.userInfo]);
 
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     props.history.push(redirect);
+  //   }
+  // },[props.history,redirect ,userInfo]);
+
   return (
     <>
       <div className="container-fluid bgd mb-0">

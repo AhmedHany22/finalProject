@@ -34,7 +34,6 @@ userRouter.post(
         res.status(401).send({ message: 'Invalid email or password' });
     })
 );
-
 //router for signup
 userRouter.post('/signup', expressAsyncHandler(async (req, res) => {
     const user = new User({
