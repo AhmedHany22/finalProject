@@ -1,62 +1,60 @@
-
-import { useState } from "react";
-
+import React, { useState,useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { register, signin } from '../../store/actions/userActions';
 import "./SignUp.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import LoadingBox from '../LoadingBox';
+import MessageBox from '../MessageBox';
 
-const SignUp = () => {
+const SignUp = (props) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmpassword, setConfirmPassword] = useState('');
 
-  let re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  const [registerForm, setRegisterForm] = useState({ email: "", password: "" });
-  const [registerErrors, setRegisterErrors] = useState({emailErrors: null,passwordErrors: null });
-  const handleFormChange = (e) => {
-    if (e.target.name === "email") {
-      setRegisterForm({
-        ...registerForm,
-        email: e.target.value,
-      });
-      setRegisterErrors({
-        ...registerErrors,
-        emailErrors: e.target.value.length === 0 ? "this field is mandatory" : !re.test(e.target.value)
-        ? "You have entered an invalid email address!" : null,
-      });
-    } else {
-      setRegisterForm({
-        ...registerForm,
-        password: e.target.value,
-      });
-      setRegisterErrors({
-        ...registerErrors,
-        passwordErrors: e.target.value.length === 0 ? "this field is mandatory" : e.target.value.length < 8
-        ? "password must be greater than 8 " : null,
-      });
+
+  const redirect = props.location.search
+    ? props.location.search.split('=')[1]
+    : '/';
+
+  const userSignup = useSelector((state) => state.userSignup);
+
+  const dispatch = useDispatch();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if(password !== confirmpassword){
+      alert('password and confirm password are not match')
+    }
+    else
+    {
+      dispatch(register(name,email, password))
+
     }
   };
-  const handleSubmit = () => {
-    const { email, password } = registerForm;
-    setRegisterErrors({
-      emailErrors: email.length > 0 ? null : "this field is mandatory",
-      passwordErrors: password.length > 0 ? null : "this field is mandatory",
-    });
-  };
+
+  useEffect(() => {
+    if (userSignup?.userInfo) {
+      props.history.push(redirect);
+    }
+  },[props.history,redirect ,userSignup?.userInfo]);
 
   return (
     <>
       <div className="container-fluid bgd mb-0">
         <div className="signup-form mb-0">
-          <form action="/examples/actions/confirmation.php" method="post">
+          <form action="/examples/actions/confirmation.php" method="post" onSubmit={submitHandler}>
             <h2>Sign Up</h2>
+            {userSignup?.loading && <LoadingBox/>}
+            {userSignup?.error && <MessageBox variant="danger">{userSignup?.error}</MessageBox>}
+            {userSignup?.userInfo && <MessageBox variant="success">{`Welcome ${userSignup?.userInfo?.name}`}</MessageBox>}
+
             <p>Please fill in this form to create an account!</p>
             <hr></hr>
             <div className="form-group">
-              <div className="row">
-                <div className="col">
-                  <input type="text" className="form-control" name="first_name" placeholder="First Name" required="required"/>
-                </div>
-                <div className="col">
-                  <input type="text" className="form-control" name="last_name" placeholder="Last Name" required="required"/>
-                </div>
-              </div>
+              <input type="text" className="form-control" name="name" placeholder="Enter Full Name" required="required"
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
             <div className="form-group">
               <input
@@ -65,14 +63,9 @@ const SignUp = () => {
                 name="email"
                 placeholder="Email"
                 required="required"
-                classNameName={`form-control mt-2
-					${registerErrors.emailErrors ? "border-danger" : ""}`}
-                value={registerForm.email}
-                onChange={handleFormChange}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <small classNameName="text-danger mt-2">
-                {registerErrors.emailErrors}
-              </small>
+           
               <br></br>
             </div>
             <div className="form-group">
@@ -82,15 +75,9 @@ const SignUp = () => {
                 name="password"
                 placeholder="Password"
                 required="required"
-                classNameName={`form-control mt-2 ${
-                  registerErrors.passwordErrors ? "border-danger" : ""
-                }`}
-                value={registerForm.password}
-                onChange={handleFormChange}
+                onChange={(e) => setPassword(e.target.value)} 
               />
-              <small classNameName="text-danger mt-2">
-                {registerErrors.passwordErrors}
-              </small>
+            
               <br></br>
             </div>
             <div className="form-group">
@@ -100,6 +87,7 @@ const SignUp = () => {
                 name="confirm_password"
                 placeholder="Confirm Password"
                 required="required"
+                onChange={(e) => setConfirmPassword(e.target.value)} 
               />
             </div>
             <div className="form-group">
@@ -113,14 +101,14 @@ const SignUp = () => {
               <button
                 type="submit"
                 className="btn btn-primary btn-lg"
-                onClick={handleSubmit}
+                
               >
                 Sign Up
               </button>
             </div>
             <div className="hint-text">
               Already have an account?
-              <a href="/signin" className="text-decoration-none text-primary">
+              <a href={`/signin?redirect=${redirect}`} className="text-decoration-none text-primary">
                 Login here
               </a>
             </div>

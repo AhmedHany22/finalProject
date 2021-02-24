@@ -83,7 +83,7 @@ export default function ProductList(){
                 </div>
                 <div className="row">
                 {productList.loading? (<LoadingBox/>)
-                :productList.error?(<MessageBox>{productList.error}</MessageBox>)
+                :productList.error?(<MessageBox variant="danger">{productList.error}</MessageBox>)
                 :(
                     getSliceArrayOfProduct()?.map((product,index)=>{
                         console.log(product);
