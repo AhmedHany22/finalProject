@@ -1,19 +1,21 @@
-
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from "redux-devtools-extension";
+import {composeWithDevTools} from "redux-devtools-extension";
 import {productDetailsReducer, productListReducer} from './reducers/productReducers'
 import {cartReducer} from './reducers/cartReducers'
-import { userDetailsReducer, userUpdateProfileReducer, userSigninReducer, userRegisterReducer } from './reducers/userReducers';
+import {userDetailsReducer, userUpdateProfileReducer, userSigninReducer, userRegisterReducer } from './reducers/userReducers';
+import {orderCreateReducer, orderDetailsReducer, orderPayReducer,} from './reducers/orderReducers';
 
 const initialState={
-    userSignin:{
-        userInfo: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
-    },
-
-    cart:{
-        cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
-    }
+  userSignin:{
+    userInfo: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
+  },
+  cart:{
+    cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
+    shippingAddress: localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : {},
+    paymentMethod: localStorage.getItem('paymentMethod') ? JSON.parse(localStorage.getItem('paymentMethod')) : '',
+    shippingDetail: localStorage.getItem('shippingDetail') ? JSON.parse(localStorage.getItem('shippingDetail')) : '',
+  }
 };
 
 const reducer = combineReducers({
@@ -23,9 +25,11 @@ const reducer = combineReducers({
     userSignin: userSigninReducer,
     userRegister:userRegisterReducer,
     userDetails: userDetailsReducer,
-    userUpdateProfile: userUpdateProfileReducer
+    userUpdateProfile: userUpdateProfileReducer,
+    orderCreate: orderCreateReducer,
+    orderDetails: orderDetailsReducer,
+    orderPay: orderPayReducer,
 })
 
 const store=createStore(reducer,initialState, composeWithDevTools(applyMiddleware(thunk)));
-
 export default store;

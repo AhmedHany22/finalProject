@@ -11,7 +11,6 @@ const ShoppingCart = (props) => {
   const qty = props.location.search ? Number(props.location.search.split('=')[1]) : 1;
 
   const cart = useSelector((state) => state.cart);
-  //const { cartItems } = cart;
 
   const dispatch = useDispatch();
   useEffect(()=>{
@@ -25,7 +24,7 @@ const ShoppingCart = (props) => {
   };
 
   const checkoutHandler = () => {
-    props.history.push('/signin?redirect=shoppingCart');
+    props.history.push('/signin?redirect=checkout');
   };
 
   return (
@@ -34,7 +33,7 @@ const ShoppingCart = (props) => {
         <div className="container col-lg-5 col-md-6 col-sm-8 col-9 py-4 bg-white text-center myBorder">
           <h1 className="mb-3 text-dark">Shopping Cart</h1>
           <div className="msg">Missed something ?
-            <a href="/" className="text-secondary"> Continue shopping</a>
+            <a href="/shop" className="text-secondary"> Continue shopping</a>
           </div>
         </div>
       </section>
@@ -100,9 +99,9 @@ const ShoppingCart = (props) => {
         <div className="col-md-6 pt-4 bg-dark">
           <div className="row text-white">
             <div className="col-6 py-2"><span>Subtotal</span></div>
-            <div className="col-6 py-2"><span>{cart.cartItems.reduce((a, c) => a + c.qty, 0)} Items</span></div>
+            <div className="col-6 py-2"><span>{cart.cartItems.reduce((a, c) => a + (c.price * c.qty), 0)}</span></div>
             <div className="col-6 py-4"><span>Discount</span></div>
-            <div className="col-6 py-4"><span>${cart.cartItems.reduce((a, c) => a + c.discount * c.qty, 0)}</span></div>
+            <div className="col-6 py-4"><span>${cart.cartItems.reduce((a, c) => a + (c.discount * c.qty), 0)}</span></div>
             <div className="col-6 py-2"><span>Grand Total</span></div>
             <div className="col-6 py-2"><span>${cart.cartItems.reduce((a, c) => a + (c.price -c.discount) * c.qty, 0)}</span></div>
           </div>
