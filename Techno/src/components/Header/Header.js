@@ -8,9 +8,9 @@ const Header = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const userSignin= useSelector(state=> state.userSignin)
-  const dispatch= useDispatch()
-  const siginoutHandeler=()=>{
+  const userSignin = useSelector(state => state.userSignin)
+  const dispatch = useDispatch()
+  const siginoutHandeler = () => {
     dispatch(singout())
   }
   return (
@@ -39,25 +39,49 @@ const Header = () => {
               <ul className="navbar-nav float-right ">
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle icon" href="#" id="navbardrop" data-toggle="dropdown">
-                    { userSignin?.userInfo? (userSignin?.userInfo?.name?.toUpperCase()): 
+                   
+                    {userSignin?.userInfo ? (userSignin?.userInfo?.name?.toUpperCase()) :
                       (<i className="fas fa-user-circle"></i>)
                     }
                   </a>
                   <div className="dropdown-menu">
-                    {userSignin?.userInfo?(
+                    {userSignin?.userInfo ? (
                       <>
-                      <Link to="#"></Link>
-                      <a className="dropdown-item" onClick={siginoutHandeler} href="/signin">Sign out</a>
-                      <a className="dropdown-item" href="/profile">Profile</a>
+                        <Link to="#"></Link>
+                        <a className="dropdown-item" onClick={siginoutHandeler} href="/signin">Sign out</a>
+                        <a className="dropdown-item" href="/profile">Profile</a>
                       </>
                     ) : (
-                      <>
-                      <a className="dropdown-item" href="/signin">Sign in</a>
-                      <a className="dropdown-item" href="/signup">Sign up</a>
-                      </>
-                    )}
-                    
+                        <>
+                          <a className="dropdown-item" href="/signin">Sign in</a>
+                          <a className="dropdown-item" href="/signup">Sign up</a>
+                        </>
+                      )}
+
                   </div>
+                  {/*admin*/}
+                  {/*  <a className="nav-link dropdown-toggle icon" href="#" id="navbardrop" data-toggle="dropdown">
+                     {isAdmin?.userInfo ? (isAdmin?.userInfo?.name?.toUpperCase()) :
+                      (<i className="fas fa-user-circle"></i>)
+                    }
+                  </a>
+                  <div className="dropdown-menu">
+                    {isAdmin?.userInfo ? (
+                      <>
+                        <Link to="#"></Link>
+                        <a className="dropdown-item" onClick={siginoutHandeler} href="/signin">Sign out</a>
+                        <a className="dropdown-item" href="/dashboard">dashboard</a>
+                      </>
+                    ) : (
+                        <>
+                          <a className="dropdown-item" href="/signin">Sign in</a>
+                          <a className="dropdown-item" href="/signup">Sign up</a>
+                        </>
+                      )}
+
+                  </div>
+                    */}
+
                 </li>
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle icon" href="#" id="navbardrop" data-toggle="dropdown">

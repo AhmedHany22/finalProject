@@ -15,3 +15,12 @@ export const generateToken = (user) => {
     }
   );
 };
+
+// export const isAdmin = (req,res,next) => {
+//   if(req.userInfo && req.isAdmin){
+//     next();
+//   }
+//   else{
+//     res.status(401).send({message:'Invalid Admin Token'});
+//   }
+// }
