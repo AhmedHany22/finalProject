@@ -97,15 +97,28 @@ export default function ProductList(){
                 </div>
 
                 <div className="row">
-                <div className="pagination pt-5">
-                    <a href>&laquo;</a>
-                    {padgeNumpers.map((padgeNumper,index)=>{
+                <ul class="pagination justify-content-end mb-0 pt-5">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">
+                      <i class="fas fa-angle-left"></i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  {padgeNumpers.map((padgeNumper,index)=>{
                         return(
-                            <a href key={index} className="paging__number" classNameName={index===currentPage? 'active':''} onClick={()=>{setCurrentPage(index)}}>{padgeNumper} </a>
+                            <li key={index} className={index===currentPage?'page-item active':'page-item'} onClick={()=>{setCurrentPage(index)}}>
+                                <a className="page-link" >{padgeNumper}</a>
+                            </li>
                         )
-                    })}
-                    <a href>&raquo;</a>
-                </div>         
+                   })}  
+                  
+                  <li class="page-item">
+                    <a class="page-link" href="#">
+                      <i class="fas fa-angle-right"></i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>        
 
                 </div>
                 
