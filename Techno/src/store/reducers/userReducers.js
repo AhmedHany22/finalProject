@@ -44,21 +44,18 @@ export const userSigninReducer = (state ={} ,action) => {
     }
 };
 
-export const userDetailsReducer= (state= {loading: true},action)=>{
+export const userDetailsReducer = (state = { loading: true }, action) => {
     switch (action.type) {
-        case USER_DETAILS_REQUEST:
-            return{loading: true}
-    
-        case USER_DETAILS_SUCCESS:
-            return{loading: false, user:action.payload}
-        
-        case USER_DETAILS_FAIL: 
-            return{loading: true, error:action.payload}
-        default:
-            return state
+      case USER_DETAILS_REQUEST:
+        return { loading: true };
+      case USER_DETAILS_SUCCESS:
+        return { loading: false, user: action.payload };
+      case USER_DETAILS_FAIL:
+        return { loading: false, error: action.payload };
+      default:
+        return state;
     }
-
-}
+};
 
 export const userUpdateProfileReducer= (state= {loading: true},action)=>{
     switch (action.type) {

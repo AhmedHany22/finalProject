@@ -3,7 +3,7 @@ import expressAsyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs';
 import data from '../../Techno/src/data.js'
 import User from '../models/userModel.js';
-import { generateToken } from '../utils.js';
+import { generateToken, isAuth } from '../utils.js';
 
 const userRouter = express.Router();
 userRouter.get(
@@ -72,35 +72,38 @@ userRouter.post(
     })
   );
 
-userRouter.get('/:id',expressAsyncHandler(async(req,res)=>{
-    const user= await User.findById(req.params.id);
+  userRouter.get(
+    '/:id',
+    expressAsyncHandler(async (req, res) => {
+      const user = await User.findById(req.params.id);
+      if (user) {
+        res.send(user);
+      } else {
+        res.status(404).send({ message: 'User Not Found' });
+      }
+    })
+  );
+    
+
+userRouter.put('/profile', isAuth, expressAsyncHandler(async (req,res)=>{
+    const user= await User.findById(req.user._id);
     if(user){
-        res.send(user)
-    }
-    else{
-        res.status(404).send({message:'User Not Found'})
+        user.name= req.body.name || user.name;
+        user.email= req.body.email || user.email;
+        if(req.user.password){
+            user.password= bcrypt.hashSync(req.body.password)
+        }
+
+        const updateUser= await user.save();
+        res.send(
+           { _id: updateUser._id,
+            name: updateUser.name,
+            email: updateUser.email,
+            isAdmin: updateUser.isAdmin,
+            token: generateToken(updateUser)
+
+           }
+        )
     }
 }))
-
-// userRouter.put('/profile', isAuth, expressAsyncHandler(async (req,res)=>{
-//     const user= await User.findById(req.user._id);
-//     if(user){
-//         user.name= req.body.name || user.name;
-//         user.email= req.body.email || user.email;
-//         if(req.user.password){
-//             user.password= bcrypt.hashSync(req.body.password)
-//         }
-
-//         const updateUser= await user.save();
-//         res.send(
-//            { _id: updateUser._id,
-//             name: updateUser.name,
-//             email: updateUser.email,
-//             isAdmin: updateUser.isAdmin,
-//             token: generateToken(updateUser)
-
-//            }
-//         )
-//     }
-// }))
 export default userRouter;

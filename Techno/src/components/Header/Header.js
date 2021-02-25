@@ -47,12 +47,12 @@ const Header = () => {
                     {userSignin?.userInfo?(
                       <>
                       <Link to="#"></Link>
-                      <a className="dropdown-item" onClick={siginoutHandeler} href="/signin">Sign out</a>
+                      <a className="dropdown-item" onClick={siginoutHandeler}><Link to="/signin">Sign out</Link></a>
                       <a className="dropdown-item" href="/profile">Profile</a>
                       </>
                     ) : (
                       <>
-                      <a className="dropdown-item" href="/signin">Sign in</a>
+                      <a className="dropdown-item" ><Link to="signin">Sign in</Link></a>
                       <a className="dropdown-item" href="/signup">Sign up</a>
                       </>
                     )}
