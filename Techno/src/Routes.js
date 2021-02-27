@@ -11,6 +11,8 @@ const SignUp = React.lazy(() => import("./components/SignUp/SignUp"));
 const SignIn = React.lazy(() => import("./components/SignIn/SignIn"));
 const ProductDetail = React.lazy(() => import("./components/products/ProductDetail/ProductDetail"));
 const ProductList = React.lazy(() => import("./components/products/productList/productList"));
+const Order = React.lazy(() => import("./components/Order/Order"));
+
 const UserProfile = React.lazy(()=> import("./components/userProfile/userProfile"))
 
 const Routes = () => {
@@ -25,6 +27,7 @@ const Routes = () => {
         <Route path="/shoppingCart/:id?" exact component={ShoppingCart} />
         <Route path="/details/:id" exact component={ProductDetail} />
         <Route path="/shop" exact component={ProductList} />
+        <Route path="/order/:id" exact component={Order} />
         <PrivateRoute path="/profile" exact component={UserProfile} />
         <Route path="/" exact component={Homenew} />
       </Switch>
