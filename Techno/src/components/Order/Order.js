@@ -25,7 +25,7 @@ export default function Order(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     const addPayPalScript = async () => {
-      const { data } = await Axios.get('/api/config/paypal ');
+      const { data } = await Axios.get('/api/config/paypal');
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
@@ -51,7 +51,7 @@ export default function Order(props) {
 
   const successPaymentHandler = (paymentResult) => {
   };
-
+  console.log(order);
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
