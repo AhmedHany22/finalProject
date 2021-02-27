@@ -38,6 +38,7 @@ const orderSchema = new mongoose.Schema(
     shippingCost: { type: Number, required: true },
     paymentCost: { type: Number, required: true },
     itemsPrice: { type: Number, required: true },
+    itemsQty: { type: Number, required: true },
     grandPrice: { type: Number, required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     isPaid: { type: Boolean, default: false },

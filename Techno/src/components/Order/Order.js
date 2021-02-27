@@ -99,7 +99,7 @@ export default function Order(props) {
                 <div className="col-sm-6 mt-2">
                   <h4 className="mt-3 ml-4 pl-3"><strong>Pill Details</strong></h4>
                   <ul className="my-3">
-                    <li><div className="mb-2"><span>Quantity: </span></div></li>
+                    <li><div className="mb-2"><span>Quantity: {order.itemsQty}</span></div></li>
                     <li><div className="mb-2"><span>Shipping Cost: ${order.shippingCost}</span></div></li>
                     <li><div className="mb-2"><span>Payment Cost: ${order.paymentCost}</span></div></li>
                     <li><div className="mb-2"><span><strong>Order Total: ${order.grandPrice}</strong></span></div></li>

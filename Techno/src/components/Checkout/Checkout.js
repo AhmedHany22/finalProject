@@ -57,6 +57,7 @@ const Checkout = (props) => {
 
   const toPrice = (num) => Number(num.toFixed(2));
   cart.itemsPrice = ( cart.cartItems.reduce((a, c) => a + c.qty * (c.price - c.discount), 0) );
+  cart.itemsQty = ( cart.cartItems.reduce((a, c) => a + c.qty , 0) );
   cart.grandPrice = ( toPrice(cart.itemsPrice + shippingCost + (cart.itemsPrice * paymentCost)) );
   cart.shippingCost = shippingCost;
   cart.paymentCost = paymentCost * cart.itemsPrice;
