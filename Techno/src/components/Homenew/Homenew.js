@@ -1,6 +1,8 @@
 import "./Homenew.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import imge from "../../assets/4.jpg";
+import imge from "../../assets/product2.jpg";
+
+
 import ProductItem from "../products/productItem/productItem";
 import data from '../../data'
 const Homenew = () => {
@@ -20,7 +22,7 @@ const Homenew = () => {
           </ul>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img className="img-fluid" src={imge} alt="First slide" height="530px" />
+              <img className="img-fluid" src="../assets/Banner/product2.jpg" alt="First slide" height="530px" />
               <div className="text-primary carousel-caption  d-none d-md-block">
                 <h1>New Collection Will Coming</h1>
                 <h1>Lenovo 330-15AST Laptop</h1>
@@ -29,7 +31,7 @@ const Homenew = () => {
               </div>
             </div>
             <div className="carousel-item">
-              <img className="img-fluid" src={imge} alt="Second slide" height="530px" />
+              <img className="img-fluid" src="../assets/Banner/product9.jpeg" alt="Second slide" height="530px" />
               <div className="text-primary carousel-caption d-none d-md-block">
                 <h1>New Collection Will Coming</h1>
                 <h1>HP 15-da2365ne Laptop</h1>
@@ -38,7 +40,7 @@ const Homenew = () => {
               </div>
             </div>
             <div className="carousel-item">
-              <img className="img-fluid" src={imge} alt="Third slide" height="530px" />
+              <img className="img-fluid" src="../assets/Banner/product9.jpeg" alt="Third slide" height="530px" />
               <div className="text-primary carousel-caption d-none d-md-block">
                 <h1>New Collection Will Coming</h1>
                 <h1>DELL 15-3593 Laptop</h1>
@@ -51,14 +53,14 @@ const Homenew = () => {
       </div>
       <div className="p-0 col-10 col-sm-8 col-md-4 " style={{position: 'relative'}}>
         <div className="card img-fluid">
-          <img className="img-fluid" src={imge} alt="Card image" style={{width: '100%'}} />
+          <img className="img-fluid" src="../assets/Banner/product1.jpg"  alt="Card image" style={{width: '100%'}} />
           <div className="card-img-overlay">
             <h4 className="card-title text-primary bottom-left">DELL G5</h4>
             <p className="card-text text-primary bottom-left1">Browse collection</p>
           </div>
         </div>
         <div className="card img-fluid mt-3">
-          <img className="img-fluid" src={imge} alt="Card image" style={{width: '100%'}} />
+          <img className="img-fluid"  src="../assets/Banner/product215.JPG"  alt="Card image" style={{width: '100%'}} />
           <div className="card-img-overlay">
             <h4 className="card-title text-primary bottom-left">Lenovo V15-IWL</h4>
             <p className="card-text text-primary bottom-left1">Browse collection</p>
