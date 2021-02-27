@@ -15,7 +15,6 @@ export const generateToken = (user) => {
     }
   );
 };
-
 export const isAuth = (req, res, next) => {
   const authorization = req.headers.authorization;
   if (authorization) {
@@ -36,7 +35,6 @@ export const isAuth = (req, res, next) => {
     res.status(401).send({ message: 'No Token' });
   }
 };
-
 // export const isAdmin = (req,res,next) => {
 //   if(req.userInfo && req.isAdmin){
 //     next();
