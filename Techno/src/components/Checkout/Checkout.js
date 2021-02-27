@@ -1,23 +1,22 @@
-import "./Checkout.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { saveShippingAddress, savePaymentMethod, saveShippingDetails, } from '../../store/actions/cartActions';
-import { Link } from 'react-router-dom';
-import { createOrder } from '../../store/actions/orderActions';
-import { ORDER_CREATE_RESET } from '../../store/types/orderConstants';
+import "./Checkout.css";
 import LoadingBox from '../LoadingBox';
 import MessageBox from '../MessageBox';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createOrder } from '../../store/actions/orderActions';
+import { ORDER_CREATE_RESET } from '../../store/types/orderConstants';
+import { saveShippingAddress, savePaymentMethod, saveShippingDetails, } from '../../store/actions/cartActions';
 
 const Checkout = (props) => {
+  const cart = useSelector((state) => state.cart);
+
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-  if (!userInfo) {
-    props.history.push('/signin');
-  }
+  if (!userInfo) { props.history.push('/signin'); }
 
-  const cart = useSelector((state) => state.cart);
-  const { shippingAddress, paymentMethod, shippingDetail } = cart;
+  const { shippingAddress, paymentMethod, shippingDetails } = cart;
 
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
   const [firstName, setFirstName] = useState(shippingAddress.firstName);
@@ -30,59 +29,43 @@ const Checkout = (props) => {
   const [fax, setFax] = useState(shippingAddress.fax);
 
   const dispatch = useDispatch();
+
   const submitShipping = (e)=>{
     e.preventDefault();
-    dispatch(
-      saveShippingAddress({ firstName, lastName, phoneNum, address, city, region, country, postalCode, fax })
-    );
+    dispatch( saveShippingAddress({ firstName, lastName, phoneNum, address, city, region, country, postalCode, fax }) );
   }
 
   const [paymentCost, setPaymentCost] = useState(0);
-  const [paymentMethods, setPaymentMethod] = useState(paymentMethod);
-  const submitPaymentMethod = (e) => {
-    if ( paymentMethods === "PayPal"){
-      setPaymentCost(0.05)
-    }else if ( paymentMethods === "VisaCard"){
-      setPaymentCost(0.03)
-    }
-    else if( paymentMethods === "Stripe" ){
-      setPaymentCost(0.07)
-    }
+  const [paymentType, setPaymentType] = useState(paymentMethod);
+  const submitPaymentType = (e) => {
+    if ( paymentType === "PayPal"){ setPaymentCost(0.05) }
+    else if ( paymentType === "VisaCard"){ setPaymentCost(0.03) }
+    else if( paymentType === "Stripe" ){ setPaymentCost(0.07) }
     e.preventDefault();
-    dispatch(savePaymentMethod(paymentMethod));
-
+    dispatch(savePaymentMethod(paymentType));
   };
 
   const [shippingCost, setShippingCost] = useState(0);
-  const [shippingDetails, setShippingDetails] = useState(shippingDetail);
-  const submitShippingDetails = (e) => {
-    if ( shippingDetails == "Free"){
-      setShippingCost(0)
-    }else if ( shippingDetails == "Standard"){
-      setShippingCost(15)
-    }
-    else if( shippingDetails == "Speed" ){
-      setShippingCost(35)
-    }
+  const [shippingType, setShippingType] = useState(shippingDetails);
+  const submitShippingType = (e) => {
+    if ( shippingType == "Free"){ setShippingCost(0) }
+    else if ( shippingType == "Standard"){ setShippingCost(15) }
+    else if( shippingType == "Speed" ){ setShippingCost(35) }
     e.preventDefault();
-    dispatch(saveShippingDetails(shippingDetails));
+    dispatch(saveShippingDetails(shippingType));
   };
 
-  cart.itemsPrice = (
-    cart.cartItems.reduce((a, c) => a + c.qty * (c.price - c.discount), 0)
-  );
   const toPrice = (num) => Number(num.toFixed(2));
-
-  cart.grandPrice = (
-    toPrice(cart.itemsPrice + shippingCost - (cart.itemsPrice * paymentCost))
-  );
+  cart.itemsPrice = ( cart.cartItems.reduce((a, c) => a + c.qty * (c.price - c.discount), 0) );
+  cart.grandPrice = ( toPrice(cart.itemsPrice + shippingCost + (cart.itemsPrice * paymentCost)) );
+  cart.shippingCost = shippingCost;
+  cart.paymentCost = paymentCost * cart.itemsPrice;
 
   const orderCreate = useSelector((state) => state.orderCreate);
   const { loading, success, error, order } = orderCreate;
 
-  const placeOrderHandler = () => {
-    dispatch(createOrder({...cart, orderItems: cart.cartItems}))
-  }
+  const placeOrderHandler = () => { dispatch(createOrder({...cart, orderItems: cart.cartItems})) };
+
   useEffect(() => { if (success) {
     props.history.push(`/order/${order._id}`);
     dispatch({ type: ORDER_CREATE_RESET });
@@ -293,10 +276,10 @@ const Checkout = (props) => {
                         <input
                           required
                           type="radio"
-                          name="shippingdetails"
+                          name="shippingType"
                           id="Free"
                           value="Free"
-                          onChange={(e)=> setShippingDetails(e.target.value)}
+                          onChange={(e)=> setShippingType(e.target.value)}
                         />
                         <span className="ml-2">Free</span>
                       </label>
@@ -310,10 +293,10 @@ const Checkout = (props) => {
                       <input
                         required
                         type="radio"
-                        name="shippingdetails"
+                        name="shippingType"
                         id="Standard"
                         value="Standard"
-                        onChange={(e)=> setShippingDetails(e.target.value)}
+                        onChange={(e)=> setShippingType(e.target.value)}
                       />
                     <span className="ml-2">Standard $15</span>
                     </div>
@@ -327,10 +310,10 @@ const Checkout = (props) => {
                         <input
                           required
                           type="radio"
-                          name="shippingdetails"
+                          name="shippingType"
                           id="Speed"
                           value="Speed"
-                          onChange={(e)=> setShippingDetails(e.target.value)}
+                          onChange={(e)=> setShippingType(e.target.value)}
                         />
                       <span className="ml-2">Speed $35</span>
                       </label>
@@ -339,7 +322,7 @@ const Checkout = (props) => {
                 </div>
                 <hr />
                 <a href="/shoppingCart" className="btn rounded-0 btn-outline-dark">Back</a>
-                <button type="Submit" className="btn rounded-0 btn-outline-dark active ml-2" onClick={submitShippingDetails}>Submit</button>
+                <button type="Submit" className="btn rounded-0 btn-outline-dark active ml-2" onClick={submitShippingType}>Submit</button>
                 <br /><br />
               </div>
               {/*---------------------------PaymentMethod---------------------------*/}
@@ -354,10 +337,10 @@ const Checkout = (props) => {
                         <input
                         required
                         type="radio"
-                        name="paymentMethods"
+                        name="paymentType"
                         id="PayPal"
                         value="PayPal"
-                        onChange={(e)=> setPaymentMethod(e.target.value)}
+                        onChange={(e)=> setPaymentType(e.target.value)}
                         />
                         <span className="ml-2">Pay Pal</span>
                       </label>
@@ -373,10 +356,10 @@ const Checkout = (props) => {
                         <input
                           required
                           type="radio"
-                          name="paymentMethods"
+                          name="paymentType"
                           id="VisaCard"
                           value="VisaCard"
-                          onChange={(e)=> setPaymentMethod(e.target.value)}
+                          onChange={(e)=> setPaymentType(e.target.value)}
                         />
                         <span className="ml-2">Visa Card</span>
                       </label>
@@ -392,10 +375,10 @@ const Checkout = (props) => {
                         <input
                           required
                           type="radio"
-                          name="paymentMethods"
+                          name="paymentType"
                           id="Stripe"
                           value="Stripe"
-                          onChange={(e)=> setPaymentMethod(e.target.value)}
+                          onChange={(e)=> setPaymentType(e.target.value)}
                         />
                         <span className="ml-2">Stripe</span>
                       </label>
@@ -404,7 +387,7 @@ const Checkout = (props) => {
                 </div>
                 <hr />
                 <a href="/shoppingCart" className="btn rounded-0 btn-outline-dark mr-2">Back</a>
-                <button type="Submit" className="btn rounded-0 btn-outline-dark active" onClick={submitPaymentMethod}>Submit</button>
+                <button type="Submit" className="btn rounded-0 btn-outline-dark active" onClick={submitPaymentType}>Submit</button>
                 <br /><br />
               </div>
               {/*---------------------------OrderReviews---------------------------*/}
@@ -461,7 +444,7 @@ const Checkout = (props) => {
                   <strong className="float-right">$ {shippingCost}</strong>
                 </li>
                 <li>
-                  Payment Charge :<strong className="float-right">$ {cart.itemsPrice * paymentCost}</strong>
+                  Payment Charge :<strong className="float-right">$ {toPrice(cart.itemsPrice * paymentCost)}</strong>
                 </li>
                 <li>
                   Promotion Discound :<strong className="float-right">$ 00.00</strong>

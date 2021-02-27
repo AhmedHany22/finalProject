@@ -33,5 +33,5 @@ export const savePaymentMethod = (data) => (dispatch) => {
 };
 export const saveShippingDetails = (data) => (dispatch) => {
   dispatch({ type: CART_SAVE_SHIPPING_DETAILS, payload: data });
-  localStorage.setItem('shippingDetail', JSON.stringify(data));
+  localStorage.setItem('shippingDetails', JSON.stringify(data));
 };

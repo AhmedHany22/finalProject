@@ -14,7 +14,7 @@ const initialState={
     cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
     shippingAddress: localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : {},
     paymentMethod: localStorage.getItem('paymentMethod') ? JSON.parse(localStorage.getItem('paymentMethod')) : '',
-    shippingDetail: localStorage.getItem('shippingDetail') ? JSON.parse(localStorage.getItem('shippingDetail')) : '',
+    shippingDetails: localStorage.getItem('shippingDetails') ? JSON.parse(localStorage.getItem('shippingDetails')) : '',
   }
 };
 
