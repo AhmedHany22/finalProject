@@ -20,6 +20,7 @@
        "Our Product":"Our Product",
        "categories":" Computer & Laptop Accessories Computer Parts & Components",
        "discount":"Special discount products",
+       "comment1":"about",
        "About our company":"About our company",
        "quality":"Filling the home with High quality Electronic products",
        "about":"About Techno",
@@ -30,7 +31,22 @@
        "aboutv2":"Innovation",
        "aboutv3":"Responsibility",
        "aboutv4":"Citizenship ",
-       "aboutv5":"Honesty"
+       "aboutv5":"Honesty",
+       "comment2":"contact",
+       "contact us":"contact us",
+       "full name *":"full name *",
+       "email *":"email *",
+       "phone*":"phone*",
+       "Message*":"Message",
+       "submit":"submit",
+       "question0": "Communications is at the heart of ecommerce and community.",
+       "question":" It would be great to hear from you! If you got any questions, pleasedo not hesitate to send us a message. We are looking forward to hearing please do not hesitate to send us a message. It would be great to hear from you! If you got any questions, please do not hesitate to send us a message.",
+       "question2":"We are looking forward to hearing please do not hesitate to send us a message.We are looking forward to hearing from you!",
+       "Egypt":"Egypt",
+       "add":"ADDRESS",
+       "ADDRESS":"6 Tahrir Street - Dokki -AlGizh"
+       
+
 
 
 
