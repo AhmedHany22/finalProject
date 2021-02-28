@@ -1,13 +1,19 @@
 import './App.css';
 import React from 'react';
-
+import i16n from  './i18n';
 import Routes from './Routes';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singout } from './store/actions/userActions';
-
+import i18n from './i18n';
+const changeLanguage =(ln) =>{
+  return()=>{
+    i18n.changeLanguage(ln);
+    console.log(`language changed to ${ln}`)
+  }
+}
 function App() {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -81,6 +87,11 @@ function App() {
               </ul>
             </div>
           </div>
+        </div>
+        <div>
+        <button onClick={changeLanguage("en")} className="btn btn-dark  btn-sm">English</button>
+        
+        <button onClick={changeLanguage("ar")} className="btn btn-dark  btn-sm">Arabic</button>
         </div>
       </nav>
     

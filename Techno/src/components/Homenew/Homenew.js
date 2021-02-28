@@ -1,14 +1,17 @@
 import "./Homenew.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import imge from "../../assets/product2.jpg";
-
 
 import ProductItem from "../products/productItem/productItem";
 import data from '../../data'
+
+import {useTranslation} from 'react-i18next';
+
+
+
 const Homenew = () => {
   const products = data.products;
 
-  
+  const {t,i18n} = useTranslation();
 
   return (
    <div>
@@ -26,28 +29,37 @@ const Homenew = () => {
             <div className="carousel-item active ">
               <img className="img-fluid" src="../assets/Banner/product2.jpg" alt="First slide" height="530px" />
               <div className="text-primary carousel-caption  d-none d-md-block">
-                <h1>New Collection Will Coming</h1>
+              <h1>{t("new")}</h1>
+              {/* <h1>New Collection Will Coming</h1>
                 <h1>Lenovo 330-15AST Laptop</h1>
                 <h4>10% OFF</h4>
-                <button type="button" className="btn btn-primary">BUY NOW</button>
+              */}
+                <h1>{t("lenovo")}</h1>
+                <h4>{t("sale")}</h4>
+
+                
+                <button type="button" className="btn btn-primary">{t("buy")}</button>
               </div>
             </div>
             <div className="carousel-item">
               <img className="img-fluid" src="../assets/Banner/product9.jpeg" alt="Second slide" height="530px" />
               <div className="text-primary carousel-caption d-none d-md-block">
-                <h1>New Collection Will Coming</h1>
-                <h1>HP 15-da2365ne Laptop</h1>
-                <h4>10% OFF</h4>
-                <button type="button" className="btn btn-primary">BUY NOW</button>
+              <h1>{t("new")}</h1>
+              <h1>{t("hp")}</h1>
+
+                {/*<h1>HP 15-da2365ne Laptop</h1>*/}
+                <h4>{t("sale")}</h4>
+                <button type="button" className="btn btn-primary">{t("buy")}</button>
               </div>
             </div>
             <div className="carousel-item">
               <img className="img-fluid" src="../assets/Banner/product9.jpeg" alt="Third slide" height="530px" />
               <div className="text-primary carousel-caption d-none d-md-block">
-                <h1>New Collection Will Coming</h1>
-                <h1>DELL 15-3593 Laptop</h1>
-                <h4>10% OFF</h4>
-                <button type="button" className="btn btn-primary">BUY NOW</button>
+              <h1>{t("new")}</h1>
+              <h1>{t("dell")}</h1>
+                {/*<h1>DELL 15-3593 Laptop</h1>*/}
+                <h4>{t("sale")}</h4>
+                <button type="button" className="btn btn-primary">{t("buy")}</button>
               </div>
             </div>
           </div>
@@ -57,15 +69,16 @@ const Homenew = () => {
         <div className="card img-fluid hight">
           <img className="img-fluid" src="../assets/Banner/product1.jpg"  alt="Card image" style={{width: '100%'}} />
           <div className="card-img-overlay">
-            <h4 className="card-title text-primary bottom-left">DELL G5</h4>
-            <p className="card-text text-primary bottom-left1">Browse collection</p>
+            <h4 className="card-title text-primary bottom-left">{t("dell2")}</h4>
+            <p className="card-text text-primary bottom-left1">{t("Browse")}</p>
           </div>
         </div>
         <div className="card img-fluid mt-3 hight">
           <img className="img-fluid"  src="../assets/Banner/product215.JPG"  alt="Card image" style={{width: '100%'}} />
           <div className="card-img-overlay">
-            <h4 className="card-title text-primary bottom-left">Lenovo V15-IWL</h4>
-            <p className="card-text text-primary bottom-left1">Browse collection</p>
+            <h4 className="card-title text-primary bottom-left"> {t("lenovo2")}</h4>
+          <p className="card-text text-primary bottom-left1">{t("Browse")}</p>
+
           </div>
         </div>
       </div>
@@ -78,19 +91,19 @@ const Homenew = () => {
               <img src="../assets/Banner/productsix.jpeg" className="img-fluid" style={{width: '100%'}} />
             </div>
             <div className=" col-6 col-sm-6 col-md-2">
-              <h5>laptops</h5>
+              <h5>{t("laptops")}</h5>
               <ul className="typesOfLaps">
                 <li>
                   <i className="fa fa-angle-right" aria-hidden="true" />
-                  Dell</li>
+                  {t("dell3")}</li>
                 <li>
                   <i className="fa fa-angle-right" aria-hidden="true" />
-                  lenovo</li>
+                  {t("lenovo3")}</li>
                 <li>
                   <i className="fa fa-angle-right" aria-hidden="true" />
-                  acer</li>
+                  {t("acer")}</li>
               </ul>
-              <a href="../Aisha/shop.html">View all
+              <a href="/shop">{t("View all")}
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
               <p />
@@ -99,19 +112,19 @@ const Homenew = () => {
               <img src="../assets/Banner/productseven.jpeg" className="img-fluid" style={{width: '100%'}} />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-              <h5>laptops</h5>
+              <h5>{t("laptops")}</h5>
               <ul className="typesOfLaps">
                 <li>
                   <i className="fa fa-angle-right" aria-hidden="true" />
-                  Dell</li>
+                  {t("dell3")}</li>
                 <li>
                   <i className="fa fa-angle-right" aria-hidden="true" />
-                  lenovo</li>
+                  {t("lenovo3")}</li>
                 <li>
                   <i className="fa fa-angle-right" aria-hidden="true" />
-                  acer</li>
+                  {t("acer")}</li>
               </ul>
-              <a href="../Aisha/shop.html">View all
+              <a href="/shop">{t("View all")}
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
             </div>
@@ -119,19 +132,19 @@ const Homenew = () => {
               <img src="../assets/Banner/r11.jpg" className="img-fluid " style={{width: '100%'}} />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-              <h5>laptops</h5>
+              <h5>{t("laptops")}</h5>
               <ul className="typesOfLaps">
                 <li>
                   <i className="fa fa-angle-right" aria-hidden="true" />
-                  Dell</li>
+                  {t("dell3")}</li>
                 <li>
                   <i className="fa fa-angle-right" aria-hidden="true" />
-                  lenovo</li>
+                  {t("lenovo3")}</li>
                 <li>
                   <i className="fa fa-angle-right" aria-hidden="true" />
-                  acer</li>
+                  {t("acer")}</li>
               </ul>
-              <a href="../Aisha/shop.html">View all
+              <a href="/shop">{t("View all")}
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
             </div>
@@ -144,7 +157,7 @@ const Homenew = () => {
 
   <div class="container-fluid mt-5 ml-4">
     <div class="row justify-content-md-center">
-      <h2 className="mb-5">New Arrivals Products</h2>
+      <h2 className="mb-5">{t("New Arrivals Products")}</h2>
     </div>
     <div class="row">
     {products.slice(products.length - 4, products.length).map((product, index) => {
@@ -160,8 +173,8 @@ const Homenew = () => {
 <div className="container-fluid fourth textfourthproduct" style={{marginTop: 100}}>
 <div className="row">
   <div className="col-12 col-sm-12 .col-md-12 lookbook">
-    <h1 className="top-left2">Checkout our 2021</h1>
-    <h1 className="top-left3">New Collections
+    <h1 className="top-left2">{t("Checkout our 2021")}</h1>
+    <h1 className="top-left3">{t("New Collections")} 
     </h1>
   </div>
 </div>
@@ -169,11 +182,11 @@ const Homenew = () => {
   {/* fourth colums of products */}
   <div className="container-fluid backdround">
     <div className="row justify-content-md-center">
-      <h2 className="mt-5 ml-3">Our Product</h2>
+      <h2 className="mt-5 ml-3">{t("Our Product")} </h2>
       {/* style="margin-top:100px;" */}
     </div>
     <div className="row justify-content-md-center">
-      <p className="ml-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</p>
+      <p className="ml-3">{t("categories")}</p>
     </div>
     <div className="gallery">
       <figure className="gallery__item gallery__item--1">
@@ -192,7 +205,7 @@ const Homenew = () => {
   </div>
   <div class="container-fluid mt-5 ml-4">
     <div class="row justify-content-md-center">
-      <h2 className="mb-5">Special discount products</h2>
+      <h2 className="mb-5">{t("discount")}</h2>
     </div>
     <div class="row">
     {products.slice(products.length - 4, products.length).map((product, index) => {
