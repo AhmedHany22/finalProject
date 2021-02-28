@@ -38,7 +38,7 @@ const Homenew = () => {
                 <h4>{t("sale")}</h4>
 
                 
-                <button type="button" className="btn btn-primary">{t("buy")}</button>
+                <button type="button" className="btn btn-primary "><a className="text-white "id = "GFG" href="/shop">{t("buy")}</a></button>
               </div>
             </div>
             <div className="carousel-item">
@@ -70,14 +70,14 @@ const Homenew = () => {
           <img className="img-fluid" src="../assets/Banner/product1.jpg"  alt="Card image" style={{width: '100%'}} />
           <div className="card-img-overlay">
             <h4 className="card-title text-primary bottom-left">{t("dell2")}</h4>
-            <p className="card-text text-primary bottom-left1">{t("Browse")}</p>
+            <p className="card-text text-primary bottom-left1" ><a className="text-primary "id = "GFG" href="/shop">{t("Browse")}</a></p>
           </div>
         </div>
         <div className="card img-fluid mt-3 hight">
           <img className="img-fluid"  src="../assets/Banner/product215.JPG"  alt="Card image" style={{width: '100%'}} />
           <div className="card-img-overlay">
             <h4 className="card-title text-primary bottom-left"> {t("lenovo2")}</h4>
-          <p className="card-text text-primary bottom-left1">{t("Browse")}</p>
+          <p className="card-text text-primary bottom-left1"><a className="text-primary "id = "GFG" href="/shop">{t("Browse")}</a></p>
 
           </div>
         </div>
