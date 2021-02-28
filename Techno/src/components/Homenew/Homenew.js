@@ -8,20 +8,22 @@ import data from '../../data'
 const Homenew = () => {
   const products = data.products;
 
+  
+
   return (
    <div>
   {/* first colums of product */}
   <div className="container-fluid backdround mt-1">
     <div className="row d-flex  mx-4 py-5  d-flex justify-content-center ">
-      <div className="col-12 col-sm-12 col-md-8">
-        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-          <ul className="carousel-indicators">
+      <div className="col-12 col-sm-12 col-md-8 ">
+        <div id="carouselExampleIndicators" className="carousel slide " data-ride="carousel">
+          <ul className="carousel-indicators ">
             <li data-target="#carouselExampleIndicators" data-slide-to={0} className="active" style={{width: 10, height: 10, borderRadius: '100%'}} />
             <li data-target="#carouselExampleIndicators" data-slide-to={1} style={{width: 10, height: 10, borderRadius: '100%'}} />
             <li data-target="#carouselExampleIndicators" data-slide-to={2} style={{width: 10, height: 10, borderRadius: '100%'}} />
           </ul>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
+          <div className="carousel-inner ">
+            <div className="carousel-item active ">
               <img className="img-fluid" src="../assets/Banner/product2.jpg" alt="First slide" height="530px" />
               <div className="text-primary carousel-caption  d-none d-md-block">
                 <h1>New Collection Will Coming</h1>
@@ -52,14 +54,14 @@ const Homenew = () => {
         </div>
       </div>
       <div className="p-0 col-10 col-sm-8 col-md-4 " style={{position: 'relative'}}>
-        <div className="card img-fluid">
+        <div className="card img-fluid hight">
           <img className="img-fluid" src="../assets/Banner/product1.jpg"  alt="Card image" style={{width: '100%'}} />
           <div className="card-img-overlay">
             <h4 className="card-title text-primary bottom-left">DELL G5</h4>
             <p className="card-text text-primary bottom-left1">Browse collection</p>
           </div>
         </div>
-        <div className="card img-fluid mt-3">
+        <div className="card img-fluid mt-3 hight">
           <img className="img-fluid"  src="../assets/Banner/product215.JPG"  alt="Card image" style={{width: '100%'}} />
           <div className="card-img-overlay">
             <h4 className="card-title text-primary bottom-left">Lenovo V15-IWL</h4>
@@ -73,7 +75,7 @@ const Homenew = () => {
         <div className="container">
           <div className="row">
             <div className="col-6 col-sm-6 col-md-2">
-              <img src={imge} className="img-fluid" style={{width: '100%'}} />
+              <img src="../assets/Banner/productsix.jpeg" className="img-fluid" style={{width: '100%'}} />
             </div>
             <div className=" col-6 col-sm-6 col-md-2">
               <h5>laptops</h5>
@@ -94,7 +96,7 @@ const Homenew = () => {
               <p />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-              <img src={imge} className="img-fluid" style={{width: '100%'}} />
+              <img src="../assets/Banner/productseven.jpeg" className="img-fluid" style={{width: '100%'}} />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
               <h5>laptops</h5>
@@ -114,7 +116,7 @@ const Homenew = () => {
               </a>
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-              <img src={imge} className="img-fluid " style={{width: '100%'}} />
+              <img src="../assets/Banner/r11.jpg" className="img-fluid " style={{width: '100%'}} />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
               <h5>laptops</h5>
@@ -138,6 +140,7 @@ const Homenew = () => {
       </div>
     </div>
   </div>
+  
 
   <div class="container-fluid mt-5 ml-4">
     <div class="row justify-content-md-center">
@@ -153,6 +156,16 @@ const Homenew = () => {
     })}                
     </div>
   </div>
+  {/* third colums of products */}
+<div className="container-fluid fourth textfourthproduct" style={{marginTop: 100}}>
+<div className="row">
+  <div className="col-12 col-sm-12 .col-md-12 lookbook">
+    <h1 className="top-left2">Checkout our 2021</h1>
+    <h1 className="top-left3">New Collections
+    </h1>
+  </div>
+</div>
+</div>
   {/* fourth colums of products */}
   <div className="container-fluid backdround">
     <div className="row justify-content-md-center">
@@ -164,16 +177,16 @@ const Homenew = () => {
     </div>
     <div className="gallery">
       <figure className="gallery__item gallery__item--1">
-        <img src={imge} className="gallery__img" alt="Image 1" />
+        <img src="../assets/Banner/product9.jpeg" className="gallery__img" alt="Image 1" />
       </figure>
       <figure className="gallery__item gallery__item--2">
-        <img src={imge} className="gallery__img" alt="Image 2" />
+        <img src="../assets/Banner/product401.jpg" className="gallery__img" alt="Image 2" />
       </figure>
       <figure className="gallery__item gallery__item--3">
-        <img src={imge} className="gallery__img " alt="Image 3" />
+        <img src="../assets/Banner/product216.jpg" className="gallery__img " alt="Image 3" />
       </figure>
       <figure className="gallery__item gallery__item--4">
-        <img src={imge} className="gallery__img" alt="Image 4" />
+        <img src="../assets/Banner/product3.jpg" className="gallery__img" alt="Image 4" />
       </figure>
     </div>
   </div>
@@ -192,13 +205,7 @@ const Homenew = () => {
     </div>
   </div>
 
-  <div className="backdround p-5 mb-5 w-100 d-flex flex-column align-items-center justify-content-center">
-    <h3 className="pt-5 text-center pb-3">Subscribe to our Newsletter and get 40% off on all products</h3>
-    <div className="text-center pb-5">
-      <input className="e p-3" type="text" placeholder="Enter your email address" />
-      <button className="btn text-white">Subscribe</button>
-    </div>
-  </div>
+  
 </div>
   )
 }

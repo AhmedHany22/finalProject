@@ -1,12 +1,12 @@
 import './App.css';
 import React from 'react';
+
 import Routes from './Routes';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singout } from './store/actions/userActions';
-
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -87,6 +87,7 @@ function App() {
       <Routes />
       <Footer />
       </Router>
+
     </div>
   );
 }
