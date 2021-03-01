@@ -11,22 +11,15 @@ import MessageBox from "../../MessageBox";
 
 const ProductDetail = (props) => {
   const dispatchList=useDispatch();
-    const productList=useSelector((state)=> state.productList)
-    console.log(productList.products);
+  const productList=useSelector((state)=> state.productList)
+  useEffect(()=>{dispatchList(listProducts());},[]);
 
-    useEffect(()=>{
-      dispatchList(listProducts());
-    },[]);
+  console.log(productList.products);
 
-  const dispatch=useDispatch();
   const productId=props.match.params.id;
-  const productDetails= useSelector(state=> state.productDetails)
-
-
-  useEffect(()=>{
-    dispatch(detailsProducts(productId))
-  },[dispatch,productId])
-  
+  const dispatch=useDispatch();
+  const productDetails= useSelector(state=> state.productDetails);
+  useEffect(()=>{ dispatch(detailsProducts(productId)) },[dispatch,productId]);
 
   const [counter, setCounter] = useState(1);
   const increment =()=> {setCounter(counter +1)};
@@ -38,7 +31,6 @@ const ProductDetail = (props) => {
 
   return (
     <>
-    {productDetails?.loading? (<LoadingBox/>)
     :productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
     :(
     <div className="section">
@@ -316,7 +308,6 @@ const ProductDetail = (props) => {
         </div>
       </div>
     </div>
-    )}
     </>
   );
 };
