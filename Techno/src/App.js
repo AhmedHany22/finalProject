@@ -92,7 +92,7 @@ function App() {
                       <div className="dropdown-menu">
                         <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                         <Link className="dropdown-item" to="/AdminProducts">Products</Link>
-                        <Link className="dropdown-item" to="/orderlist">Orders</Link>
+                        <Link className="dropdown-item" to="/AdminOrderList">Orders</Link>
                         <Link className="dropdown-item" to="/userlist">Users</Link>
                       </div>
                     </li>
@@ -103,7 +103,7 @@ function App() {
         </div>
         <div>
         <button onClick={changeLanguage("en")} className="btn btn-dark  btn-sm">English</button>
-        
+
         <button onClick={changeLanguage("ar")} className="btn btn-dark  btn-sm">Arabic</button>
         </div>
       </nav>

@@ -58,13 +58,13 @@ export default function ProductListScreen(props) {
         <table className="table table-striped table-bordered table-dark">
           <thead>
             <tr>
-              <th>#No</th>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>PRICE</th>
-              <th>CATEGORY</th>
-              <th>Brand</th>
-              <th>ACTIONS</th>
+              <th className="h5">#No</th>
+              <th className="h5">ID</th>
+              <th className="h5">NAME</th>
+              <th className="h5">PRICE</th>
+              <th className="h5">CATEGORY</th>
+              <th className="h5">Brand</th>
+              <th className="h5">ACTIONS</th>
             </tr>
           </thead>
           <tbody>

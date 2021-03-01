@@ -4,7 +4,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {productCreateReducer, productDeleteReducer, productDetailsReducer, productListReducer, productUpdateReducer,} from './reducers/productReducers'
 import {cartReducer} from './reducers/cartReducers'
 import {userDetailsReducer, userUpdateProfileReducer, userSigninReducer, userRegisterReducer } from './reducers/userReducers';
-import {orderCreateReducer, orderDetailsReducer, orderPayReducer,} from './reducers/orderReducers';
+import {orderCreateReducer, orderDetailsReducer, orderDeliverReducer, orderPayReducer, orderListReducer, orderDeleteReducer} from './reducers/orderReducers';
 
 const initialState={
   userSignin:{
@@ -32,6 +32,9 @@ const reducer = combineReducers({
     productCreate: productCreateReducer,
     productUpdate: productUpdateReducer,
     productDelete: productDeleteReducer,
+    orderList: orderListReducer,
+    orderDelete: orderDeleteReducer,
+    orderDeliver: orderDeliverReducer,
 })
 
 const store=createStore(reducer,initialState, composeWithDevTools(applyMiddleware(thunk)));
