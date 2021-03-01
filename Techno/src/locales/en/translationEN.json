@@ -35,8 +35,8 @@
        "comment2":"contact",
        "contact us":"contact us",
        "full name *":"full name *",
-       "email *":"email *",
-       "phone*":"phone*",
+       "email *":"Enter your email ",
+       "phone*":"phone",
        "Message*":"Message",
        "submit":"submit",
        "question0": "Communications is at the heart of ecommerce and community.",
@@ -44,7 +44,56 @@
        "question2":"We are looking forward to hearing please do not hesitate to send us a message.We are looking forward to hearing from you!",
        "Egypt":"Egypt",
        "add":"ADDRESS",
-       "ADDRESS":"6 Tahrir Street - Dokki -AlGizh"
+       "ADDRESS":"6 Tahrir Street - Dokki -AlGizh",
+       "ADDRESS2":"  Nasr City Cairo",
+       "comment3":"Shopping Cart",
+       "Shopping Cart":"Shopping Cart",
+       "Missed something ?":"Missed something ?",
+       "Continue shopping":"Continue shopping",
+       "missed":"Shopping cart is currently empty",
+       "item":" Add items to your cart and view them here before you checkout.",
+       "DISCOUNT CODES":"DISCOUNT CODES",
+       "Enter your coupon code if you have one.":"Enter your coupon code if you have one.",
+       "Apply Coupon":"Apply Coupon",
+       "proceed to Checkout":"proceed to Checkout",
+       "Subtotal":"Subtotal",
+       "Discount":"Discount",
+       "Grand Total":"Grand Total",
+       "$":"$",
+       "Newsletter":"Subscribe to our Newsletter and get 40% off on all products",
+       "Subscribe":"Subscribe",
+       "Easy return":"Easy return",
+       "day":" 30 day return window without any question asked, just peace of mind.",
+       "shipping":"shipping",
+       "order":"We accept order for all Governorates of Egypt and deliver to 27 Governorates. ",
+       "Secure payment":"Secure payment",
+       "Encryption":"Encryption of standard SSL with 128-bit symmetric key",
+       "Techno":"Techno",
+       "Company":"Company",
+       "Contact":"Contact",
+       "Category":"Categories",
+       "Computer pc":"Computer pc",
+       "Accessories":"Accessories",
+       "Smart screen":"Smart screen",
+       "Get Our Store App":"Get Our Store App",
+       "All rights reserved.":"All rights reserved",
+       "Made in Egypt":"Made in Egypt",
+       "comment4":"checkout",
+       "Checkout":"Checkout",
+       " Billing Address":" Billing Address",
+       "  Shipping Method":"  Shipping Method",
+       "  Payment Method":"  Payment Method",
+       " Orders Review":" Orders Review",
+       "Billing Details":"Billing Details",
+       "First Name:*":"First Name:*"
+
+
+       
+
+       
+
+
+
        
 
 

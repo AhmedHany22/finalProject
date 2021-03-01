@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createOrder } from '../../store/actions/orderActions';
 import { ORDER_CREATE_RESET } from '../../store/types/orderConstants';
 import { saveShippingAddress, savePaymentMethod, saveShippingDetails, } from '../../store/actions/cartActions';
+import { useTranslation } from "react-i18next";
 
 const Checkout = (props) => {
   const cart = useSelector((state) => state.cart);
@@ -73,14 +74,15 @@ const Checkout = (props) => {
     }
   }, [dispatch, order, props.history, success]);
 
+  const { t, i18n } = useTranslation();
 
   return (
     <>
       <section className="jumbotron text-white text-center header-section">
         <div className="container col-lg-5 col-md-6 col-sm-8 col-9 py-4 bg-white text-center myBorder">
-          <h1 className="mb-3 text-dark">Checkout</h1>
-          <div className="msg">
-            Missed something ?<a href="/shop" className="text-secondary">Continue shopping</a>
+          <h1 className="mb-3 text-dark">{t("Checkout")}</h1>
+          <div className="msg text-dark">
+          {t("Missed something ?")}<a href="/shop" className="text-secondary"> {t("Continue shopping")}</a>
           </div>
         </div>
       </section>
@@ -91,22 +93,22 @@ const Checkout = (props) => {
               <ul className="nav nav-tabs nav-justified h5">
                 <li className="nav-item text-center">
                   <a data-toggle="tab" href="#Billing"className="nav-link custmizeAnchor titles active">
-                    Billing Address
+                     {t(" Billing Address")}
                   </a>
                 </li>
                 <li className="nav-item text-center">
                   <a data-toggle="tab" href="#Shipping" className="nav-link custmizeAnchor titles">
-                    Shipping Method
+                  {t("Shipping Method")}
                   </a>
                 </li>
                 <li className="nav-item text-center">
                   <a data-toggle="tab" href="#Payment" className="nav-link custmizeAnchor titles">
-                    Payment Method
+                    {t("Payment Method ")}
                   </a>
                 </li>
                 <li className="nav-item text-center">
                   <a data-toggle="tab" href="#Orders" className="nav-link custmizeAnchor titles">
-                    Orders Review
+                    {t("Orders Review")}
                   </a>
                 </li>
               </ul>
@@ -114,7 +116,7 @@ const Checkout = (props) => {
             <div className="tab-content text-left text-secondary">
               {/*---------------------------BillingAddress---------------------------*/}
               <div className="tab-pane active" id="Billing">
-                <h4>Billing Details</h4><hr />
+                <h4 dir="auto" style={{textAlign: 'start'}}>  {t("Billing Details")}</h4><hr />
                 <form role="form">
                   <div className="row">
                     <div className="col-lg-6 col-md-12 cust-billing">

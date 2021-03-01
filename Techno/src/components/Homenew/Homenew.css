@@ -84,11 +84,13 @@ position: relative;
   position: absolute;
   top: 80px;
   left: 50px;
+  text-align: start !important;
 }
 .top-left3 {
   position: absolute;
   top: 160px;
   left: 50px;
+
 }
 
 
@@ -136,6 +138,7 @@ transform: translate(-5%, -5%);
 position: absolute;
 bottom: 8px;
 left: 16px;
+text-align: start !important;
 }
 .bottom-left1 {
 position: absolute;
@@ -299,7 +302,7 @@ font-size: 16px; }
 end of modal */
 
 
-.btn {
+.homebtn {
 background-color: #2B65EC;
 border-radius: 50px;
 width: 130px;

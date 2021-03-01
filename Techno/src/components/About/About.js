@@ -7,7 +7,7 @@ const About = () => {
     <>
       <div className="d-flex justify-content-center align-items-center flex-column mb-5 section">
         <div className="container">
-          <div className="my-5 text-center text-white">
+          <div className="my-5 text-center text-white ">
             <h1>{t("About our company")}</h1>
             {/*<p>Filling the home with High quality Electronic products</p>*/}
             <p>{t("quality")}</p>
@@ -21,18 +21,18 @@ const About = () => {
               {/*<p className="pre-title m-0 small-text text-muted">
                 30 years of excellent
   </p>*/}
-              <h2>{t("about")}</h2>
+              <h2 dir="auto" style={{textAlign: 'start'}}>{t("about")}</h2>
               <div className="details">
-                <p className="detail ml-0 mr-3 my-4">{t("aboutp1")}</p>
-                <p className="detail ml-0 mr-3 my-4">{t("aboutp2")}</p>
-                <p className="detail ml-0 mr-3 my-4">
-                  <ul>
+                <p  dir="auto" style={{textAlign: 'start'}} className="detail ml-0 mr-3 my-4">{t("aboutp1")}</p>
+                <p dir="auto" style={{textAlign: 'start'}} className="detail ml-0 mr-3 my-4">{t("aboutp2")}</p>
+                <p dir="auto" style={{textAlign: 'start'}} className="detail ml-0 mr-3 my-4">
+                  <ul dir="auto" style={{textAlign: 'start'}}>
                     {t("aboutvalues")}
-                    <li>{t("aboutv1")}</li>
-                    <li>{t("aboutv2")}</li>
-                    <li>{t("aboutv3")}</li>
-                    <li>{t("aboutv4")}</li>
-                    <li>{t("aboutv5")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv1")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv2")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv3")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv4")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv5")}</li>
 
                   </ul>
                 </p>
@@ -364,21 +364,21 @@ const About = () => {
             <div className="col-md-6">
               <div className="experience ml-2 pl-2 my-2">
                 
-              <h2>{t("about")}</h2>
+              <h2 dir="auto" style={{textAlign: 'start'}}>{t("about")}</h2>
                 <div className="details">
-                <p className="detail ml-0 mr-3 my-4">{t("aboutp1")}</p>
+                <p className="detail ml-0 mr-3 my-4" dir="auto" style={{textAlign: 'start'}}>{t("aboutp1")}</p>
 
-                <p className="detail ml-0 mr-3 my-4">{t("aboutp2")}</p>
+                <p className="detail ml-0 mr-3 my-4" dir="auto" style={{textAlign: 'start'}}>{t("aboutp2")}</p>
 
                  
                   <p className="detail ml-0 mr-3 my-4">
-                  <ul>
+                  <ul dir="auto" style={{textAlign: 'start'}}>
                     {t("aboutvalues")}
-                    <li>{t("aboutv1")}</li>
-                    <li>{t("aboutv2")}</li>
-                    <li>{t("aboutv3")}</li>
-                    <li>{t("aboutv4")}</li>
-                    <li>{t("aboutv5")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv1")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv2")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv3")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv4")}</li>
+                    <li dir="auto" style={{textAlign: 'start'}}>{t("aboutv5")}</li>
 
                   </ul>
                 </p>

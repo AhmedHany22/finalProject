@@ -31,14 +31,14 @@ export default function AdminEditProducts(props) {
     if (!product || product._id !== productId || successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
       dispatch(detailsProducts(productId));
-      setName(productDetails.product.data.name);
-      setPrice(productDetails.product.data.price);
-      setImage(productDetails.product.data.image);
-      setCategory(productDetails.product.data.category);
-      setCountInStock(productDetails.product.data.countInStock);
-      setBrand(productDetails.product.data.brand);
-      setDescription(productDetails.product.data.description);
-      setDiscount(productDetails.product.data.discount);
+      setName(productDetails?.product?.data?.name);
+      setPrice(productDetails?.product?.data?.price);
+      setImage(productDetails?.product?.data?.image);
+      setCategory(productDetails?.product?.data?.category);
+      setCountInStock(productDetails?.product?.data?.countInStock);
+      setBrand(productDetails?.product?.data?.brand);
+      setDescription(productDetails?.product?.data?.description);
+      setDiscount(productDetails?.product?.data?.discount);
     }
 
   },[dispatch, productId, successUpdate, props.history]);

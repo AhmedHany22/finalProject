@@ -49,7 +49,7 @@ const Homenew = () => {
 
                 {/*<h1>HP 15-da2365ne Laptop</h1>*/}
                 <h4>{t("sale")}</h4>
-                <button type="button" className="btn btn-primary">{t("buy")}</button>
+                <button type="button" className="btn btn-primary"><a className="text-white "id = "GFG" href="/shop">{t("buy")}</a></button>
               </div>
             </div>
             <div className="carousel-item">
@@ -59,7 +59,7 @@ const Homenew = () => {
               <h1>{t("dell")}</h1>
                 {/*<h1>DELL 15-3593 Laptop</h1>*/}
                 <h4>{t("sale")}</h4>
-                <button type="button" className="btn btn-primary">{t("buy")}</button>
+                <button type="button" className="btn btn-primary homebtn"><a className="text-white "id = "GFG" href="/shop">{t("buy")}</a></button>
               </div>
             </div>
           </div>
@@ -69,8 +69,8 @@ const Homenew = () => {
         <div className="card img-fluid hight">
           <img className="img-fluid" src="../assets/Banner/product1.jpg"  alt="Card image" style={{width: '100%'}} />
           <div className="card-img-overlay">
-            <h4 className="card-title text-primary bottom-left">{t("dell2")}</h4>
-            <p className="card-text text-primary bottom-left1" ><a className="text-primary "id = "GFG" href="/shop">{t("Browse")}</a></p>
+            <h4 className="card-title text-primary bottom-left" dir="auto" style={{textAlign: 'start'}}>{t("dell2")}</h4>
+            <p className="card-text text-primary bottom-left1" dir="auto" style={{textAlign: 'start'}}><a className="text-primary "id = "GFG" href="/shop">{t("Browse")}</a></p>
           </div>
         </div>
         <div className="card img-fluid mt-3 hight">
@@ -91,19 +91,20 @@ const Homenew = () => {
               <img src="../assets/Banner/productsix.jpeg" className="img-fluid" style={{width: '100%'}} />
             </div>
             <div className=" col-6 col-sm-6 col-md-2">
-              <h5>{t("laptops")}</h5>
+              <h5 dir="auto" style={{textAlign: 'start'}}>{t("laptops")}</h5>
               <ul className="typesOfLaps">
-                <li>
+                <li dir="auto" style={{textAlign: 'start'}}>
                   <i className="fa fa-angle-right" aria-hidden="true" />
                   {t("dell3")}</li>
-                <li>
+                <li dir="auto" style={{textAlign: 'start'}}>
                   <i className="fa fa-angle-right" aria-hidden="true" />
                   {t("lenovo3")}</li>
-                <li>
+                <li dir="auto" style={{textAlign: 'start'}}>
                   <i className="fa fa-angle-right" aria-hidden="true" />
                   {t("acer")}</li>
               </ul>
-              <a href="/shop">{t("View all")}
+              
+              <a  href="/shop">{t("View all")}
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
               <p />
@@ -112,18 +113,18 @@ const Homenew = () => {
               <img src="../assets/Banner/productseven.jpeg" className="img-fluid" style={{width: '100%'}} />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-              <h5>{t("laptops")}</h5>
-              <ul className="typesOfLaps">
-                <li>
-                  <i className="fa fa-angle-right" aria-hidden="true" />
-                  {t("dell3")}</li>
-                <li>
-                  <i className="fa fa-angle-right" aria-hidden="true" />
-                  {t("lenovo3")}</li>
-                <li>
-                  <i className="fa fa-angle-right" aria-hidden="true" />
-                  {t("acer")}</li>
-              </ul>
+            <h5 dir="auto" style={{textAlign: 'start'}}>{t("laptops")}</h5>
+            <ul className="typesOfLaps">
+              <li dir="auto" style={{textAlign: 'start'}}>
+                <i className="fa fa-angle-right" aria-hidden="true" />
+                {t("dell3")}</li>
+              <li dir="auto" style={{textAlign: 'start'}}>
+                <i className="fa fa-angle-right" aria-hidden="true" />
+                {t("lenovo3")}</li>
+              <li dir="auto" style={{textAlign: 'start'}}>
+                <i className="fa fa-angle-right" aria-hidden="true" />
+                {t("acer")}</li>
+            </ul>
               <a href="/shop">{t("View all")}
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
@@ -132,18 +133,18 @@ const Homenew = () => {
               <img src="../assets/Banner/r11.jpg" className="img-fluid " style={{width: '100%'}} />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-              <h5>{t("laptops")}</h5>
-              <ul className="typesOfLaps">
-                <li>
-                  <i className="fa fa-angle-right" aria-hidden="true" />
-                  {t("dell3")}</li>
-                <li>
-                  <i className="fa fa-angle-right" aria-hidden="true" />
-                  {t("lenovo3")}</li>
-                <li>
-                  <i className="fa fa-angle-right" aria-hidden="true" />
-                  {t("acer")}</li>
-              </ul>
+            <h5 dir="auto" style={{textAlign: 'start'}}>{t("laptops")}</h5>
+            <ul className="typesOfLaps">
+              <li dir="auto" style={{textAlign: 'start'}}>
+                <i className="fa fa-angle-right" aria-hidden="true" />
+                {t("dell3")}</li>
+              <li dir="auto" style={{textAlign: 'start'}}>
+                <i className="fa fa-angle-right" aria-hidden="true" />
+                {t("lenovo3")}</li>
+              <li dir="auto" style={{textAlign: 'start'}}>
+                <i className="fa fa-angle-right" aria-hidden="true" />
+                {t("acer")}</li>
+            </ul>
               <a href="/shop">{t("View all")}
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
@@ -173,8 +174,8 @@ const Homenew = () => {
 <div className="container-fluid fourth textfourthproduct" style={{marginTop: 100}}>
 <div className="row">
   <div className="col-12 col-sm-12 .col-md-12 lookbook">
-    <h1 className="top-left2">{t("Checkout our 2021")}</h1>
-    <h1 className="top-left3">{t("New Collections")} 
+    <h1 className="top-left2" dir="auto" style={{textAlign: 'start'}}><a className="text-primary "id = "GFG" href="/shop">{t("Checkout our 2021")}</a></h1>
+    <h1 className="top-left3" dir="auto" style={{textAlign: 'start'}}>{t("New Collections")} 
     </h1>
   </div>
 </div>

@@ -106,6 +106,9 @@ function App() {
         
         <button onClick={changeLanguage("ar")} className="btn btn-dark  btn-sm">Arabic</button>
         </div>
+        
+
+
       </nav>
 
       <Routes />
