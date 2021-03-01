@@ -5,6 +5,7 @@ import "./SignIn.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoadingBox from '../LoadingBox';
 import MessageBox from '../MessageBox';
+import {useTranslation} from 'react-i18next';
 
 const SignIn = (props) => {
 
@@ -32,6 +33,7 @@ const SignIn = (props) => {
       props.history.push(redirect);
     }
   },[props.history,redirect ,userSignin.userInfo]);
+  const {t,i18n} = useTranslation();
 
   return (
     <>
@@ -39,7 +41,7 @@ const SignIn = (props) => {
         <div className="row">
 
           <div className="login bg-white ">
-            <h1>Login</h1>
+            <h1>{t("Login")}</h1>
             <form onSubmit={submitHandler}>
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant="danger">{error}</MessageBox>}

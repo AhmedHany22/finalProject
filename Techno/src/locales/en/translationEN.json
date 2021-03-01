@@ -80,15 +80,49 @@
        "Made in Egypt":"Made in Egypt",
        "comment4":"checkout",
        "Checkout":"Checkout",
-       " Billing Address":" Billing Address",
-       "  Shipping Method":"  Shipping Method",
-       "  Payment Method":"  Payment Method",
-       " Orders Review":" Orders Review",
+       "Billing Address":" Billing Address",
+       "Shipping Method":"Shipping Method",
+       "Payment Method":"Payment Method",
+       "Orders Review":" Orders Review",
        "Billing Details":"Billing Details",
-       "First Name:*":"First Name:*"
-
-
+       "First Name:":"First Name:",
+       "Last Name:":"Last Name:",
+        "Enter First Name":"Enter First Name",
+        "Enter Last Name":"Enter Last Name",
+        "Enter phone Number":"Enter phone Number",
+        "Fax:":"Fax:",
+        "Enter Fax":"Enter Fax",
+        "country":"country",
+        "-Regions-":"-Regions-",
+        "Enter Address":"Enter Address",
+        "City:":"City:",
+        "Enter City":"Enter City",
+        " Post Code:": "Post Code:",
+        "Enter Postal Code":"Enter Postal Code",
+        "Back":"Back",
+        "Submit":"Sumbit",
+        "Free":"Free",
+        "ch":"Lorem ipsum dolor sit amet, consectetur adipisicing elit ollit anim id est laborum.",
+        "Standard":"Standard",
+        "Speed":"Speed",
+        "Pay Pal":"Pay Pal",
+        "Visa Card":"Visa Card",
+        "vodafone cash":"vodafone cash",
+        "Image":"Image",
+        "Product Name":"Product Name",
+        "Quantity":"Quantity",
+        "Unit Price":"Unit Price",
+        "Total":"Total",
+        "Sub Total" :"Sub Total",
+        "Shipping Charge":"Shipping Sharge",
+        "Payment Charge":"Payment Charge",
+        "Promotion Discound":"Promotion Discound",
+        "Place Order":"Place Order",
+        "Login":"Login"
        
+        
+
+
 
        
 

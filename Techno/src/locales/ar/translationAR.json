@@ -80,11 +80,69 @@
     "Made in Egypt":"صنع فى مصر",
     "comment4":"checkout",
     "Checkout":"الدفع",
-    " Billing Address":" الفاتورة",
-    "  Shipping Method":"طريقة الشحن",
-    "  Payment Method":"طريقة الدفع",
-    " Orders Review":" مراجعة الطلب",
-    "Billing Details":"تفاصيل الفاتورة"
+    "Billing Address":"عـنــوان الفــاتــورة",
+    "Shipping Method":"طــريــقـة الـشـحـن",
+    "Payment Method":"طـــريــقـــة الــــدفــــع",
+    "Orders Review":" مـراجـعـة الطــلــب",
+    "Billing Details":"تـفـاصـيـل الفـاتـورة",
+    "First Name:":"الاسم الاول",
+    "Last Name:":"اسم العائلة",
+    "Enter First Name":"ادخل اسمك الاول",
+    "Enter Last Name":"ادخل اسمك الاخير",
+    "Enter phone Number":"ادخل رقم هاتفك",
+    "Fax:":":فاكس",
+    "Enter Fax":"أدخل الفاكس",
+    "country":"البلد",
+    "-Regions-":"المنطقة",
+    "Enter Address":"ادخل عنوانك",
+    "City:":"المدينة:",
+    "Enter City":"ادخل المدينة",
+    " Post Code:": "الرقم البريدى",
+    "Enter Postal Code":"ادخل الرقم البريدى",
+    "Back":"الرجوع",
+    "Submit":"ادخال",
+    "Free":"مجانى",
+    "ch":"نقدم أجهزة لاب توب والكمبيوتر واكسسوارات الكمبيوتر وطابعات وصوتيات واكسسوارتها  وسماعات وأجهزة الواقع الأفتراضى وكابلات والوصلات وكاميرات رقمية وسماعات والساعات والتليفزيونات الذكية نقدم منتجات متميزة لجعل حياتك أسهل ",
+    "Standard":"المقاييس",
+    "Speed":"السرعة",
+    "Pay Pal":"باى بال",
+    "Visa Card":"فيزا كارت",
+    "vodafone cash":"فودافون كاش",
+    "Image":"الصورة",
+    "Product Name":"اسم المنتج",
+    "Quantity":"الكمية",
+    "Unit Price":"السعر",
+    "Total":"المجموع الكلى",
+    "Sub Total" :" مجموع مبدئى",
+    "Shipping Charge":" رسوم الشحن",
+    "Payment Charge":"رسوم الدفع",
+    "Promotion Discound":"قيمةالخصم",
+    "Place Order":"نفذ الطلب",
+    "Login":"تسجيل الدخول"
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
 
 
 
