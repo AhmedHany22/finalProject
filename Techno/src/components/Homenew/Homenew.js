@@ -86,7 +86,7 @@ const Homenew = () => {
                   <i className="fa fa-angle-right" aria-hidden="true" />
                   acer</li>
               </ul>
-              <a href="../Aisha/shop.html">View all
+              <a href="/shop">View all
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
               <p />
@@ -107,7 +107,7 @@ const Homenew = () => {
                   <i className="fa fa-angle-right" aria-hidden="true" />
                   acer</li>
               </ul>
-              <a href="../Aisha/shop.html">View all
+              <a href="/shop">View all
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
             </div>
@@ -127,7 +127,7 @@ const Homenew = () => {
                   <i className="fa fa-angle-right" aria-hidden="true" />
                   acer</li>
               </ul>
-              <a href="../Aisha/shop.html">View all
+              <a href="/shop">View all
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
             </div>

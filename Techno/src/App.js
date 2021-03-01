@@ -58,7 +58,7 @@ function App() {
                       </>
                     ) : (
                       <>
-                      <Link className="dropdown-item" to="signin">Sign in</Link>
+                      <Link className="dropdown-item" to="/signin">Sign in</Link>
                       <Link className="dropdown-item" to="/signup">Sign up</Link>
                       </>
                     )}

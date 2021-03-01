@@ -306,7 +306,7 @@ const ProductDetail = (props) => {
           <h2>Related products</h2>
         </div>
         <div className="row">
-          {productList.products.data.slice(1, 5).map((product, index) => {
+          {productList?.products?.data?.slice(1, 5).map((product, index) => {
             return (
                 <div className="c-product-thumb" key={index}>
                 <ProductItem product={product} />
