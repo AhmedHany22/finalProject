@@ -94,7 +94,7 @@ function App() {
                         <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                         <Link className="dropdown-item" to="/AdminProducts">Products</Link>
                         <Link className="dropdown-item" to="/AdminOrderList">Orders</Link>
-                        <Link className="dropdown-item" to="/userlist">Users</Link>
+                        <Link className="dropdown-item" to="/usersList">Users</Link>
                       </div>
                     </li>
                   )}
