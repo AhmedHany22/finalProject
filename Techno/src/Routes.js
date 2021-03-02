@@ -16,6 +16,9 @@ const Order = React.lazy(() => import("./components/Order/Order"));
 const UserProfile = React.lazy(()=> import("./components/userProfile/userProfile"))
 const AdminProducts = React.lazy(() => import("./components/AdminProducts/AdminProducts"));
 const AdminEditProducts = React.lazy(() => import("./components/AdminEditProducts/AdminEditProducts"));
+const AdminOrderList = React.lazy(() => import("./components/AdminOrderList/AdminOrderList"));
+const UsersList = React.lazy(()=> import("./components/AdminUsersList/usersList")) ;
+const UserEdit = React.lazy(()=> import("./components/AdminEditUser/UserEdit"))
 
 const Routes = () => {
   return (
@@ -33,6 +36,9 @@ const Routes = () => {
         <Route path="/order/:id" exact component={Order} />
         <PrivateRoute path="/profile" exact component={UserProfile} />
         <AdminRoute path="/AdminProducts" exact component={AdminProducts} />
+        <AdminRoute path="/AdminOrderList" component={AdminOrderList} />
+        <AdminRoute path="/usersList" component={UsersList} />
+        <AdminRoute path="/user/:id/edit" component={UserEdit}></AdminRoute>
         <Route path="/" exact component={Homenew} />
       </Switch>
     </Suspense>

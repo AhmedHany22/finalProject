@@ -31,7 +31,7 @@ const ProductDetail = (props) => {
 
   return (
     <>
-    :productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
+    {productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
     :(
     <div className="section">
       <div className="mycontainer">
@@ -41,28 +41,28 @@ const ProductDetail = (props) => {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   {" "}
-                  {console.log(productDetails.product.data.image)}
-                  <img src={productDetails.product.data.image} />{" "}
+                  {console.log(productDetails?.product?.data?.image)}
+                  <img src={productDetails?.product?.data?.image} />{" "}
                 </div>
                 <div className="carousel-item">
                   {" "}
-                  <img src={productDetails.product.data.image} />{" "}
+                  <img src={productDetails?.product?.data?.image} />{" "}
                 </div>
                 <div className="carousel-item">
                   {" "}
-                  <img src={productDetails.product.data.image} />{" "}
+                  <img src={productDetails?.product?.data?.image} />{" "}
                 </div>
                 <div className="carousel-item">
                   {" "}
-                  <img src={productDetails.product.data.image} />{" "}
+                  <img src={productDetails?.product?.data?.image} />{" "}
                 </div>
                 <div className="carousel-item">
                   {" "}
-                  <img src={productDetails.product.data.image} />{" "}
+                  <img src={productDetails?.product?.data?.image} />{" "}
                 </div>
                 <div className="carousel-item">
                   {" "}
-                  <img src={productDetails.product.data.image} />{" "}
+                  <img src={productDetails?.product?.data?.image} />{" "}
                 </div>
               </div>
               <ol className="carousel-indicators">
@@ -71,22 +71,22 @@ const ProductDetail = (props) => {
                   data-slide-to="0"
                   className="active"
                 >
-                  <img src={productDetails.product.data.image} />
+                  <img src={productDetails?.product?.data?.image} />
                 </li>
                 <li data-target="#custCarousel" data-slide-to="1">
-                  <img src={productDetails.product.data.image} />
+                  <img src={productDetails?.product?.data?.image} />
                 </li>
                 <li data-target="#custCarousel" data-slide-to="2">
-                  <img src={productDetails.product.data.image} />
+                  <img src={productDetails?.product?.data?.image} />
                 </li>
                 <li data-target="#custCarousel" data-slide-to="3">
-                  <img src={productDetails.product.data.image} />
+                  <img src={productDetails?.product?.data?.image} />
                 </li>
                 <li data-target="#custCarousel" data-slide-to="4">
-                  <img src={productDetails.product.data.image} />
+                  <img src={productDetails?.product?.data?.image} />
                 </li>
                 <li data-target="#custCarousel" data-slide-to="5">
-                  <img src={productDetails.product.data.image} />
+                  <img src={productDetails?.product?.data?.image} />
                 </li>
               </ol>
             </div>
@@ -109,18 +109,18 @@ const ProductDetail = (props) => {
             <div class="home">
               <div class="head">
                 <a href="/">Home</a>/
-                <a href="/shop">{productDetails.product.data.name}</a>/ {productDetails.product.data.description}
+                <a href="/shop">{productDetails?.product?.data?.name}</a>/ {productDetails?.product?.data?.description}
               </div>
-              <h1 className="details">{productDetails.product.data.description.toUpperCase()}</h1>
+              <h1 className="details">{productDetails?.product?.data?.description.toUpperCase()}</h1>
               <div className="view">
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star-half-alt"></i>
-                <a href="#">{productDetails.product.data.numReviews} Reviews</a>
+                <a href="#">{productDetails?.product?.data?.numReviews} Reviews</a>
               </div>
-              <h2 className="paragraph">${productDetails.product.data.discount? productDetails.product.data.price-productDetails.product.data.discount: productDetails.product.data.price}</h2>
+              <h2 className="paragraph">${productDetails?.product?.data?.discount? productDetails?.product?.data?.price-productDetails?.product?.data?.discount: productDetails?.product?.data?.price}</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Suspendisse varius enim in eros elementum tristique. Duis
@@ -200,7 +200,7 @@ const ProductDetail = (props) => {
                 </li>
                 <li>
                   <a data-toggle="tab" href="#menu2">
-                    Reviews ({productDetails.product.data.numReviews})
+                    Reviews ({productDetails?.product?.data?.numReviews})
                   </a>
                 </li>
               </ul>
@@ -307,7 +307,8 @@ const ProductDetail = (props) => {
           })}
         </div>
       </div>
-    </div>
+    </div>)}
+    
     </>
   );
 };
