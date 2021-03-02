@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route, NavLink, Link } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
+import SellerRoute from './components/SellerRoute';
 
 const About = React.lazy(() => import("./components/About/About"));
 const Checkout = React.lazy(() => import("./components/Checkout/Checkout"));
@@ -17,6 +18,8 @@ const UserProfile = React.lazy(()=> import("./components/userProfile/userProfile
 const AdminProducts = React.lazy(() => import("./components/AdminProducts/AdminProducts"));
 const AdminEditProducts = React.lazy(() => import("./components/AdminEditProducts/AdminEditProducts"));
 const AdminOrderList = React.lazy(() => import("./components/AdminOrderList/AdminOrderList"));
+const SellerProducts= React.lazy(() => import("./components/SellerProducts/SellerProducts"));
+const SellerOrderList= React.lazy(() => import("./components/SellerOrderList/SellerOrderList"));
 
 const Routes = () => {
   return (
@@ -35,6 +38,8 @@ const Routes = () => {
         <PrivateRoute path="/profile" exact component={UserProfile} />
         <AdminRoute path="/AdminProducts" exact component={AdminProducts} />
         <AdminRoute path="/AdminOrderList" component={AdminOrderList} />
+        <SellerRoute path="/SellerProducts" component={SellerProducts}></SellerRoute>
+        <SellerRoute path="/SellerOrderList" component={SellerOrderList}></SellerRoute>
         <Route path="/" exact component={Homenew} />
       </Switch>
     </Suspense>

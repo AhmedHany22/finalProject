@@ -47,7 +47,7 @@ const SignIn = (props) => {
             {error && <MessageBox variant="danger">{error}</MessageBox>}
               <div className="form-group">
                 <label for="email"></label>
-                <input className="form-control" type="email" id="email" name="email" dir="auto" style={{textAlign: 'start'}} placeholder={t("enteremail")}
+                <input dir="auto" style={{textAlign: 'start'}}  className="form-control" type="email" id="email" name="email" dir="auto" style={{textAlign: 'start'}} placeholder={t("enteremail")}
                   onChange={(e) => setEmail(e.target.value)} />
 
               </div>

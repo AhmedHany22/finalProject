@@ -98,6 +98,19 @@ function App() {
                       </div>
                     </li>
                   )}
+                  {userSignin?.userInfo && userSignin?.userInfo.isSeller && (
+
+                    <li className="nav-item dropdown">
+                      <Link className="nav-link dropdown-toggle icon" to="#admin" id="navbardrop" data-toggle="dropdown">
+                      Seller
+                      </Link>
+                      <div className="dropdown-menu">
+                        
+                        <Link className="dropdown-item" to="/SellerProducts">Products</Link>
+                        <Link className="dropdown-item" to="/SellerOrderList">Orders</Link>
+                      </div>
+                    </li>
+                  )}
               </ul>
             </div>
           </div>
