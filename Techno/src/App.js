@@ -1,21 +1,22 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import i16n from  './i18n';
 import Routes from './Routes';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singout } from './store/actions/userActions';
 import i18n from './i18n';
 import {useTranslation} from 'react-i18next';
+import SearchBox from './components/SearchBox';
 const changeLanguage =(ln) =>{
   return()=>{
     i18n.changeLanguage(ln);
     console.log(`language changed to ${ln}`)
   }
 }
-function App() {
+function App(props) {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
@@ -25,6 +26,9 @@ function App() {
     dispatch(singout())
   }
   const {t,i18n} = useTranslation();
+
+  const [name, setName]=useState('')
+
   return (
     <div>
       <Router>
@@ -50,6 +54,14 @@ function App() {
               </ul>
               <div className="d-flex float-right navbar-expand-sm ">
                 <ul className="navbar-nav float-right ">
+
+                  <li class="nav-item">
+                    <Route
+                      render={({history})=> <SearchBox history={history}></SearchBox>}
+                    ></Route>
+                  </li>
+
+
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle icon" href="#" id="navbardrop" data-toggle="dropdown">
                       { userSignin?.userInfo? (userSignin?.userInfo?.name?.toUpperCase()):
@@ -71,21 +83,7 @@ function App() {
                       )}
                     </div>
                   </li>
-                  <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle icon" href="#" id="navbardrop" data-toggle="dropdown">
-                      <i className="fas fa-shopping-cart">
-                        {cartItems.length > 0 && (
-                          <span className="bg-danger rounded-circle ml-1 badge">{cartItems.length}</span>
-                        )}
-                      </i>
-                    </a>
-                    <div className="dropdown-menu">
-                      <Link className="dropdown-item" to="/shoppingCart">{t("Shopping Cart")}</Link>
-                      <Link className="dropdown-item" to="/checkout">{t("Checkout")}</Link>
-                    </div>
-                  </li>
                   {userSignin?.userInfo && userSignin?.userInfo.isAdmin && (
-
                     <li className="nav-item dropdown">
                       <Link className="nav-link dropdown-toggle icon" to="#admin" id="navbardrop" data-toggle="dropdown">
                         Admin
@@ -98,6 +96,20 @@ function App() {
                       </div>
                     </li>
                   )}
+
+                  <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle icon" href="#" id="navbardrop" data-toggle="dropdown">
+                      <i className="fas fa-shopping-cart">
+                        {cartItems.length > 0 && (
+                          <span className="bg-danger rounded-circle ml-1 badge">{cartItems.length}</span>
+                        )}
+                      </i>
+                    </a>
+                    <div className="dropdown-menu">
+                      <Link className="dropdown-item" to="/shoppingCart">{t("Shopping Cart")}</Link>
+                      <Link className="dropdown-item" to="/checkout">{t("Checkout")}</Link>
+                    </div>
+                  </li>  
               </ul>
             </div>
           </div>

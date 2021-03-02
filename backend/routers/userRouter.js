@@ -6,6 +6,13 @@ import User from '../models/userModel.js';
 import { generateToken, isAdmin, isAuth } from '../utils.js';
 
 const userRouter = express.Router();
+
+userRouter.get('/',isAuth,isAdmin,expressAsyncHandler(async(req, res)=>{
+  const users=User.find({});
+  res.send(users)
+  
+}));
+
 userRouter.get(
     '/seed',
     expressAsyncHandler(async (req, res) => {
@@ -26,6 +33,7 @@ userRouter.post(
                     name: user.name,
                     email: user.email,
                     isAdmin: user.isAdmin,
+                    isSeller: user.isSeller,
                     token: generateToken(user),
                 });
                 return;
@@ -46,6 +54,7 @@ userRouter.post('/signup', expressAsyncHandler(async (req, res) => {
         name: createdUser.name,
         email: createdUser.email,
         isAdmin: createdUser.isAdmin,
+        isSeller: user.isSeller,
         token: generateToken(createdUser),
     });
 })
@@ -67,6 +76,7 @@ userRouter.post(
         name: createdUser.name,
         email: createdUser.email,
         isAdmin: createdUser.isAdmin,
+        isSeller: user.isSeller,
         token: generateToken(createdUser),
       });
     })
@@ -90,6 +100,12 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req,res)=>{
     if(user){
         user.name= req.body.name || user.name;
         user.email= req.body.email || user.email;
+        if (user.isSeller) {
+          user.seller.name = req.body.sellerName || user.seller.name;
+          user.seller.logo = req.body.sellerLogo || user.seller.logo;
+          user.seller.description =
+            req.body.sellerDescription || user.seller.description;
+        }
         if(req.user.password){
             user.password= bcrypt.hashSync(req.body.password)
         }
@@ -100,6 +116,7 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req,res)=>{
             name: updateUser.name,
             email: updateUser.email,
             isAdmin: updateUser.isAdmin,
+            isSeller: user.isSeller,
             token: generateToken(updateUser)
 
            }
@@ -107,11 +124,6 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req,res)=>{
     }
 }))
 
-
-userRouter.get('/',isAuth,isAdmin,expressAsyncHandler(async(req, res)=>{
-  const users=User.find({});
-  res.send(users)
-}));
 
 
 userRouter.delete(
@@ -126,6 +138,7 @@ userRouter.delete(
         return;
       }
       const deleteUser = await user.remove();
+      console.log(deleteUser);
       res.send({ message: 'User Deleted', user: deleteUser });
     } else {
       res.status(404).send({ message: 'User Not Found' });

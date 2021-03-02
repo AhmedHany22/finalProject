@@ -39,7 +39,7 @@ const data = {
       password: bcrypt.hashSync('1234', 8),
       isAdmin: false,
       isSeller: false
-    }
+    },
 
   ],
   products: [
