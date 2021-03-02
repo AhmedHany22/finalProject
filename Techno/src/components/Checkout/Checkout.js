@@ -122,7 +122,7 @@ const Checkout = (props) => {
                     <div className="col-lg-6 col-md-12 cust-billing">
                       <div className="form-group">
                         <label for="inputFirstName" className="control-label">
-                       First Name:<span className="text-error"></span>
+                        {t("FirstName:")}<span className="text-error"></span>
                         </label>
                         <div>
                           <input 
@@ -138,7 +138,7 @@ const Checkout = (props) => {
                       </div>
                       <div className="form-group">
                         <label for="inputLastName" className="control-label">
-                       Last Name:<span className="text-error mt-5"></span>
+                        {t("Last Name:")}<span className="text-error mt-5"></span>
                           </label>
                         <div>
                         <input
@@ -153,7 +153,7 @@ const Checkout = (props) => {
                         </div>
                       </div>
                       <div className="form-group">
-                        <label for="inputFax" className="control-label">Fax:</label>
+                        <label for="inputFax" className="control-label">{t("Fax:")}</label>
                         <div>
                         <input
                           type="text"
@@ -170,26 +170,26 @@ const Checkout = (props) => {
                         <div className="col-md-6">
                           <div className="form-group">
                             <label className="control-label">
-                              Contury:<span className="text-error">*</span>
+                          {t("country")}<span className="text-error"></span>
                             </label>
                             <div>
                               <select name="inputContury" className="form-control" onChange={(e) => setCountry(e.target.value)} value={country}>
-                                <option>{t("country")}</option>
-                                <option>Contury1</option>
-                                <option>Contury2</option>
+                                <option>{t("Egypt")}</option>
+                                <option>{t("Egypt")}</option>
+                                <option>{t("Egypt")}</option>
                               </select>
                             </div>
                           </div>
                         </div>
                         <div className="col-md-6">
                           <div className="form-group">
-                            <label className="control-label">Region:
-                          <span className="text-error">*</span></label>
+                            <label className="control-label">{t("Regions")}
+                          <span className="text-error"></span></label>
                             <div>
                               <select name="inputRegion" className="form-control" onChange={(e) => setRegion(e.target.value)} value={region}>
-                                <option>{t("-Regions-")}</option>
-                                <option>Region1</option>
-                                <option>Region2</option>
+                                <option>{t("cairo")}</option>
+                                <option>{t("giza")}</option>
+                                <option>{t("giza")}</option>
                               </select>
                             </div>
                           </div>
@@ -198,7 +198,8 @@ const Checkout = (props) => {
                     </div>
                     <div className="col-lg-6 col-md-12 cust-billing">
                       <div className="form-group">
-                        <label for="inputPhone" className="control-label" dir="auto" style={{textAlign: 'start'}}>{t("phone*")}</label>
+                        <label for="inputPhone" className="control-label" dir="auto" style={{textAlign: 'start'}}></label>
+                       {/*} {t("phone*")}*/}
                         <div>
                           <input
                             type="text"
@@ -213,7 +214,8 @@ const Checkout = (props) => {
                       </div>
                       <div className="form-group">
                         <label for="inputAddress1" className="control-label">
-                       { t("add")}<span className="text-error">*</span>
+                      <span className="text-error"></span>
+                     {/*} { t("add")}*/}
                         </label>
                         <div>
                         <input
@@ -229,7 +231,8 @@ const Checkout = (props) => {
                       </div>
                       <div className="form-group">
                         <label for="inputCity"className="control-label">
-                         City:<span className="text-error">*</span>
+                      <span className="text-error"></span>
+                     {/*} {t("City:")}*/}
                         </label>
                         <div>
                         <input
@@ -245,7 +248,7 @@ const Checkout = (props) => {
                       </div>
                       <div className="form-group">
                         <label for="inputPostCode" className="control-label">
-                         Post Code:<span className="text-error">*</span>
+                         <span className="text-error"></span>
                         </label>
                         <div>
                         <input
@@ -273,7 +276,7 @@ const Checkout = (props) => {
                   {/*--------------------------- Free ---------------------------*/}
                   <div className="col-lg-4 col-md-12 mb-5">
                     <h4>{t("Free")}</h4><hr className="my-3"/>
-                    <p>{t("ch")}</p>
+                    <p dir="auto" style={{textAlign: 'start'}}>{t("aboutp1")}</p>
                     <div className="radio">
                       <label>
                         <input
@@ -291,7 +294,7 @@ const Checkout = (props) => {
                   {/*---------------------------Standart---------------------------*/}
                   <div className="col-lg-4 col-md-12 mb-5">
                     <h4>{t("Standard")}</h4><hr className="my-3"/>
-                    <p>{t("ch")}</p>
+                    <p dir="auto" style={{textAlign: 'start'}}>{t("aboutp1")}</p>
                     <div className="radio">
                       <input
                         required
@@ -307,7 +310,7 @@ const Checkout = (props) => {
                   {/*--------------------------- Speed ---------------------------*/}
                   <div className="col-lg-4 col-md-12 mb-3">
                     <h4>{t("Speed")}</h4><hr className="my-3"/>
-                    <p>{t("ch")}</p>
+                    <p dir="auto" style={{textAlign: 'start'}}>{t("aboutp1")}</p>
                     <div className="radio">
                       <label>
                         <input
@@ -334,7 +337,7 @@ const Checkout = (props) => {
                   {/*--------------------------- PayPal ---------------------------*/}
                   <div className="col-lg-4 col-md-12 mb-5">
                     <h4>{t("Pay Pal")}</h4><hr />
-                    <p>{t("ch")}</p>
+                    <p dir="auto" style={{textAlign: 'start'}}>{t("aboutp1")}</p>
                     <div className="radio">
                       <label className="color-active">
                         <input
@@ -353,7 +356,7 @@ const Checkout = (props) => {
                   <div className="col-lg-4 col-md-12 mb-5">
                     <h4>{t("Visa Card")}</h4>
                     <hr />
-                    <p>{t("ch")}</p>
+                    <p dir="auto" style={{textAlign: 'start'}}>{t("aboutp1")}</p>
                     <div className="radio">
                       <label className="color-active">
                         <input
@@ -372,7 +375,7 @@ const Checkout = (props) => {
                   <div className="col-lg-4 col-md-12 mb-5">
                     <h4>{t("vodafone cash")}</h4>
                     <hr />
-                    <p>{t("ch")}</p>
+                    <p dir="auto" style={{textAlign: 'start'}}>{t("aboutp1")}</p>
                     <div className="radio">
                       <label className="color-active">
                         <input
@@ -441,24 +444,24 @@ const Checkout = (props) => {
               <h3 className="">{t("Total")}</h3><hr />
               <ul className="list-unstyled">
                 <li>
-                 {t("Sub Total")}<strong className="float-right">$ {cart.itemsPrice}</strong>
+                 {t("Sub Total")}<strong className="float-right"> {cart.itemsPrice}{t("$")}</strong>
                 </li>
                 <li>{t("Shipping Charge")}
-                  <strong className="float-right">$ {shippingCost}</strong>
+                  <strong className="float-right"> {shippingCost}{t("$")}</strong>
                 </li>
                 <li>
-                  {t("Payment Charge")}<strong className="float-right">$ {toPrice(cart.itemsPrice * paymentCost)}</strong>
+                  {t("Payment Charge")}<strong className="float-right"> {toPrice(cart.itemsPrice * paymentCost)}{t("$")}</strong>
                 </li>
                 <li>
-                 {t( "Promotion Discound")}<strong className="float-right">$ 00.00</strong>
+                 {t( "Promotion Discound")}<strong className="float-right"> 00.00{t("$")}</strong>
                 </li>
                 <li><hr /></li>
                 <li className="color-active">
                   <b>{t("Total")}</b>
-                  <strong className="float-right">$ {cart.grandPrice}</strong>
+                  <strong className="float-right"> {cart.grandPrice}{t("$")}</strong>
                 </li>
               </ul>
-              <button type="Submit" className="btn rounded-0 btn-outline-dark active w-100 mt-3" onClick={placeOrderHandler}>Place Order</button>
+              <button type="Submit" className="btn rounded-0 btn-outline-dark active w-100 mt-3" onClick={placeOrderHandler}>{t("Place Order")}</button>
               {loading && <LoadingBox></LoadingBox>}
               {error && <MessageBox variant="danger">{error}</MessageBox>}
             </div>

@@ -5,23 +5,24 @@ import { PayPalButton } from 'react-paypal-button-v2';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { detailsOrder, payOrder } from '../../store/actions/orderActions';
+import { deliverOrder, detailsOrder, payOrder } from '../../store/actions/orderActions';
 import LoadingBox from '../LoadingBox';
 import MessageBox from '../MessageBox';
-import { ORDER_PAY_RESET } from '../../store/types/orderConstants';
+import { ORDER_DELIVER_RESET, ORDER_PAY_RESET } from '../../store/types/orderConstants';
 
 export default function Order(props) {
   const orderId = props.match.params.id;
   const [sdkReady, setSdkReady] = useState(false);
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
-
+  console.log(order);
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  console.log(userInfo);
   const orderPay = useSelector((state) => state.orderPay);
-  const {
-    loading: loadingPay,
-    error: errorPay,
-    success: successPay,
-  } = orderPay;
+  const { loading: loadingPay, error: errorPay, success: successPay, } = orderPay;
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const { loading: loadingDeliver, error: errorDeliver, success: successDeliver, } = orderDeliver;
   const dispatch = useDispatch();
   useEffect(() => {
     const addPayPalScript = async () => {
@@ -35,8 +36,9 @@ export default function Order(props) {
       };
       document.body.appendChild(script);
     };
-    if (!order || successPay || (order && order._id !== orderId)) {
+    if (!order || successPay || successDeliver || (order && order._id !== orderId)) {
       dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(detailsOrder(orderId));
     } else {
       if (!order.isPaid) {
@@ -47,10 +49,10 @@ export default function Order(props) {
         }
       }
     }
-  }, [dispatch, order, orderId, sdkReady, successPay]);
+  }, [dispatch, order, orderId, sdkReady, successPay, successDeliver]);
 
-  const successPaymentHandler = (paymentResult) => {
-  };
+  const successPaymentHandler = (paymentResult) => { };
+  const deliverHandler = () => { dispatch(deliverOrder(order._id)); };
   console.log(order);
   return loading ? (
     <LoadingBox></LoadingBox>
@@ -103,7 +105,7 @@ export default function Order(props) {
                     <li><div className="mb-2"><span>Shipping Cost: ${order.shippingCost}</span></div></li>
                     <li><div className="mb-2"><span>Payment Cost: ${order.paymentCost}</span></div></li>
                     <li><div className="mb-2"><span><strong>Order Total: ${order.grandPrice}</strong></span></div></li>
-                    {!order.isPaid && (
+                    { !order.isPaid && (
                       <li className="mt-4">{!sdkReady ? (<LoadingBox></LoadingBox>) : (
                         <>
                           {errorPay && (<MessageBox variant="danger">{errorPay}</MessageBox>)}
@@ -111,6 +113,15 @@ export default function Order(props) {
                           <PayPalButton amount={order.totalPrice} onSuccess={successPaymentHandler} ></PayPalButton>
                         </>
                       )}</li>
+                    )}
+                    { userInfo.isAdmin && (
+                      <li>
+                        {loadingDeliver && <LoadingBox></LoadingBox>}
+                        {errorDeliver && (<MessageBox variant="danger">{errorDeliver}</MessageBox>)}
+                        <button type="button" className="btn btn-warning w-100" onClick={deliverHandler}>
+                          <strong>Deliver Order</strong>
+                        </button>
+                      </li>
                     )}
                   </ul>
                 </div>

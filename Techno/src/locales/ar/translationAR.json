@@ -85,15 +85,17 @@
     "Payment Method":"طـــريــقـــة الــــدفــــع",
     "Orders Review":" مـراجـعـة الطــلــب",
     "Billing Details":"تـفـاصـيـل الفـاتـورة",
-    "First Name:":"الاسم الاول",
-    "Last Name:":"اسم العائلة",
+    "FirstName:":"الاسم الاول",
+    "LastName:":"اسم العائلة",
     "Enter First Name":"ادخل اسمك الاول",
     "Enter Last Name":"ادخل اسمك الاخير",
     "Enter phone Number":"ادخل رقم هاتفك",
     "Fax:":":فاكس",
     "Enter Fax":"أدخل الفاكس",
     "country":"البلد",
-    "-Regions-":"المنطقة",
+    "cairo":"القاهرة",
+    "giza":"الجيزة",
+    "Regions":"المنطقة",
     "Enter Address":"ادخل عنوانك",
     "City:":"المدينة:",
     "Enter City":"ادخل المدينة",
@@ -118,7 +120,40 @@
     "Payment Charge":"رسوم الدفع",
     "Promotion Discound":"قيمةالخصم",
     "Place Order":"نفذ الطلب",
-    "Login":"تسجيل الدخول"
+    "Login":"تسجيل الدخول",
+    "enteremail":" ادخل البريد الالكترونى",
+    "Enter your password":"ادخل الرقم السرى",
+    "Remember me":"تذكرنى",
+    "Forgot your password ?":"هل نسيت كلمة السر؟",
+    "Sign Up":"تسجيل الخروج",
+    "please":"من فضلك أملا بياناتك لتسجيل حساب جديد",
+    "Enter Full Name":"ادخل الاسم الكامل",
+    "Confirm Password":"التأكيد على كلمة السر",
+    "accept the":"أوافق على",
+    "Terms of Use":"الشروط",
+    "Privacy Policy":"وسياسية الخصوصية",
+    "Already have an account?":"هل بالفعل تمتلك حساب؟",
+    "Techno2":"تكنو",
+    "Home":"الرئيسية",
+    "Shop":"تسوق",
+    "About":"حول الموقع",
+    "Contact2":"اتصل بنا",
+    "Profile":"الحساب"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

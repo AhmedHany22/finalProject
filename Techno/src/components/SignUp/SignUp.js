@@ -5,6 +5,8 @@ import "./SignUp.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoadingBox from '../LoadingBox';
 import MessageBox from '../MessageBox';
+import {useTranslation} from 'react-i18next';
+
 
 const SignUp = (props) => {
   const [name, setName] = useState('');
@@ -44,21 +46,22 @@ const SignUp = (props) => {
   //     props.history.push(redirect);
   //   }
   // },[props.history,redirect ,userInfo]);
+  const {t,i18n} = useTranslation();
 
   return (
     <>
       <div className="container-fluid bgd mb-0">
         <div className="signup-form mb-0">
           <form action="/examples/actions/confirmation.php" method="post" onSubmit={submitHandler}>
-            <h2>Sign Up</h2>
+            <h2>{t("Sign Up")}</h2>
             {userSignup?.loading && <LoadingBox/>}
             {userSignup?.error && <MessageBox variant="danger">{userSignup?.error}</MessageBox>}
             {userSignup?.userInfo && <MessageBox variant="success">{`Welcome ${userSignup?.userInfo?.name}`}</MessageBox>}
 
-            <p>Please fill in this form to create an account!</p>
+            <p>{t("please")}</p>
             <hr></hr>
             <div className="form-group">
-              <input type="text" className="form-control" name="name" placeholder="Enter Full Name" required="required"
+              <input type="text" className="form-control" name="name" placeholder={t("Enter Full Name")} required="required"
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
@@ -67,7 +70,7 @@ const SignUp = (props) => {
                 type="email"
                 className="form-control"
                 name="email"
-                placeholder="Email"
+                placeholder={t("enteremail")}
                 required="required"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -79,7 +82,7 @@ const SignUp = (props) => {
                 type="password"
                 className="form-control"
                 name="password"
-                placeholder="Password"
+                placeholder={t("Enter your password")}
                 required="required"
                 onChange={(e) => setPassword(e.target.value)} 
               />
@@ -91,7 +94,7 @@ const SignUp = (props) => {
                 type="password"
                 className="form-control"
                 name="confirm_password"
-                placeholder="Confirm Password"
+                placeholder={t("Confirm Password")}
                 required="required"
                 onChange={(e) => setConfirmPassword(e.target.value)} 
               />
@@ -99,8 +102,8 @@ const SignUp = (props) => {
             <div className="form-group">
               <label className="form-check-label">
                 <input type="checkbox" required="required" classNameName="mr-2" />I
-                accept the <a href="#">Terms of Use</a> &amp;
-                <a href="#">Privacy Policy</a>
+               { t("accept the")} <a href="#">{t("Terms of Use")}</a> &amp;
+                <a href="#">{t("Privacy Policy")}</a>
               </label>
             </div>
             <div className="form-group">
@@ -109,13 +112,13 @@ const SignUp = (props) => {
                 className="btn btn-primary btn-lg"
                 
               >
-                Sign Up
+             {t("Sign Up")}
               </button>
             </div>
             <div className="hint-text">
-              Already have an account?
+              {t("Already have an account?")}
               <a href={`/signin?redirect=${redirect}`} className="text-decoration-none text-primary">
-                Login here
+              {t("Login")}
               </a>
             </div>
           </form>

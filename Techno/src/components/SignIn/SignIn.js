@@ -46,25 +46,25 @@ const SignIn = (props) => {
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant="danger">{error}</MessageBox>}
               <div className="form-group">
-                <label for="email">Email</label>
-                <input className="form-control" type="email" id="email" name="email" placeholder="Enter email"
+                <label for="email"></label>
+                <input className="form-control" type="email" id="email" name="email" dir="auto" style={{textAlign: 'start'}} placeholder={t("enteremail")}
                   onChange={(e) => setEmail(e.target.value)} />
 
               </div>
               <div className="form-group">
-                <label for="pwd">Password</label>
-                <input className="form-control" type="password" id="pwd" placeholder="Enter your password"
+                <label for="pwd"></label>
+                <input className="form-control" type="password" id="pwd" placeholder={t("Enter your password")}
                   onChange={(e) => setPassword(e.target.value)} />
                 
               </div>
               <div className="form-group form-check">
                 <label className="form-check-label">
-                  <input className="form-check-input" type="checkbox" />Remember me
+                  <input className="form-check-input" type="checkbox" />{t("Remember me")}
                 </label>
               </div>
-              <button className="btn btn-primary" type="submit">Sign In</button>
+              <button className="btn btn-primary" type="submit">{t("Login")}</button>
             </form>
-            <p><a href="/signup"> Forgot your password ?</a></p>
+            <p><a href="/signup"> {t("Forgot your password ?")}</a></p>
 
           </div>
         </div>
