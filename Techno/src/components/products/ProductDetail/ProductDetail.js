@@ -31,7 +31,11 @@ const ProductDetail = (props) => {
 
   return (
     <>
-    {productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
+
+   {productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
+
+    
+
     :(
     <div className="section">
       <div className="mycontainer">

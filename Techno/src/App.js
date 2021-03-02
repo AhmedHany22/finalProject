@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singout } from './store/actions/userActions';
 import i18n from './i18n';
+import {useTranslation} from 'react-i18next';
 const changeLanguage =(ln) =>{
   return()=>{
     i18n.changeLanguage(ln);
@@ -23,28 +24,28 @@ function App() {
   const siginoutHandeler=()=>{
     dispatch(singout())
   }
-
+  const {t,i18n} = useTranslation();
   return (
     <div>
       <Router>
         <nav className="navbar navbar-expand-sm navbar-light py-3 bg-white">
           <div className="container">
             <Link className="navbar-brand font-weight-bold" to="/">
-              <h2>Techno</h2>
+              <h2>{t("Techno2")}</h2>
             </Link>
             <div className="collapse navbar-collapse" id="collapsibleNavId">
               <ul className="navbar-nav m-auto mt-2 mt-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link mx-4 text-dark myNav font-weight-bold" to="/">Home</Link>
+                  <Link className="nav-link mx-4 text-dark myNav font-weight-bold" to="/">{t("Home")}</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link mx-4 text-dark myNav font-weight-bold" to="/shop">Shop</Link>
+                  <Link className="nav-link mx-4 text-dark myNav font-weight-bold" to="/shop">{t("Shop")}</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link mx-4 text-dark myNav font-weight-bold" to="/about">About</Link>
+                  <Link className="nav-link mx-4 text-dark myNav font-weight-bold" to="/about">{t("About")}</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link mx-4 text-dark myNav font-weight-bold" to="/contact">Contact</Link>
+                  <Link className="nav-link mx-4 text-dark myNav font-weight-bold" to="/contact">{t("Contact2")}</Link>
                 </li>
               </ul>
               <div className="d-flex float-right navbar-expand-sm ">
@@ -59,13 +60,13 @@ function App() {
                       {userSignin?.userInfo?(
                         <>
                           <Link to="#"></Link>
-                          <a className="dropdown-item" onClick={siginoutHandeler}><Link to="/signin">Sign out</Link></a>
-                          <Link className="dropdown-item" to="/profile">Profile</Link>
+                          <a className="dropdown-item" onClick={siginoutHandeler}><Link to="/signin">{t("Sign Up")}</Link></a>
+                          <Link className="dropdown-item" to="/profile">{t("Profile")}</Link>
                         </>
                       ) : (
                         <>
-                          <Link className="dropdown-item" to="signin">Sign in</Link>
-                          <Link className="dropdown-item" to="/signup">Sign up</Link>
+                          <Link className="dropdown-item" to="signin">{t("Login")}</Link>
+                          <Link className="dropdown-item" to="/signup">{t("Sign Up")}</Link>
                         </>
                       )}
                     </div>
@@ -79,8 +80,8 @@ function App() {
                       </i>
                     </a>
                     <div className="dropdown-menu">
-                      <Link className="dropdown-item" to="/shoppingCart">View cart</Link>
-                      <Link className="dropdown-item" to="/checkout">Checkout</Link>
+                      <Link className="dropdown-item" to="/shoppingCart">{t("Shopping Cart")}</Link>
+                      <Link className="dropdown-item" to="/checkout">{t("Checkout")}</Link>
                     </div>
                   </li>
                   {userSignin?.userInfo && userSignin?.userInfo.isAdmin && (
@@ -106,6 +107,9 @@ function App() {
 
         <button onClick={changeLanguage("ar")} className="btn btn-dark  btn-sm">Arabic</button>
         </div>
+        
+
+
       </nav>
 
       <Routes />
