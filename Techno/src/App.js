@@ -60,7 +60,7 @@ function App() {
                       {userSignin?.userInfo?(
                         <>
                           <Link to="#"></Link>
-                          <a className="dropdown-item" onClick={siginoutHandeler}><Link to="/signin">{t("Sign Up")}</Link></a>
+                          <a className="dropdown-item" onClick={siginoutHandeler}><Link to="/signin">{t("Sign out")}</Link></a>
                           <Link className="dropdown-item" to="/profile">{t("Profile")}</Link>
                         </>
                       ) : (
@@ -94,7 +94,7 @@ function App() {
                         <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                         <Link className="dropdown-item" to="/AdminProducts">Products</Link>
                         <Link className="dropdown-item" to="/AdminOrderList">Orders</Link>
-                        <Link className="dropdown-item" to="/userlist">Users</Link>
+                        <Link className="dropdown-item" to="/usersList">Users</Link>
                       </div>
                     </li>
                   )}
@@ -106,8 +106,8 @@ function App() {
                       </Link>
                       <div className="dropdown-menu">
                         
-                        <Link className="dropdown-item" to="/SellerProducts">Products</Link>
-                        <Link className="dropdown-item" to="/SellerOrderList">Orders</Link>
+                        <Link className="dropdown-item" to="/AdminProducts/seller">Products</Link>
+                        <Link className="dropdown-item" to="/AdminOrderList/seller">Orders</Link>
                       </div>
                     </li>
                   )}

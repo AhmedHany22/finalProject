@@ -311,8 +311,8 @@ const ProductDetail = (props) => {
           })}
         </div>
       </div>
-    </div>
-    )}
+    </div>)}
+    
     </>
   );
 };

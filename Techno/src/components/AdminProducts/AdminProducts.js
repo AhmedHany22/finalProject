@@ -7,12 +7,15 @@ import LoadingBox from '../LoadingBox';
 import MessageBox from '../MessageBox';
 
 export default function ProductListScreen(props) {
+  const sellerMode = props.match.path.indexOf('/seller')>=0;
   const productList = useSelector((state) => state.productList);
   const { loading, error, data } = productList;
   const productCreate = useSelector((state) => state.productCreate);
   const productDelete = useSelector((state) => state.productDelete);
   const { loading: loadingDelete, error: errorDelete, success: successDelete, } = productDelete;
   const { loading: loadingCreate, error: errorCreate, success: successCreate, product: createdProduct, } = productCreate;
+ const userSignin = useSelector((state) => state.userSignin);
+ const {userInfo} = userSignin;
   const dispatch = useDispatch();
   useEffect(() => {
     if (successCreate) {
@@ -22,7 +25,7 @@ export default function ProductListScreen(props) {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listProducts());
+    dispatch(listProducts({seller: sellerMode ? userInfo._id : ''}));
   }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
 
   const createHandler = () => {

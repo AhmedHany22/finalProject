@@ -2,13 +2,15 @@ import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import data from '../../Techno/src/data.js'
 import Product from '../models/productModel.js';
-import { isAdmin, isAuth } from '../utils.js';
+import { isAdmin, isAuth ,isSellerOrAdmin} from '../utils.js';
 
 const productRouter = express.Router();
 productRouter.get(
     '/',
     expressAsyncHandler(async(req, res) => {
-        const products = await Product.find({});
+      const seller = req.query.seller || '';
+      const sellerFilter = seller?{seller}:{};
+        const products = await Product.find({...sellerFilter});
         res.send(products);
     })
 );
@@ -31,10 +33,11 @@ productRouter.get( '/:id',
 );
 
 productRouter.post(
-  '/', isAuth, isAdmin,
+  '/', isAuth, isSellerOrAdmin,
   expressAsyncHandler(async (req, res) => {
     const product = new Product({
       name: 'sample name ' + Date.now(),
+      seller: req.user._id,
       image: '../assets/Products/pro-1.jpg',
       brand: 'sample brand',
       category: 'sample category',
@@ -53,7 +56,7 @@ productRouter.post(
 productRouter.put(
   '/:id',
   isAuth,
-  isAdmin,
+  isSellerOrAdmin,
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);

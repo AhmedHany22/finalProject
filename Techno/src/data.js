@@ -9,14 +9,37 @@ const data = {
       email: 'admin@example.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: true,
+      isSeller: true
     },
     {
       name: 'eman',
-      email: 'user@example.com',
+      email: 'user1@example.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: false,
+      isSeller: true
     },
 
+    {
+      name: 'ahmed',
+      email: 'user2@example.com',
+      password: bcrypt.hashSync('1234', 8),
+      isAdmin: false,
+      isSeller: true
+    },
+    {
+      name: 'ali',
+      email: 'user3@example.com',
+      password: bcrypt.hashSync('1234', 8),
+      isAdmin: false,
+      isSeller: false
+    },
+    {
+      name: 'mohamed',
+      email: 'user4@example.com',
+      password: bcrypt.hashSync('1234', 8),
+      isAdmin: false,
+      isSeller: false
+    }
 
   ],
   products: [
