@@ -19,10 +19,11 @@ export default function UsersList(props){
 
     const dispatch=useDispatch()
     useEffect(() => {
-        dispatch(listUsers());
         dispatch({
           type: USER_DETAILS_RESET,
         });
+        dispatch(listUsers());
+        
     }, [dispatch, successDelete]);
 
     const deleteHandler = (user) => {

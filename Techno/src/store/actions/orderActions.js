@@ -95,7 +95,8 @@ export const listOrders = ({seller=''}) => async (dispatch, getState) => {
     });
     console.log(data);
     dispatch({ type: ORDER_LIST_SUCCESS, payload: data });
-  } catch (error) {
+  } 
+  catch (error) {
     const message =
       error.response && error.response.data.message
         ? error.response.data.message
@@ -103,6 +104,8 @@ export const listOrders = ({seller=''}) => async (dispatch, getState) => {
     dispatch({ type: ORDER_LIST_FAIL, payload: message });
   }
 };
+
+
 export const deleteOrder = (orderId) => async (dispatch, getState) => {
   dispatch({ type: ORDER_DELETE_REQUEST, payload: orderId });
   const {

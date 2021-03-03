@@ -9,9 +9,12 @@ productRouter.get(
     '/',
     expressAsyncHandler(async(req, res) => {
       const seller = req.query.seller || '';
-      const sellerFilter = seller?{seller}:{};
-        const products = await Product.find({...sellerFilter});
-        res.send(products);
+      const sellerFilter = seller ? { seller } : {};
+      const products = await Product.find({ ...sellerFilter }).populate(
+        'seller',
+        'seller.name seller.logo'
+      );
+      res.send(products);
     })
 );
 
@@ -56,10 +59,14 @@ productRouter.post(
 productRouter.put(
   '/:id',
   isAuth,
+  isAdmin,
   isSellerOrAdmin,
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
-    const product = await Product.findById(productId);
+    const product = await Product.findById(productId).populate(
+      'seller',
+      'seller.name seller.logo seller.rating seller.numReviews'
+    );
     if (product) {
       product.name = req.body.name;
       product.price = req.body.price;

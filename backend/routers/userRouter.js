@@ -6,6 +6,13 @@ import User from '../models/userModel.js';
 import { generateToken, isAdmin, isAuth } from '../utils.js';
 
 const userRouter = express.Router();
+
+userRouter.get('/',isAuth,isAdmin,expressAsyncHandler(async(req, res)=>{
+  const users=User.find({});
+  res.send(users)
+  
+}));
+
 userRouter.get(
     '/seed',
     expressAsyncHandler(async (req, res) => {
@@ -47,6 +54,7 @@ userRouter.post('/signup', expressAsyncHandler(async (req, res) => {
         name: createdUser.name,
         email: createdUser.email,
         isAdmin: createdUser.isAdmin,
+        isSeller: user.isSeller,
         token: generateToken(createdUser),
     });
 })
@@ -117,11 +125,6 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req,res)=>{
 }))
 
 
-userRouter.get('/',isAuth,isAdmin,expressAsyncHandler(async(req, res)=>{
-  const users=User.find({});
-  res.send(users)
-}));
-
 
 userRouter.delete(
   '/:id',
@@ -135,6 +138,7 @@ userRouter.delete(
         return;
       }
       const deleteUser = await user.remove();
+      console.log(deleteUser);
       res.send({ message: 'User Deleted', user: deleteUser });
     } else {
       res.status(404).send({ message: 'User Not Found' });

@@ -71,10 +71,10 @@ export default function ProductListScreen(props) {
             </tr>
           </thead>
           <tbody>
-            {productList.loading? (<LoadingBox/>)
-            :productList.error?(<MessageBox variant="danger">{productList.error}</MessageBox>)
+            {productList?.loading? (<LoadingBox/>)
+            :productList?.error?(<MessageBox variant="danger">{productList?.error}</MessageBox>)
             :(
-              productList.products.data.map((product,index)=>{
+              productList?.products?.map((product,index)=>{
                 return(
                   <tr key={product._id}>
                     <td>{index}</td>

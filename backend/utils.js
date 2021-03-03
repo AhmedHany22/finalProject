@@ -9,7 +9,6 @@ export const generateToken = (user) => {
       email: user.email,
       isAdmin: user.isAdmin,
       isSeller: user.isSeller,
-
     },
     process.env.JWT_SECRET || 'somethingsecret',
     {
@@ -52,7 +51,6 @@ export const isSeller = (req, res, next) => {
     res.status(401).send({ message: 'Invalid Seller Token' });
   }
 };
-
 export const isSellerOrAdmin = (req, res, next) => {
   if (req.user && (req.user.isSeller || req.user.isAdmin)) {
     next();
