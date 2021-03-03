@@ -14,7 +14,7 @@ export default function AdminOrderList(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: ORDER_DELETE_RESET });
-    dispatch(listOrders());
+    dispatch(listOrders({}));
   }, [dispatch, successDelete]);
   const deleteHandler = (order) => {
     if (window.confirm('Are you sure to delete?')) {

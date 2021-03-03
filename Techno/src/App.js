@@ -72,7 +72,7 @@ function App(props) {
                       {userSignin?.userInfo?(
                         <>
                           <Link to="#"></Link>
-                          <a className="dropdown-item" onClick={siginoutHandeler}><Link to="/signin">{t("Sign Up")}</Link></a>
+                          <a className="dropdown-item" onClick={siginoutHandeler}><Link to="/signin">{t("Sign Out")}</Link></a>
                           <Link className="dropdown-item" to="/profile">{t("Profile")}</Link>
                         </>
                       ) : (

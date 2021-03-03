@@ -22,7 +22,7 @@ export default function ProductListScreen(props) {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listProducts());
+    dispatch(listProducts({}));
   }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
 
   const createHandler = () => {
@@ -68,10 +68,10 @@ export default function ProductListScreen(props) {
             </tr>
           </thead>
           <tbody>
-            {productList.loading? (<LoadingBox/>)
-            :productList.error?(<MessageBox variant="danger">{productList.error}</MessageBox>)
+            {productList?.loading? (<LoadingBox/>)
+            :productList?.error?(<MessageBox variant="danger">{productList?.error}</MessageBox>)
             :(
-              productList.products.data.map((product,index)=>{
+              productList?.products?.map((product,index)=>{
                 return(
                   <tr key={product._id}>
                     <td>{index}</td>

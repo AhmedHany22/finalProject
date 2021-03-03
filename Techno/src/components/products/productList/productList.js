@@ -17,8 +17,8 @@ export default function ProductList(){
     console.log(productList.products);
 
     useEffect(()=>{
-        dispatch(listProducts());
-    },[]);
+        dispatch(listProducts({}));
+    },[dispatch]);
     
 
     let padgeNumpers=[];
@@ -36,7 +36,7 @@ export default function ProductList(){
     const getSliceArrayOfProduct=()=>{
         calculateNumberOfPages(productList.products?.data?.length)
         const start=pageSize*currentPage;
-        const list=productList.products?.data?.slice?.(start,start+pageSize);
+        const list=productList.products?.slice?.(start,start+pageSize);
         return list
     }
     console.log(getSliceArrayOfProduct());

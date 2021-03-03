@@ -22,7 +22,7 @@ export default function SearchPage(props) {
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <div>{products?.data?.length} Results</div>
+          <div>{products?.length} Results</div>
         )}
       </div>
       <div className="row top">
@@ -43,7 +43,7 @@ export default function SearchPage(props) {
                 <MessageBox>No Product Found</MessageBox>
               )}
               <div className="row ml-5">
-                {products?.data?.map((product) => (
+                {products?.map((product) => (
                   <ProductItem key={product._id} product={product} className="col-3 col-lg-3 col-sm-12 col-md-3 m-3"></ProductItem>
                 ))}
               </div>

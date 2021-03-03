@@ -2,14 +2,19 @@ import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import data from '../../Techno/src/data.js'
 import Product from '../models/productModel.js';
-import { isAdmin, isAuth } from '../utils.js';
+import { isAdmin, isAuth, isSellerOrAdmin } from '../utils.js';
 
 const productRouter = express.Router();
 productRouter.get(
     '/',
     expressAsyncHandler(async(req, res) => {
-        const products = await Product.find({});
-        res.send(products);
+      const seller = req.query.seller || '';
+      const sellerFilter = seller ? { seller } : {};
+      const products = await Product.find({ ...sellerFilter }).populate(
+        'seller',
+        'seller.name seller.logo'
+      );
+      res.send(products);
     })
 );
 
@@ -31,10 +36,14 @@ productRouter.get( '/:id',
 );
 
 productRouter.post(
-  '/', isAuth, isAdmin,
+  '/', 
+  isAuth, 
+  isAdmin,
+  isSellerOrAdmin,
   expressAsyncHandler(async (req, res) => {
     const product = new Product({
       name: 'sample name ' + Date.now(),
+      seller: req.user._id,
       image: '../assets/Products/pro-1.jpg',
       brand: 'sample brand',
       category: 'sample category',
@@ -54,9 +63,13 @@ productRouter.put(
   '/:id',
   isAuth,
   isAdmin,
+  isSellerOrAdmin,
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
-    const product = await Product.findById(productId);
+    const product = await Product.findById(productId).populate(
+      'seller',
+      'seller.name seller.logo seller.rating seller.numReviews'
+    );
     if (product) {
       product.name = req.body.name;
       product.price = req.body.price;
