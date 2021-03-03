@@ -16,15 +16,15 @@ export default function AdminEditProducts(props) {
   const [description, setDescription] = useState('');
   const [discount, setDiscount] = useState('');
 
-  const productId=props.match.params.id;
-  const dispatch=useDispatch();
-  const productDetails= useSelector(state=> state.productDetails);
+  const productId = props.match.params.id;
+  const dispatch = useDispatch();
+  const productDetails = useSelector(state => state.productDetails);
 
   const productUpdate = useSelector((state) => state.productUpdate);
   const { loading: loadingUpdate, error: errorUpdate, success: successUpdate, } = productUpdate;
   const { product } = productDetails;
 
-  useEffect(()=>{
+  useEffect(() => {
     if (successUpdate) {
       props.history.push('/productlist');
     }
@@ -41,7 +41,7 @@ export default function AdminEditProducts(props) {
       setDiscount(productDetails?.product?.data?.discount);
     }
 
-  },[dispatch, productId, successUpdate, props.history]);
+  }, [dispatch, productId, successUpdate, props.history]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -57,6 +57,7 @@ export default function AdminEditProducts(props) {
         description,
       })
     );
+    props.history.push('/AdminProducts')
   };
   return (
     <div>
@@ -69,50 +70,50 @@ export default function AdminEditProducts(props) {
         </div>
       </div>
       <form className="form container w-50" onSubmit={submitHandler}>
-        {productDetails?.loading? (<LoadingBox/>)
-        :productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
-        :(
-          <>
-            <div className="form-group">
-              <label For="name"><strong>Name</strong></label>
-              <input id="name" className="form-control" type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)}></input>
-            </div>
-            <div className="form-group">
-              <label For="price"><strong>Price</strong></label>
-              <input id="price" className="form-control" type="text" placeholder="Enter price" value={price} onChange={(e) => setPrice(e.target.value)}></input>
-            </div>
-            <div className="form-group">
-              <label For="image"><strong>Image</strong></label>
-              <input id="image" className="form-control" type="text" placeholder="Enter image" value={image} onChange={(e) => setImage(e.target.value)}></input>
-            </div>
-            <div className="form-group">
-              <label For="category"><strong>Category</strong></label>
-              <input id="category" className="form-control" type="text" placeholder="Enter category" value={category} onChange={(e) => setCategory(e.target.value)}></input>
-            </div>
-            <div className="form-group">
-              <label For="brand"><strong>Brand</strong></label>
-              <input id="brand" className="form-control" type="text" placeholder="Enter brand" value={brand} onChange={(e) => setBrand(e.target.value)}></input>
-            </div>
-            <div className="form-group">
-              <label For="countInStock"><strong>Count In Stock</strong></label>
-              <input id="countInStock" className="form-control" type="text" placeholder="Enter countInStock" value={countInStock} onChange={(e) => setCountInStock(e.target.value)}></input>
-            </div>
-            <div className="form-group">
-              <label For="description"><strong>Description</strong></label>
-              <textarea id="description" className="form-control" rows="2" type="text" placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-            </div>
-            <div className="form-group">
-              <label For="discount"><strong>Discount</strong></label>
-              <input id="discount" className="form-control" type="discount" placeholder="Enter discount" value={discount} onChange={(e) => setDiscount(e.target.value)}></input>
-            </div>
-            <div className="form-group text-center mb-5">
-              <label></label>
-              <button className="btn btn-warning w-50" type="submit"><strong>Update</strong></button>
-            </div>
-            {loadingUpdate && <LoadingBox></LoadingBox>}
-            {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
-          </>
-        )}
+        {productDetails?.loading ? (<LoadingBox />)
+          : productDetails?.error ? (<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
+            : (
+              <>
+                <div className="form-group">
+                  <label For="name"><strong>Name</strong></label>
+                  <input id="name" className="form-control" type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)}></input>
+                </div>
+                <div className="form-group">
+                  <label For="price"><strong>Price</strong></label>
+                  <input id="price" className="form-control" type="text" placeholder="Enter price" value={price} onChange={(e) => setPrice(e.target.value)}></input>
+                </div>
+                <div className="form-group">
+                  <label For="image"><strong>Image</strong></label>
+                  <input id="image" className="form-control" type="text" placeholder="Enter image" value={image} onChange={(e) => setImage(e.target.value)}></input>
+                </div>
+                <div className="form-group">
+                  <label For="category"><strong>Category</strong></label>
+                  <input id="category" className="form-control" type="text" placeholder="Enter category" value={category} onChange={(e) => setCategory(e.target.value)}></input>
+                </div>
+                <div className="form-group">
+                  <label For="brand"><strong>Brand</strong></label>
+                  <input id="brand" className="form-control" type="text" placeholder="Enter brand" value={brand} onChange={(e) => setBrand(e.target.value)}></input>
+                </div>
+                <div className="form-group">
+                  <label For="countInStock"><strong>Count In Stock</strong></label>
+                  <input id="countInStock" className="form-control" type="text" placeholder="Enter countInStock" value={countInStock} onChange={(e) => setCountInStock(e.target.value)}></input>
+                </div>
+                <div className="form-group">
+                  <label For="description"><strong>Description</strong></label>
+                  <textarea id="description" className="form-control" rows="2" type="text" placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                </div>
+                <div className="form-group">
+                  <label For="discount"><strong>Discount</strong></label>
+                  <input id="discount" className="form-control" type="discount" placeholder="Enter discount" value={discount} onChange={(e) => setDiscount(e.target.value)}></input>
+                </div>
+                <div className="form-group text-center mb-5">
+                  <label></label>
+                  <button className="btn btn-warning w-50" type="submit"><strong>Update</strong></button>
+                </div>
+                {loadingUpdate && <LoadingBox></LoadingBox>}
+                {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
+              </>
+            )}
       </form>
     </div>
   );

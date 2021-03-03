@@ -82,3 +82,7 @@ code {
   border-right: none;
   margin-left: 0.5rem;
 }
+
+.col-1{
+  flex:1 1 25rem;
+}
