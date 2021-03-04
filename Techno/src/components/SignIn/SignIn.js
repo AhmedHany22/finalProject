@@ -77,7 +77,7 @@ const SignIn = (props) => {
               <div className="justify-content-center">
                 <GoogleLogin
                   clientId="559380081393-l9e14jbosaqgokq0i3mt8ah5v1mcgb6r.apps.googleusercontent.com"
-                  buttonText="Continue with Google" onSuccess={responseGoogle} onFailure={responseGoogle}
+                  buttonText={t("Continue with Google")} onSuccess={responseGoogle} onFailure={responseGoogle}
                   cookiePolicy={'single_host_origin'} className="border rounded mt-2 w-100 justify-content-center">
                 </GoogleLogin>
               </div>

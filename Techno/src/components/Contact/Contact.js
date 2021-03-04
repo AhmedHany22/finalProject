@@ -27,7 +27,7 @@ const Contact = () => {
               <form action="" className="contact-form ">
                 <h1 className="contact-heading">{t("contact us")}</h1>
                 <div className="input-group">
-                  <label dir="auto" style={{textAlign: 'start'}}  >{t("full name *")}</label>
+                  <label dir="auto" style={{textAlign: 'start'}}  >{t("full name")}</label>
                   <input  dir="auto" style={{textAlign: 'start'}} type="text" className="contact-input  "/>
 
                 </div>

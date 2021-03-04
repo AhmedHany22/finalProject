@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteOrder, listOrders } from '../../store/actions/orderActions';
 import { ORDER_DELETE_RESET } from '../../store/types/orderConstants';
+import {useTranslation} from 'react-i18next';
 
 export default function AdminOrderList(props) {
   const sellerMode = props.match.path.indexOf('./seller') >= 0;
@@ -24,12 +25,14 @@ export default function AdminOrderList(props) {
       dispatch(deleteOrder(order._id));
     }
   };
+  const {t,i18n} = useTranslation();
+
   return (
     <>
       <div className="d-flex justify-content-center align-items-center flex-column mb-5 sectionT">
         <div className="container text-center">
           <div className="mb-5 text-center text-white">
-            <h1>Orders List</h1>
+            <h1>{t("Orders List")}</h1>
           </div>
           {loadingDelete && <LoadingBox></LoadingBox>}
           {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
@@ -41,13 +44,13 @@ export default function AdminOrderList(props) {
             <table className="table table-striped table-bordered table-dark mb-5">
               <thead>
                 <tr>
-                  <th className="h5">ID</th>
-                  <th className="h5">USER</th>
-                  <th className="h5">DATE</th>
-                  <th className="h5">TOTAL</th>
-                  <th className="h5">PAID</th>
-                  <th className="h5">DELIVERED</th>
-                  <th className="h5">ACTIONS</th>
+                  <th className="h5">{t("ID")}</th>
+                  <th className="h5">{t("USER")}</th>
+                  <th className="h5">{t("DATE")}</th>
+                  <th className="h5">{t("TOTAL")}</th>
+                  <th className="h5">{t("PAID")}</th>
+                  <th className="h5">{t("DELIVERED")}</th>
+                  <th className="h5">{t("ACTIONS")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -61,10 +64,10 @@ export default function AdminOrderList(props) {
                     <td>{order.isDelivered ? order.deliveredAt.substring(0, 10) : 'No'}</td>
                     <td>
                       <button type="button" className="btn btn-primary mr-2" onClick={() => { props.history.push(`/order/${order._id}`); }}>
-                        Details
+                       {t("Details")}
                   </button>
                       <button type="button" className="btn btn-danger" onClick={() => deleteHandler(order)}>
-                        Delete
+                      {t("Delete")}
                   </button>
                     </td>
                   </tr>

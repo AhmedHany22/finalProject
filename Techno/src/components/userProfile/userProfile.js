@@ -5,6 +5,7 @@ import { detailsUser, updateUserProfile } from '../../store/actions/userActions'
 import LoadingBox from '../LoadingBox'
 import MessageBox from '../MessageBox'
 import { USER_UPDATE_PROFILE_RESET } from "../../store/types/userConstants";
+import { useTranslation } from "react-i18next";
 
 const UserProfile=()=>{
     const [name, setName] = useState('');
@@ -53,7 +54,7 @@ const UserProfile=()=>{
         }
 
     }
-      
+    const { t, i18n } = useTranslation();
     return(
         
         <div className="container bodyLogin">
@@ -62,7 +63,7 @@ const UserProfile=()=>{
                 <div className="profileImage">
                     <i className="fas fa-user-circle"></i>
                 </div>
-                <h1>My Profile</h1>
+                <h1>{t("My Profile")}</h1>
                 <form className="form" onSubmit={SubmitHandler}>
                 {userDetails?.loading? <LoadingBox></LoadingBox>
                 :
@@ -74,70 +75,70 @@ const UserProfile=()=>{
                     {userUpateProfile?.success && <MessageBox variant="success">Profile Update Successfully</MessageBox>}
 
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
-                        <input 
+                        <label htmlFor="name" dir="auto" style={{textAlign: 'start'}}>{t("Full Name")}</label>
+                        <input dir="auto" style={{textAlign: 'start'}}
                         id="name"
                         className="form-control" 
                         type="text" 
-                        placeholder="Enter Name" 
+                        placeholder={t("Enter Full Name")} 
                         value={name}
                         onChange={(e)=>{setName(e.target.value)}}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">{t("Email")}</label>
                         <input 
                         id="email"
                         className="form-control" 
                         type="text" 
-                        placeholder="Enter Email" 
+                        placeholder={t("enteremail")} 
                         value={email}
                         onChange={(e)=>{setEmail(e.target.value)}}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password">{t("Password")}</label>
                         <input 
                         id="password"
                         className="form-control" 
                         type="text" 
-                        placeholder="Enter Password"
+                        placeholder={t("Enter your password")}
                         onChange={(e)=>{setPassword(e.target.value)}}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="confirmPassword">Confirm Password</label>
+                        <label htmlFor="confirmPassword">{t("Confirm Password")}</label>
                         <input 
                         id="confirmPassword"
                         className="form-control" 
                         type="text" 
-                        placeholder="Enter Email"
+                        placeholder={t("Enter your password")}
                         onChange={(e)=>{setConfirmPassword(e.target.value)}}
                         />
                     </div>
                     {
                         userDetails?.user?.isSeller && (
                             <>
-                            <h2>Seller</h2>
+                            <h2>{t("Seller")}</h2>
                             <div>
-                            <label htmlFor="sellerName">Seller Name</label>
-                            <input id="sellerName" type="text" placeholder="Enter Seller Name"
+                            <label htmlFor="sellerName">{t("Seller Name")}</label>
+                            <input id="sellerName" type="text" placeholder={t("Enter Seller Name")}
                             value={sellerName} onChange={(e) => setsellerName(e.target.value)}></input>
                             </div>
                             <div>
-                            <label htmlFor="sellerLogo">Seller Logo</label>
-                            <input id="sellerLogo" type="text" placeholder="Enter Seller Logo"
+                            <label htmlFor="sellerLogo">{t("Seller Logo")}</label>
+                            <input id="sellerLogo" type="text" placeholder={t("Enter Seller Logo")}
                             value={sellerLogo} onChange={(e) => setsellerLogo(e.target.value)}></input>
                             </div>
                             <div>
-                            <label htmlFor="sellerDescription">Seller Description</label>
-                            <input id="sellerDescription" type="text" placeholder="Enter Seller Description"
+                            <label htmlFor="sellerDescription">{t("Seller Description")}</label>
+                            <input id="sellerDescription" type="text" placeholder={t("Enter Seller Description")}
                             value={sellerDescription} onChange={(e) => setsellerDescription(e.target.value)}></input>
                             </div>
                             </>
                         )
                     }
-                    <button className="btn btn-primary" type="submit">Update</button>
+                    <button className="btn btn-primary" type="submit">{t("Update")}</button>
                     </>
                 )}
                 </form>

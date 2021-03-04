@@ -86,13 +86,13 @@ function App(props) {
                   {userSignin?.userInfo && userSignin?.userInfo.isAdmin && (
                     <li className="nav-item dropdown">
                       <Link className="nav-link dropdown-toggle icon" to="#admin" id="navbardrop" data-toggle="dropdown">
-                        Admin
+                        {t("Admin")}
                       </Link>
                       <div className="dropdown-menu">
-                        <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
-                        <Link className="dropdown-item" to="/AdminProducts">Products</Link>
-                        <Link className="dropdown-item" to="/AdminOrderList">Orders</Link>
-                        <Link className="dropdown-item" to="/usersList">Users</Link>
+                        <Link className="dropdown-item" to="/dashboard">{t("Dashboard")}</Link>
+                        <Link className="dropdown-item" to="/AdminProducts">{t("Products")}</Link>
+                        <Link className="dropdown-item" to="/AdminOrderList">{t("Orders")}</Link>
+                        <Link className="dropdown-item" to="/usersList">{t("Users")}</Link>
                       </div>
                     </li>
                   )}
@@ -100,12 +100,12 @@ function App(props) {
 
                     <li className="nav-item dropdown">
                       <Link className="nav-link dropdown-toggle icon" to="#admin" id="navbardrop" data-toggle="dropdown">
-                      Seller
+                      {t("Seller")}
                       </Link>
                       <div className="dropdown-menu">
                         
-                        <Link className="dropdown-item" to="/AdminProducts/seller">Products</Link>
-                        <Link className="dropdown-item" to="/AdminOrderList/seller">Orders</Link>
+                        <Link className="dropdown-item" to="/AdminProducts/seller">{t("Products")}</Link>
+                        <Link className="dropdown-item" to="/AdminOrderList/seller">{t("Orders")}</Link>
                       </div>
                     </li>
                   )}

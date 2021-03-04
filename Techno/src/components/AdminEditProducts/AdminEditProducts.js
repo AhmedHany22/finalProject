@@ -5,6 +5,7 @@ import { detailsProducts, updateProduct } from '../../store/actions/ProductActio
 import { PRODUCT_UPDATE_RESET } from '../../store/types/productConstants';
 import LoadingBox from '../LoadingBox';
 import MessageBox from '../MessageBox';
+import { useTranslation } from "react-i18next";
 
 export default function AdminEditProducts(props) {
   const [name, setName] = useState('');
@@ -59,13 +60,15 @@ export default function AdminEditProducts(props) {
     );
     props.history.push('/AdminProducts')
   };
+  const { t, i18n } = useTranslation();
+
   return (
     <div>
       <div className="d-flex justify-content-center align-items-center flex-column mb-5 sectioH">
         <div className="container text-center">
           <div className="text-center text-white">
-            <h1>Product Details</h1>
-            <h1 className="mt-5">Edit Product : {productId}</h1>
+            <h1>{t("Product Details")}</h1>
+            <h1 className="mt-5">{t("Edit Product")}: {productId}</h1>
           </div>
         </div>
       </div>
@@ -75,40 +78,40 @@ export default function AdminEditProducts(props) {
             : (
               <>
                 <div className="form-group">
-                  <label For="name"><strong>Name</strong></label>
-                  <input id="name" className="form-control" type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)}></input>
+                  <label For="name" dir="auto" style={{textAlign: 'end'}}><strong>{t("Name")}</strong></label>
+                  <input id="name" className="form-control" type="text" placeholder={t("Enter name")} value={name} onChange={(e) => setName(e.target.value)}></input>
                 </div>
                 <div className="form-group">
-                  <label For="price"><strong>Price</strong></label>
-                  <input id="price" className="form-control" type="text" placeholder="Enter price" value={price} onChange={(e) => setPrice(e.target.value)}></input>
+                  <label For="price"><strong>{t("Price")}</strong></label>
+                  <input id="price" className="form-control" type="text" placeholder={t("Enter price")} value={price} onChange={(e) => setPrice(e.target.value)}></input>
                 </div>
                 <div className="form-group">
-                  <label For="image"><strong>Image</strong></label>
-                  <input id="image" className="form-control" type="text" placeholder="Enter image" value={image} onChange={(e) => setImage(e.target.value)}></input>
+                  <label For="image"><strong>{t("Image")}</strong></label>
+                  <input id="image" className="form-control" type="text" placeholder={t("Enter image")} value={image} onChange={(e) => setImage(e.target.value)}></input>
                 </div>
                 <div className="form-group">
-                  <label For="category"><strong>Category</strong></label>
-                  <input id="category" className="form-control" type="text" placeholder="Enter category" value={category} onChange={(e) => setCategory(e.target.value)}></input>
+                  <label For="category"><strong>{t("Category")}</strong></label>
+                  <input id="category" className="form-control" type="text" placeholder={t("Enter category")} value={category} onChange={(e) => setCategory(e.target.value)}></input>
                 </div>
                 <div className="form-group">
-                  <label For="brand"><strong>Brand</strong></label>
-                  <input id="brand" className="form-control" type="text" placeholder="Enter brand" value={brand} onChange={(e) => setBrand(e.target.value)}></input>
+                  <label For="brand"><strong>{t("Brand")}</strong></label>
+                  <input id="brand" className="form-control" type="text" placeholder={t("Enter brand")} value={brand} onChange={(e) => setBrand(e.target.value)}></input>
                 </div>
                 <div className="form-group">
-                  <label For="countInStock"><strong>Count In Stock</strong></label>
-                  <input id="countInStock" className="form-control" type="text" placeholder="Enter countInStock" value={countInStock} onChange={(e) => setCountInStock(e.target.value)}></input>
+                  <label For="countInStock"><strong>{t("Count In Stock")}</strong></label>
+                  <input id="countInStock" className="form-control" type="text" placeholder={t("Enter countInStock")} value={countInStock} onChange={(e) => setCountInStock(e.target.value)}></input>
                 </div>
                 <div className="form-group">
-                  <label For="description"><strong>Description</strong></label>
-                  <textarea id="description" className="form-control" rows="2" type="text" placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                  <label For="description"><strong>{t("Description")}</strong></label>
+                  <textarea id="description" className="form-control" rows="2" type="text" placeholder={t("Enter description")} value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                 </div>
                 <div className="form-group">
-                  <label For="discount"><strong>Discount</strong></label>
-                  <input id="discount" className="form-control" type="discount" placeholder="Enter discount" value={discount} onChange={(e) => setDiscount(e.target.value)}></input>
+                  <label For="discount" ><strong>{t("Discount")}</strong></label>
+                  <input id="discount" className="form-control" type="discount" placeholder={t("Enter discount")} value={discount} onChange={(e) => setDiscount(e.target.value)}></input>
                 </div>
                 <div className="form-group text-center mb-5">
                   <label></label>
-                  <button className="btn btn-warning w-50" type="submit"><strong>Update</strong></button>
+                  <button className="btn btn-warning w-50" type="submit"><strong>{t("Update")}</strong></button>
                 </div>
                 {loadingUpdate && <LoadingBox></LoadingBox>}
                 {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}

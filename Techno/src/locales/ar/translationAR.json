@@ -34,7 +34,7 @@
     "aboutv5":"الأمانة",
     "comment2":"contact",
     "contact us":"اتصل بنا",
-    "full name *":"الاسم ",
+    "Full Name":"الاسم ",
     "email *":" البريد الالكترونى",
     "phone*":"رقم الهاتف المحمول",
     "Message*":"رسالة",
@@ -139,7 +139,127 @@
     "Shop":"تسوق",
     "About":"حول الموقع",
     "Contact2":"اتصل بنا",
-    "Profile":"الحساب"
+    "Profile":"الحساب",
+    "Admin":"الادمن",
+    "Dashboard":"لوحة البيانات",
+    "Products":"المنتجات",
+    "Orders":"الطلبات",
+    "Users":"المستخدمين",
+    "Seller":"البائعين",
+    "Producsts List":"قائمة الطلبات",
+    "Create Product":"انشاء منتج",
+    "#No":"الرقم#",
+    "ID":"الرقم التعريفى",
+    "NAME":"الاسم",
+    "PRICE":"السعر",
+    "CATEGORY":"الفئة",
+    "Brand":"الماركة",
+    "ACTIONS":"حالة المنتج",
+    "Edit":"تعديل",
+    "Delete":"حذف",
+    "Orders List":"قائمة الطلبات",
+    "USER":"المستخدم",
+    "DATE":"التاريخ",
+    "TOTAL":"المجموع",
+    "PAID":"المدفوع",
+    "DELIVERED":"تاريخ التوصيل",
+    "Details":"تفاصيل الطلب",
+    "We've recieved your order":"لقد تم تنفيذ طلبك",
+    "Order num#":"رقم الطلب",
+    "Delivery Details":"تفاصيل الطلب",
+    "Delivery for":"التوصيل الى",
+    "Address":"العنوان",
+    "Payment Information":"معلومات الدفع",
+    "Payment Details":"تفاصيل الدفع",
+    "- Please ":" من فضلك",
+    "read":"اقرأ المزيد",
+    "to see how Taxes are calculated":"لمعرفه كيفيه حساب الضرائب",
+    "to see when items will arrive":"لمعرفة متى هتصل طلباتك",
+
+    "Not Paid":"لم يتم الدفع",
+    "Shipping Details":"تفاصيل الدفع",
+    "Delivered at":"تم التوصيل فى",
+    "Not Delivered":"لم يتم التوصيل",
+    "Pill Details":"تفاصيل الفاتورة",
+    "Shipping Cost":"مصاريف الشحن",
+    "Payment Cost":"مصاريف الدفع",
+    "Order Summary":"ملخص الطلب",
+    "Order Total":"اجمالى الطلب",
+    "Total Price":"السعر الكلى",
+    "My Profile":"حسابى",
+    "Email":"الايميل",
+    "Password":"الرقم السرى",
+    "Seller Name":"اسم البائع",
+    "Enter Seller Name":"ادخل اسم البائع",
+    "Seller Logo":"شعار البائع",
+    "Enter Seller Logo":"ادخل شعار البائع",
+    "Seller Description":"وصف البائع",
+    "Enter Seller Description":"ادخل وصف البائع",
+    "Update":"تحديث",
+    "Product Details":"تفاصيل المنتج",
+    "Edit Product":"المنتج المعدل",
+    "Name":"الاسم",
+    "Enter name":"ادخل الاسم",
+    "Price":"السعر",
+    "Enter price":"ادخل السعر",
+    "Enter image":"ادخل الصورة",
+    "Enter category":"ادخل الفئة",
+    "Enter brand":"ادخل الماركة",
+    "Count In Stock":"العدد فى المخزن",
+    "Enter countInStock":"ادخل العدد فى المخزن",
+    "Description":"الوصف",
+    "Enter description":"ادخل الوصف" ,
+    "Enter discount":"ادخل الخصم",
+    "Deliver Order":"أطلب",
+    "user Details":"تفاصيل المستخدم",
+    "Is Seller":"بائع؟",
+    "Is Admin":"أدمن؟",
+    "Continue with Google":"المتابعة بجوجل",
+    "Users List" :"قائمة المستخدمين"
+ 
+ 
+ 
+     
+     
+      
+      
+       
+       
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
 
 
 

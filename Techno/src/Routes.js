@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, NavLink, Link } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import SellerRoute from './components/SellerRoute';
+import SellerScreen from "./components/SellerScreen/SellerScreen";
 
 const About = React.lazy(() => import("./components/About/About"));
 const Checkout = React.lazy(() => import("./components/Checkout/Checkout"));
@@ -18,14 +19,14 @@ const UserProfile = React.lazy(() => import("./components/userProfile/userProfil
 const AdminProducts = React.lazy(() => import("./components/AdminProducts/AdminProducts"));
 const AdminEditProducts = React.lazy(() => import("./components/AdminEditProducts/AdminEditProducts"));
 const AdminOrderList = React.lazy(() => import("./components/AdminOrderList/AdminOrderList"));
-const UsersList = React.lazy(()=> import("./components/AdminUsersList/usersList")) ;
-const UserEdit = React.lazy(()=> import("./components/AdminEditUser/UserEdit"))
-const SearchPage = React.lazy(()=> import("./components/SearchPage/SearchPage"))
-
+const UsersList = React.lazy(() => import("./components/AdminUsersList/usersList"));
+const UserEdit = React.lazy(() => import("./components/AdminEditUser/UserEdit"))
+const SearchPage = React.lazy(() => import("./components/SearchPage/SearchPage"))
 const Routes = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <Switch>
+        <Route path="/seller/:id" component={SellerScreen}></Route>
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/signin" exact component={SignIn} />
