@@ -34,7 +34,7 @@ export default function ProductList(){
     }
      
     const getSliceArrayOfProduct=()=>{
-        calculateNumberOfPages(productList.products?.data?.length)
+        calculateNumberOfPages(productList.products?.length)
         const start=pageSize*currentPage;
         const list=productList.products?.slice?.(start,start+pageSize);
         return list

@@ -19,7 +19,8 @@ const AdminEditProducts = React.lazy(() => import("./components/AdminEditProduct
 const AdminOrderList = React.lazy(() => import("./components/AdminOrderList/AdminOrderList"));
 const UsersList = React.lazy(()=> import("./components/AdminUsersList/usersList")) ;
 const UserEdit = React.lazy(()=> import("./components/AdminEditUser/UserEdit"))
-const SearchPage = React.lazy(()=> import("./components/SearchPage/SearchPage"))
+const SearchPage = React.lazy(()=> import("./components/products/SearchPage/SearchPage"))
+const ProductModal = React.lazy(()=> import("./components/products/productModal/productModal"))
 
 const Routes = () => {
   return (
@@ -36,6 +37,9 @@ const Routes = () => {
         <Route path="/shop" exact component={ProductList} />
         <Route path="/order/:id" exact component={Order} />
         <Route path="/search/name/:name?" component={SearchPage} exact></Route>
+        <Route path="/search/category/:category/name/:name" component={SearchPage} exact></Route>
+        <Route path="/search/category/:category" component={SearchPage} exact></Route>
+        <Route path="/productModal/:id" component={ProductModal} exact></Route>
         <PrivateRoute path="/profile" exact component={UserProfile} />
         <AdminRoute path="/AdminProducts" exact component={AdminProducts} />
         <AdminRoute path="/AdminOrderList" component={AdminOrderList} />

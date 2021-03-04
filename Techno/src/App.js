@@ -1,8 +1,7 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import i16n from  './i18n';
 import Routes from './Routes';
-import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +9,9 @@ import { singout } from './store/actions/userActions';
 import i18n from './i18n';
 import {useTranslation} from 'react-i18next';
 import SearchBox from './components/SearchBox';
+import {listProducts} from './store/actions/ProductActions'
+import LoadingBox from './components/LoadingBox';
+import MessageBox from './components/MessageBox';
 const changeLanguage =(ln) =>{
   return()=>{
     i18n.changeLanguage(ln);
@@ -28,13 +30,14 @@ function App(props) {
   const {t,i18n} = useTranslation();
 
   const [name, setName]=useState('')
-
+ 
   return (
+    <>
     <div>
       <Router>
         <nav className="navbar navbar-expand-sm navbar-light py-3 bg-white">
           <div className="container">
-            <Link className="navbar-brand font-weight-bold" to="/">
+            <Link className="navbar-brand font-weight-bold p-5" to="/">
               <h2>{t("Techno2")}</h2>
             </Link>
             <div className="collapse navbar-collapse" id="collapsibleNavId">
@@ -120,15 +123,14 @@ function App(props) {
         <button onClick={changeLanguage("ar")} className="btn btn-dark  btn-sm">Arabic</button>
         </div>
         
-
-
       </nav>
-
       <Routes />
       <Footer />
       </Router>
-
+      
     </div>
+    
+  </>
   );
 }
 

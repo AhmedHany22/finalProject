@@ -94,17 +94,17 @@ userRouter.post(
     })
   );
     
-
+/////////////////update user profile
 userRouter.put('/profile', isAuth, expressAsyncHandler(async (req,res)=>{
     const user= await User.findById(req.user._id);
+    console.log(user);
     if(user){
-        user.name= req.body.name || user.name;
-        user.email= req.body.email || user.email;
+        user.name= req.body.name;
+        user.email= req.body.email;
         if (user.isSeller) {
-          user.seller.name = req.body.sellerName || user.seller.name;
-          user.seller.logo = req.body.sellerLogo || user.seller.logo;
-          user.seller.description =
-            req.body.sellerDescription || user.seller.description;
+          user.seller.name = req.body.sellerName;
+          user.seller.logo = req.body.sellerLogo;
+          user.seller.description =req.body.sellerDescription;
         }
         if(req.user.password){
             user.password= bcrypt.hashSync(req.body.password)
@@ -124,7 +124,7 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req,res)=>{
     }
 }))
 
-
+////////////////////////////delete user in admin
 
 userRouter.delete(
   '/:id',
@@ -146,6 +146,7 @@ userRouter.delete(
   })
 );
 
+/////////////update user admin
 
 userRouter.put(
   '/:id',
@@ -153,11 +154,12 @@ userRouter.put(
   isAdmin,
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
+    console.log(user);
     if (user) {
-      user.name = req.body.name || user.name;
-      user.email = req.body.email || user.email;
-      user.isSeller = req.body.isSeller || user.isSeller;
-      user.isAdmin = req.body.isAdmin || user.isAdmin;
+      user.name = req.body.name;
+      user.email = req.body.email;
+      user.isSeller = req.body.isSeller;
+      user.isAdmin = req.body.isAdmin;
       const updatedUser = await user.save();
       res.send({ message: 'User Updated', user: updatedUser });
     } else {

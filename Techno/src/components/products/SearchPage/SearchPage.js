@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { listProducts } from '../../store/actions/ProductActions';
-import LoadingBox from '../LoadingBox';
-import MessageBox from '../MessageBox';
-import ProductItem from '../products/productItem/productItem';
+import { listProducts } from '../../../store/actions/ProductActions';
+import LoadingBox from '../../LoadingBox';
+import MessageBox from '../../MessageBox';
+import ProductItem from '../productItem/productItem';
 
 export default function SearchPage(props) {
-  const { name = 'all' } = useParams();
+  const { name = 'all', category = 'all' } = useParams();
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
@@ -26,13 +26,17 @@ export default function SearchPage(props) {
         )}
       </div>
       <div className="row top">
-        <div className="col-1">
+        <div className="col-2">
           <p className="font-weight-bold">Department</p>
-          <ul>
-            <li>Categoey 1</li>
-          </ul>
+          {
+            products?.map((product)=>{
+              return(
+                <p key={product}>{product.category}</p>
+              )
+            })
+          }
         </div>
-        <div className="col-11">
+        <div className="col-10">
           {loading ? (
             <LoadingBox></LoadingBox>
           ) : error ? (
