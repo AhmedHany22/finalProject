@@ -30,9 +30,9 @@ const SignIn = (props) => {
 
   const userSignup = useSelector((state) => state.userSignup);
   const responseGoogle = (response) => {
-    setName(response.Hs.QS);
-    setEmail(response.Hs.nt);
-    setPassword(response.Hs.kR);
+    setName(response.profileObj.givenName);
+    setEmail(response.profileObj.email);
+    setPassword(response.profileObj.googleId);
   }
   useEffect(() => {
     if (name && email && password) {
