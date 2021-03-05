@@ -125,7 +125,7 @@ const Checkout = (props) => {
                         {t("FirstName:")}<span className="text-error"></span>
                         </label>
                         <div>
-                          <input 
+                          <input
                             type="text"
                             value={firstName}
                             id="inputFirstName"
