@@ -93,11 +93,11 @@ export default function Order(props) {
               <div className="row ml-3 mr-4">
                 <div className="col-sm-6">
                   <h4 className="my-4" dir="auto" style={{textAlign: 'start'}}><strong>{t("Payment Details")}</strong></h4>
-                  <h6 dir="auto" style={{textAlign: 'start'}}><strong>{order.paymentMethod}{' '}</strong> {t("- Please ")}<a href="#">{t("read")}</a> {t("to see how Taxes are calculated")}</h6>
+                  <h6 dir="auto" style={{textAlign: 'start'}}><strong>{order.paymentMethod}{' '}</strong> {t("- Please ")}<a href="#">{t(" read")}</a> {t("to see how Taxes are calculated")}</h6>
                     {order.isPaid ? ( <MessageBox variant="success"> Paid at {order.paidAt} </MessageBox>
                     ) : ( <MessageBox variant="danger" >{t("Not Paid")}</MessageBox> )}
                   <h4 className="my-4" dir="auto" style={{textAlign: 'start'}}><strong>{t("Shipping Details")}</strong></h4>
-                  <h6><strong>{order.shippingDetails}{' '}</strong> {t("- Please ")} <a href="#">{t("read")}</a> {t("to see when items will arrive")}</h6>
+                  <h6><strong>{order.shippingDetails}{' '}</strong> {t("- Please ")} <a href="#">{t(" read")}</a> {t("to see when items will arrive")}</h6>
                     {order.isDelivered ? ( <MessageBox variant="success"> {t("Delivered at")} {order.deliveredAt} </MessageBox>
                     ) : ( <MessageBox variant="danger">{t("Not Delivered")}</MessageBox> )}
                 </div>
@@ -106,11 +106,11 @@ export default function Order(props) {
                   <ul className="my-3">
                     <li><div className="mb-2" dir="auto" style={{textAlign: 'start'}}><span>{t("Quantity")}:{order.itemsQty}</span></div></li>
                   {/*}  {t("Quantity")}*/}
-                    <li><div className="mb-2" dir="auto" style={{textAlign: 'start'}}><span>{t("Shipping Cost")}: {t("$")}{order.shippingCost}</span></div></li>
+                    <li><div className="mb-2" dir="auto" style={{textAlign: 'start'}}><span>{t("Shipping Cost")}: {t("$ ")}{order.shippingCost}</span></div></li>
                    {/*} {t("Shipping Cost")}*/}
-                    <li><div className="mb-2" dir="auto" style={{textAlign: 'start'}}><span>{t("Payment Cost")}:{t("$")}{order.paymentCost}</span></div></li>
+                    <li><div className="mb-2" dir="auto" style={{textAlign: 'start'}}><span>{t("Payment Cost")}:{t("$ ")}{order.paymentCost}</span></div></li>
                      {/*{t("Payment Cost")}*/}
-                    <li><div className="mb-2" dir="auto" style={{textAlign: 'start'}}><span><strong>{t("Order Total")}: {t("$")}{order.grandPrice}</strong></span></div></li>
+                    <li><div className="mb-2" dir="auto" style={{textAlign: 'start'}}><span><strong>{t("Order Total")}: {t("$ ")}{order.grandPrice}</strong></span></div></li>
                     {/* {t("Order Total")}*/}
                     { !order.isPaid && (
                       <li className="mt-4">{!sdkReady ? (<LoadingBox></LoadingBox>) : (
@@ -143,7 +143,7 @@ export default function Order(props) {
                         <div className="my-4">
                           <h6>{item.name}</h6>
                           <h6>{t("Quantity")} : {item.qty}</h6>
-                          
+
                           <strong>{t("Total Price")} = {t("$")}{item.qty * (item.price - item.discount)}</strong>
                         </div>
                       </li>

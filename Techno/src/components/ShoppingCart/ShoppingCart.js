@@ -39,7 +39,7 @@ const ShoppingCart = (props) => {
           <div className="py-3 bg-warning px-4">
             <p className="mb-2" dir="auto" style={{textAlign: 'start'}}>{t("missed")}</p>
             <p dir="auto" style={{textAlign: 'start'}}> {t("item")}<Link id="GFG" className="text-body" to="/shop" dir="auto" style={{textAlign: 'start'}}>{t("Continue shopping")}</Link></p>
-            
+
           </div>
         </div>
         ) : (

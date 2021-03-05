@@ -98,6 +98,7 @@ export default function AdminEditProducts(props) {
                 </div>
                 <div className="form-group">
                   <label For="category"><strong>{t("Category")}</strong></label>
+                  <input id="category" className="form-control" type="text" placeholder={t("Enter category")} value={category} onChange={(e) => setCategory(e.target.value)}></input>
                   <select class="form-control" id="category" placeholder={t("Enter category")} onChange={(e) => setCategory(e.target.value)}>
                     <option>computer accessories</option>
                     <option>computer pc</option>
