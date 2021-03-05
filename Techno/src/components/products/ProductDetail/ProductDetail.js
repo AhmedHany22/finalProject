@@ -165,12 +165,8 @@ const ProductDetail = (props) => {
                     </div>
                     <h2 className="paragraph">${productDetails?.product?.data?.discount ? productDetails?.product?.data?.price - productDetails?.product?.data?.discount : productDetails?.product?.data?.price}</h2>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse varius enim in eros elementum tristique. Duis
-                      cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-                      commodo diam libero vitae erat. Aenean faucibus nibh et justo
-                      cursus id rutrum lorem imperdiet.
-              </p>
+                      {(i18n.language == "en") ? productDetails?.product?.data?.description.toUpperCase() : productDetails?.product?.data?.descriptionAr}
+                    </p>
                   </div>
                   <div id="addTo">
                     <a className="is-minus" onClick={decrement}>-</a>
@@ -188,7 +184,7 @@ const ProductDetail = (props) => {
                       <h4>Tags</h4>
                     </div>
                     <div class="info">82934
-                <br /><br />
+                      <br /><br />
                       <a href="/shop">Armhair</a>,{" "}
                       <a href="/shop">Wooden Leg</a>,{" "}
                       <a href="/shop">Satin</a>
