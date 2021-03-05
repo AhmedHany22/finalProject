@@ -10,15 +10,8 @@ export default function ProductItem(props) {
   let discountPresent = 10;
   const { product }  = props;
   const category = data.category;
-  
+  console.log(product);
   if (product) { discountPresent = Math.round((product.discount / product.price) * 100); }
-  const [counter, setCounter] = useState(1);
-  const increment =()=> {setCounter(counter +1)};
-  const decrement =()=> { counter > 1? setCounter(counter -1):setCounter(counter)};
-
-  const addToCartHandler = () => {
-    props.history.push(`/shoppingCart/${product._id}?qty=${counter}`);
-  };
 
   return (
     <>
@@ -38,8 +31,13 @@ export default function ProductItem(props) {
             <a className="fa fa-eye float-right text-secondary mr-2 mt-2"></a>
           </div>
           <hr/>
-          <p>${product.price - product.discount}{" "}<span>${product.price}</span></p>
-        </div>
+          <div>
+            <p>${product.price - product.discount}{" "}<span>${product.price}</span></p>
+            <link to={`/seller/${product?.seller?._id}`}>
+            {product?.seller?.name}
+            </link>
+          </div>
+          </div>
       </div>
     </div>
     <ProductModal className="modal fade" id="myModal" product={product}></ProductModal>

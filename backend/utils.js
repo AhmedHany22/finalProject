@@ -44,7 +44,6 @@ export const isAdmin = (req, res, next) => {
   }
 };
 
-
 export const isSeller = (req, res, next) => {
   if (req.user && req.user.isSeller) {
     next();

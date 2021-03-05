@@ -84,3 +84,15 @@ code {
   margin-left: 0.5rem;
 }
 
+.col-1{
+  flex:1 1 25rem;
+}
+.col-3{
+  flex:32 1 75rem;
+}
+.row.start{
+  justify-content: flex-start;
+}
+.p-1{
+  padding: 1rem;
+}

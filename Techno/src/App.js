@@ -9,9 +9,7 @@ import { singout } from './store/actions/userActions';
 import i18n from './i18n';
 import {useTranslation} from 'react-i18next';
 import SearchBox from './components/SearchBox';
-import {listProducts} from './store/actions/ProductActions'
-import LoadingBox from './components/LoadingBox';
-import MessageBox from './components/MessageBox';
+
 const changeLanguage =(ln) =>{
   return()=>{
     i18n.changeLanguage(ln);
@@ -40,8 +38,14 @@ function App(props) {
             <Link className="navbar-brand font-weight-bold p-5" to="/">
               <h2>{t("Techno2")}</h2>
             </Link>
+            
             <div className="collapse navbar-collapse" id="collapsibleNavId">
               <ul className="navbar-nav m-auto mt-2 mt-lg-0">
+                <li class="nav-item m-0">
+                    <Route 
+                      render={({history})=> <SearchBox history={history}></SearchBox>}
+                    ></Route>
+                </li>
                 <li className="nav-item">
                   <Link className="nav-link mx-4 text-dark myNav font-weight-bold" to="/">{t("Home")}</Link>
                 </li>
@@ -57,14 +61,6 @@ function App(props) {
               </ul>
               <div className="d-flex float-right navbar-expand-sm ">
                 <ul className="navbar-nav float-right ">
-
-                  <li class="nav-item">
-                    <Route
-                      render={({history})=> <SearchBox history={history}></SearchBox>}
-                    ></Route>
-                  </li>
-
-
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle icon" href="#" id="navbardrop" data-toggle="dropdown">
                       { userSignin?.userInfo? (userSignin?.userInfo?.name?.toUpperCase()):
@@ -75,7 +71,7 @@ function App(props) {
                       {userSignin?.userInfo?(
                         <>
                           <Link to="#"></Link>
-                          <a className="dropdown-item" onClick={siginoutHandeler}><Link to="/signin">{t("Sign Out")}</Link></a>
+                          <a className="dropdown-item" onClick={siginoutHandeler}><Link to="/signin">{t("Sign out")}</Link></a>
                           <Link className="dropdown-item" to="/profile">{t("Profile")}</Link>
                         </>
                       ) : (
@@ -89,13 +85,26 @@ function App(props) {
                   {userSignin?.userInfo && userSignin?.userInfo.isAdmin && (
                     <li className="nav-item dropdown">
                       <Link className="nav-link dropdown-toggle icon" to="#admin" id="navbardrop" data-toggle="dropdown">
-                        Admin
+                        {t("Admin")}
                       </Link>
                       <div className="dropdown-menu">
-                        <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
-                        <Link className="dropdown-item" to="/AdminProducts">Products</Link>
-                        <Link className="dropdown-item" to="/AdminOrderList">Orders</Link>
-                        <Link className="dropdown-item" to="/usersList">Users</Link>
+                        <Link className="dropdown-item" to="/dashboard">{t("Dashboard")}</Link>
+                        <Link className="dropdown-item" to="/AdminProducts">{t("Products")}</Link>
+                        <Link className="dropdown-item" to="/AdminOrderList">{t("Orders")}</Link>
+                        <Link className="dropdown-item" to="/usersList">{t("Users")}</Link>
+                      </div>
+                    </li>
+                  )}
+                  {userSignin?.userInfo && userSignin?.userInfo.isSeller && (
+
+                    <li className="nav-item dropdown">
+                      <Link className="nav-link dropdown-toggle icon" to="#admin" id="navbardrop" data-toggle="dropdown">
+                      {t("Seller")}
+                      </Link>
+                      <div className="dropdown-menu">
+                        
+                        <Link className="dropdown-item" to="/AdminProducts/seller">{t("Products")}</Link>
+                        <Link className="dropdown-item" to="/AdminOrderList/seller">{t("Orders")}</Link>
                       </div>
                     </li>
                   )}
@@ -118,9 +127,8 @@ function App(props) {
           </div>
         </div>
         <div>
-        <button onClick={changeLanguage("en")} className="btn btn-dark  btn-sm">English</button>
-
-        <button onClick={changeLanguage("ar")} className="btn btn-dark  btn-sm">Arabic</button>
+          <img src="../assets/egypt.png" style={{width:'60px' ,borderRadius:'100%'}} onClick={changeLanguage("ar")} className="btn m-0"/>
+          <img src="../assets/american.jpg" style={{width:'60px' ,borderRadius:'100%'}} onClick={changeLanguage("en")} className="btn m-0" />
         </div>
         
       </nav>

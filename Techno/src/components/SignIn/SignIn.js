@@ -58,7 +58,8 @@ const SignIn = (props) => {
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant="danger">{error}</MessageBox>}
               <div className="form-group">
-                <input className="form-control mt-4" type="email" id="email" name="email" dir="auto" style={{textAlign: 'start'}} placeholder={t("enteremail")}
+                <label for="email"></label>
+                <input dir="auto" style={{textAlign: 'start'}}  className="form-control" type="email" id="email" name="email" dir="auto" style={{textAlign: 'start'}} placeholder={t("enteremail")}
                   onChange={(e) => setEmail(e.target.value)} />
 
               </div>
@@ -76,7 +77,7 @@ const SignIn = (props) => {
               <div className="justify-content-center">
                 <GoogleLogin
                   clientId="559380081393-l9e14jbosaqgokq0i3mt8ah5v1mcgb6r.apps.googleusercontent.com"
-                  buttonText="Continue with Google" onSuccess={responseGoogle} onFailure={responseGoogle}
+                  buttonText={t("Continue with Google")} onSuccess={responseGoogle} onFailure={responseGoogle}
                   cookiePolicy={'single_host_origin'} className="border rounded mt-2 w-100 justify-content-center">
                 </GoogleLogin>
               </div>

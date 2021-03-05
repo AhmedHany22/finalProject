@@ -7,13 +7,15 @@ import MessageBox from '../../MessageBox';
 import ProductItem from '../productItem/productItem';
 
 export default function SearchPage(props) {
-  const { name = 'all', category = 'all' } = useParams();
+  const { name = 'all' } = useParams();
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+
   useEffect(() => {
     dispatch(listProducts({ name: name !== 'all' ? name : '' }));
   }, [dispatch, name]);
+
   return (
     <div className="container">
       <div className="row">

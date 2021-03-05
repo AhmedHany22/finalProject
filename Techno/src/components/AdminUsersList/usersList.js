@@ -5,6 +5,7 @@ import { deleteUser, listUsers } from '../../store/actions/userActions'
 import { USER_DETAILS_RESET } from '../../store/types/userConstants';
 import LoadingBox from '../LoadingBox'
 import MessageBox from '../MessageBox'
+import {useTranslation} from 'react-i18next';
 
 export default function UsersList(props){
     const userList = useSelector((state) => state.userList);
@@ -31,13 +32,14 @@ export default function UsersList(props){
           dispatch(deleteUser(user._id));
         }
     };
+    const {t,i18n} = useTranslation();
 
     return(
         <div>
             <div className="d-flex justify-content-center align-items-center flex-column mb-5 sectioH">
                 <div className="container text-center">
                     <div className="mb-5 text-center text-white">
-                        <h1>Users List</h1>
+                        <h1>{t("Users List")}</h1>
                     </div>
                     {loadingDelete && <LoadingBox></LoadingBox>}
                     {errorDelete && <MessageBox variant="danger">{userDelete?.error}</MessageBox>}
@@ -51,13 +53,13 @@ export default function UsersList(props){
                 <table className="table table-striped table-bordered table-dark">
                 <thead>
                     <tr>
-                    <th className="h5">#No</th>
-                    <th className="h5">ID</th>
-                    <th className="h5">NAME</th>
-                    <th className="h5">Email</th>
-                    <th className="h5">Is Seller</th>
-                    <th className="h5">Is Admin</th>
-                    <th className="h5">ACTIONS</th>
+                    <th className="h5">{t("#No")}</th>
+                    <th className="h5">{t("ID")}</th>
+                    <th className="h5">{t("NAME")}</th>
+                    <th className="h5">{t("Email")}</th>
+                    <th className="h5">{t("Is Seller")}</th>
+                    <th className="h5">{t("Is Admin")}</th>
+                    <th className="h5">{t("ACTIONS")}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,8 +76,8 @@ export default function UsersList(props){
                             <td>{user.isSeller? 'Yes': 'No'}</td>
                             <td>{user.isAdmin? 'Yes': 'No'}</td>
                             <td>
-                            <button type="button" className="btn btn-primary mr-2" onClick={()=>props.history.push(`/user/${user._id}/edit`)}>Edit</button>
-                            <button type="button" className="btn btn-danger" onClick={() => deleteHandler(user)}>Delete</button>
+                            <button type="button" className="btn btn-primary mr-2" onClick={()=>props.history.push(`/user/${user._id}/edit`)}>{t("Edit")}</button>
+                            <button type="button" className="btn btn-danger" onClick={() => deleteHandler(user)}>{t("Delete")}</button>
                             </td>
                         </tr>
                         )

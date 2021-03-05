@@ -7,16 +7,11 @@ const orderRouter = express.Router();
 orderRouter.get(
   '/',
   isAuth,
-  isAdmin,
   isSellerOrAdmin,
   expressAsyncHandler(async (req, res) => {
     const seller = req.query.seller || '';
-    const sellerFilter = seller ? { seller } : {};
-
-    const orders = await Order.find({ ...sellerFilter }).populate(
-      'user',
-      'name'
-    );
+    const sellerFilter = seller?{seller}:{};
+    const orders = await Order.find({...sellerFilter}).populate('user', 'name');
     res.send(orders);
   })
 );

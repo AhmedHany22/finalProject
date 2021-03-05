@@ -2,18 +2,20 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route, NavLink, Link } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
+import SellerRoute from './components/SellerRoute';
+import SellerScreen from "./components/SellerScreen/SellerScreen";
 
 const About = React.lazy(() => import("./components/About/About"));
 const Checkout = React.lazy(() => import("./components/Checkout/Checkout"));
 const Contact = React.lazy(() => import("./components/Contact/Contact"));
 const Homenew = React.lazy(() => import("./components/Homenew/Homenew"));
-const ShoppingCart = React.lazy(() =>import("./components/ShoppingCart/ShoppingCart"));
+const ShoppingCart = React.lazy(() => import("./components/ShoppingCart/ShoppingCart"));
 const SignUp = React.lazy(() => import("./components/SignUp/SignUp"));
 const SignIn = React.lazy(() => import("./components/SignIn/SignIn"));
 const ProductDetail = React.lazy(() => import("./components/products/ProductDetail/ProductDetail"));
 const ProductList = React.lazy(() => import("./components/products/productList/productList"));
 const Order = React.lazy(() => import("./components/Order/Order"));
-const UserProfile = React.lazy(()=> import("./components/userProfile/userProfile"))
+const UserProfile = React.lazy(() => import("./components/userProfile/userProfile"))
 const AdminProducts = React.lazy(() => import("./components/AdminProducts/AdminProducts"));
 const AdminEditProducts = React.lazy(() => import("./components/AdminEditProducts/AdminEditProducts"));
 const AdminOrderList = React.lazy(() => import("./components/AdminOrderList/AdminOrderList"));
@@ -26,6 +28,7 @@ const Routes = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <Switch>
+        <Route path="/seller/:id" component={SellerScreen}></Route>
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/signin" exact component={SignIn} />
@@ -42,7 +45,9 @@ const Routes = () => {
         <Route path="/productModal/:id" component={ProductModal} exact></Route>
         <PrivateRoute path="/profile" exact component={UserProfile} />
         <AdminRoute path="/AdminProducts" exact component={AdminProducts} />
-        <AdminRoute path="/AdminOrderList" component={AdminOrderList} />
+        <AdminRoute path="/AdminOrderList" exact component={AdminOrderList} />
+        <SellerRoute path="/AdminProducts/seller" component={AdminProducts}></SellerRoute>
+        <SellerRoute path="/AdminOrderList/seller" component={AdminOrderList}></SellerRoute>
         <AdminRoute path="/usersList" component={UsersList} />
         <AdminRoute path="/user/:id/edit" component={UserEdit}></AdminRoute>
         <Route path="/" exact component={Homenew} />
