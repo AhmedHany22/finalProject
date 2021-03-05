@@ -1,7 +1,9 @@
 import "./Contact.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -9,43 +11,41 @@ const Contact = () => {
         <div className="row" >
           <div className="col-lg-5 col-sm-12 col-md-12 info">
             <i className="fas fa-quote-left"></i>
-            <h2>
-              The trouble with programmers is that you can never too late. The future belongs of person with.
-            </h2>
-            <p>
-              It would be great to hear from you! If you got any questions, please
-              do not hesitate to send us a message. We are looking forward to hearing
-              please do not hesitate to send us a message. It would be great to hear
-              from you! If you got any questions, please do not hesitate to send us a message.
+           <h2 dir="auto">
+           {t("question0")}
+</h2>
+
+            <p dir="auto">
+             {t("question")}
             </p>
-            <p>
-              We are looking forward to hearing please do not hesitate to send us a message.
-              We are looking forward to hearing from you!
+            <p dir="auto">
+            {t("question2")}
             </p>
-          </div>
+            </div>
           <div className="col-lg-7 col-sm-12 col-md-12">
             <div className="contact">
               <form action="" className="contact-form ">
-                <h1 className="contact-heading">contact us</h1>
+                <h1 className="contact-heading">{t("contact us")}</h1>
                 <div className="input-group">
-                  <label>full name *</label>
-                  <input type="text" className="contact-input" placeholder="Enter Your Name" />
+                  <label dir="auto" style={{textAlign: 'start'}}  >{t("full name")}</label>
+                  <input  dir="auto" style={{textAlign: 'start'}} type="text" className="contact-input  "/>
+
                 </div>
                 <div className="input-groups emaildisplay" >
                   <div className="input-group">
-                    <label>email *</label>
-                    <input type="email" className="contact-input" placeholder="Enter Your Email" />
+                    <label dir="auto" style={{textAlign: 'start'}}>{t("email *")}</label>
+                    <input  dir="auto" style={{textAlign: 'start'}} type="email" className="contact-input"  />
                   </div>
                   <div className="input-group">
-                    <label>phone*</label>
-                    <input type="text" className="contact-input" placeholder="Enter Phone Number" />
+                    <label>{t("phone*")}</label>
+                    <input type="text" className="contact-input"  />
                   </div>
                 </div>
                 <div className="input-group">
-                  <label>Message</label>
-                  <textarea placeholder="your Message Here...."cols="30"rows="10"className="form-textarea"></textarea>
+                  <label>{t("Message*")}</label>
+                  <textarea cols="30"rows="10"className="form-textarea"></textarea>
                 </div>
-                <input type="submit" value="submit" className="form-btn" />
+                <input type="submit" value={t("submit")} className="form-btn" />
               </form>
             </div>
           </div>
@@ -55,29 +55,29 @@ const Contact = () => {
         <div className="row address">
           <div className="col-12 my-auto px-4">
             <div>
-              <h2 className="mb-3">New york</h2>
+              <h2 className="mb-3">{t("Egypt")}</h2>
             </div>
             <div>
               <div className="row">
                 <div className="col-4">
                   <i className="fas fa-map-marked-alt"></i>
-                  <div className="addrText">
-                    <h5>ADDRESS</h5>
-                    <p>17504 Carlton Cuevas Rd, Gulfport, MS, 39503</p>
+                  <div className="addrText trans">
+                    <h5 dir="auto">{t("add")}</h5>
+                    <p dir="auto">{t("ADDRESS")}</p>
                   </div>
                 </div>
                 <div className="col-4 flex">
                   <i className="fas fa-mobile-alt ml-3"></i>
-                  <div className="addrText">
-                    <h5>PHONE</h5>
-                    <p>+(704) 279-1249</p>
+                  <div className="addrText trans">
+                    <h5 >{t("phone*")}</h5>
+                    <p dir="auto">+(002) 01143764536</p>
                   </div>
                 </div>
                 <div className="col-4 flex">
                   <i className="far fa-envelope"></i>
                   <div className="addrText">
-                    <h5>EMAIL</h5>
-                    <p>letstalk@webster.com</p>
+                    <h5>{t("email *")}</h5>
+                    <p >Techno@website.com</p>
                   </div>
                 </div>
               </div>
@@ -87,29 +87,29 @@ const Contact = () => {
         <div className="row address">
           <div className="col-12 my-auto px-4">
             <div>
-              <h2 className="mb-3">New york</h2>
+              <h2 className="mb-3">{t("Egypt")}</h2>
             </div>
             <div>
               <div className="row">
                 <div className="col-4">
                   <i className="fas fa-map-marked-alt"></i>
-                  <div className="addrText">
-                    <h5>ADDRESS</h5>
-                    <p>17504 Carlton Cuevas Rd, Gulfport, MS, 39503</p>
+                  <div className="addrText trans">
+                    <h5 dir="auto">{t("add")}</h5>
+                    <p dir="auto">{t("ADDRESS2")}</p>
                   </div>
                 </div>
                 <div className="col-4 flex">
                   <i className="fas fa-mobile-alt ml-3"></i>
-                  <div className="addrText">
-                    <h5>PHONE</h5>
-                    <p>+(704) 279-1249</p>
+                  <div className="addrText trans">
+                    <h5>{t("phone*")}</h5>
+                    <p dir="auto">+(002) 01143764536</p>
                   </div>
                 </div>
                 <div className="col-4 flex">
                   <i className="far fa-envelope"></i>
                   <div className="addrText">
-                    <h5>EMAIL</h5>
-                    <p>letstalk@webster.com</p>
+                    <h5>{t("email *")}</h5>
+                    <p>Techno@website.com</p>
                   </div>
                 </div>
               </div>

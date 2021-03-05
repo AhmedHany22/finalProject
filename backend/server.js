@@ -13,13 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Techno', {
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
-    useCreateIndex:true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
 });
-// app.get('/api/products',(req,res)=>{
-//     res.send(data.products)
-// })
 
 // app.get('/api/products/:id',(req,res)=>{
 //     const id=req.params.id
@@ -52,11 +49,11 @@ app.get('/',(req,res)=>{
     res.send('server is ready')
 })
 
-app.use((err,req,res,next)=>{
-    res.status(500).send({message:err.message});
+app.use((err, req, res, next) => {
+    res.status(500).send({ message: err.message });
 });
 
-const port=process.env.PORT || 5000;
-app.listen(port,()=>{
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
     console.log(`server at http://localhost:${port}`)
 })

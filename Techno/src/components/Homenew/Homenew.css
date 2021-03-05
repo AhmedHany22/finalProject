@@ -1,3 +1,9 @@
+#GFG { 
+  text-decoration: none; 
+} 
+.hight{
+  width:95% !important;
+}
 .backdround{
     background-image: url(../../assets/background.png);
     margin-top:100px;background-color: rgba(255,255,255,0.6);
@@ -68,6 +74,7 @@ position: relative;
   position: relative;
   text-align: center;
   color:#2B65EC
+  
 }
 
 
@@ -77,17 +84,19 @@ position: relative;
   position: absolute;
   top: 80px;
   left: 50px;
+  text-align: start !important;
 }
 .top-left3 {
   position: absolute;
   top: 160px;
   left: 50px;
+
 }
 
 
 
 .lookbook{
-    background-image: url(../../assets/4.jpg);
+    background-image: url(../../assets/bk3.jpg);
     height: 500px;
   background-position: center;
   background-repeat: no-repeat;
@@ -129,6 +138,7 @@ transform: translate(-5%, -5%);
 position: absolute;
 bottom: 8px;
 left: 16px;
+text-align: start !important;
 }
 .bottom-left1 {
 position: absolute;
@@ -174,7 +184,7 @@ grid-row-end: 9;
 }
 
 /* start of modal */
-.newCard {
+/* .newCard {
 width: 250px;
 border: 0 !important;
 border-radius: 0 !important ;}
@@ -289,10 +299,10 @@ margin-right: -90px; }
 .modal-content .fa-chevron-right {
 color: #333333;
 font-size: 16px; }
-/* end of modal */
+end of modal */
 
 
-.btn {
+.homebtn {
 background-color: #2B65EC;
 border-radius: 50px;
 width: 130px;

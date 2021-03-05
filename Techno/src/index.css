@@ -72,3 +72,26 @@ code {
   justify-content: center;
 }
 
+.search button {
+  border-radius: 0 0.5rem 0.5rem 0;
+  border-right: none;
+  margin-right: 0.5rem;
+}
+.search input {
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-right: none;
+  margin-left: 0.5rem;
+}
+
+.col-1{
+  flex:1 1 25rem;
+}
+.col-3{
+  flex:32 1 75rem;
+}
+.row.start{
+  justify-content: flex-start;
+}
+.p-1{
+  padding: 1rem;
+}

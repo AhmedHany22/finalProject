@@ -5,6 +5,7 @@ const orderSchema = new mongoose.Schema(
     orderItems: [
       {
         name: { type: String, required: true },
+        seller: { type: mongoose.Schema.Types.ObjectID, ref: 'User' },
         qty: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
@@ -41,6 +42,7 @@ const orderSchema = new mongoose.Schema(
     itemsQty: { type: Number, required: true },
     grandPrice: { type: Number, required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    seller: { type: mongoose.Schema.Types.ObjectID , ref: 'User'},
     isPaid: { type: Boolean, default: false },
     paidAt: { type: Date },
     isDelivered: { type: Boolean, default: false },
