@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 
 export default function AdminEditProducts(props) {
   const [name, setName] = useState('');
-  const [nameAr, setNameAr] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
@@ -34,7 +33,6 @@ export default function AdminEditProducts(props) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
       dispatch(detailsProducts(productId));
       setName(productDetails?.product?.data?.name);
-      setNameAr(productDetails?.product?.data?.nameAr);
       setPrice(productDetails?.product?.data?.price);
       setImage(productDetails?.product?.data?.image);
       setCategory(productDetails?.product?.data?.category);
@@ -52,7 +50,6 @@ export default function AdminEditProducts(props) {
       updateProduct({
         _id: productId,
         name,
-        nameAr,
         price,
         image,
         category,
@@ -85,10 +82,6 @@ export default function AdminEditProducts(props) {
                   <input id="name" className="form-control" type="text" placeholder={t("Enter name")} value={name} onChange={(e) => setName(e.target.value)}></input>
                 </div>
                 <div className="form-group">
-                  <label For="nameAr" dir="auto" style={{textAlign: 'end'}}><strong>{t("Arabic Name")}</strong></label>
-                  <input id="nameAr" className="form-control" type="text" placeholder={t("Enter name")} value={nameAr} onChange={(e) => setNameAr(e.target.value)}></input>
-                </div>
-                <div className="form-group">
                   <label For="price"><strong>{t("Price")}</strong></label>
                   <input id="price" className="form-control" type="text" placeholder={t("Enter price")} value={price} onChange={(e) => setPrice(e.target.value)}></input>
                 </div>
@@ -99,14 +92,6 @@ export default function AdminEditProducts(props) {
                 <div className="form-group">
                   <label For="category"><strong>{t("Category")}</strong></label>
                   <input id="category" className="form-control" type="text" placeholder={t("Enter category")} value={category} onChange={(e) => setCategory(e.target.value)}></input>
-                  <select class="form-control" id="category" placeholder={t("Enter category")} onChange={(e) => setCategory(e.target.value)}>
-                    <option>computer accessories</option>
-                    <option>computer pc</option>
-                    <option>laptop</option>
-                    <option>smart screen</option>
-                    <option>mobile phones</option>
-                    <option>computer parts</option>
-                  </select>
                 </div>
                 <div className="form-group">
                   <label For="brand"><strong>{t("Brand")}</strong></label>

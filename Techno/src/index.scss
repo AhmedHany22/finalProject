@@ -74,9 +74,9 @@ code {
 }
 
 .search button {
+  position: absolute;
   border-radius: 0 0.5rem 0.5rem 0;
   border-right: none;
-  margin-right: 0.5rem;
 }
 .search input {
   border-radius: 0.5rem 0 0 0.5rem;

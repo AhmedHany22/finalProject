@@ -2,8 +2,7 @@ import "./ProductDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import image from "../../../assets/4.jpg";
 import ProductItem from "../productItem/productItem";
-import data from '../../../data';
-import { useTranslation } from 'react-i18next';
+import data from '../../../data'
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { createReview, detailsProducts, listProducts } from "../../../store/actions/ProductActions";
@@ -14,7 +13,6 @@ import Rating from "../../Rating/Rating";
 import { Link } from "react-router-dom";
 
 const ProductDetail = (props) => {
-  const {t,i18n} = useTranslation();
   const dispatchList = useDispatch();
   const productList = useSelector((state) => state.productList)
   useEffect(() => { dispatchList(listProducts({})); }, []);
@@ -149,7 +147,7 @@ const ProductDetail = (props) => {
                   <div class="home">
                     <div class="head">
                       <a href="/">Home</a>/
-                <a href="/shop">{(i18n.language == "en") ? productDetails?.product?.data?.name : productDetails?.product?.data?.nameAr}</a>/ {productDetails?.product?.data?.description}
+                <a href="/shop">{productDetails?.product?.data?.name}</a>/ {productDetails?.product?.data?.description}
                     </div>
                     <h1 className="details">{productDetails?.product?.data?.name.toUpperCase()}</h1>
                     <div className="view">
@@ -161,13 +159,7 @@ const ProductDetail = (props) => {
                       <a href="#">{productDetails?.product?.data?.numReviews} Reviews</a>
                     </div>
                     <h2 className="paragraph">${productDetails?.product?.data?.discount ? productDetails?.product?.data?.price - productDetails?.product?.data?.discount : productDetails?.product?.data?.price}</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse varius enim in eros elementum tristique. Duis
-                      cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-                      commodo diam libero vitae erat. Aenean faucibus nibh et justo
-                      cursus id rutrum lorem imperdiet.
-              </p>
+                    <p>{productDetails?.product?.data?.description}</p>
                   </div>
                   <div id="addTo">
                     <a className="is-minus" onClick={decrement}>-</a>
@@ -185,7 +177,7 @@ const ProductDetail = (props) => {
                       <h4>Tags</h4>
                     </div>
                     <div class="info">82934
-                <br /><br />
+                      <br /><br />
                       <a href="/shop">Armhair</a>,{" "}
                       <a href="/shop">Wooden Leg</a>,{" "}
                       <a href="/shop">Satin</a>
@@ -253,13 +245,13 @@ const ProductDetail = (props) => {
                         erat a ante venenatis dapibus posuere velit aliquet.
                         Vestibulum id ligula porta felis euismod semper. Integer
                         posuere erat a ante venenatis dapibus posuere velit aliquet.
-                </p>
+                      </p>
                       <p>
                         Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac
                         facilisis in, egestas eget quam. Aenean eu leo quam.
                         Pellentesque ornare sem lacinia quam venenatis vestibulum.
                         Vestibulum id ligula porta felis euismod semper.
-                </p>
+                      </p>
                     </div>
                     <div id="menu1" className="tab-pane fade">
                       <div className="addInfo">
@@ -278,80 +270,41 @@ const ProductDetail = (props) => {
                       </div>
                     </div>
                     <div id="menu2" className="tab-pane fade">
-                      <div className="veiw1">
-                        <div className="info">
-                          <img src={image} alt="" />
-                          <div>
-                            <h4>Walter Cook</h4>
-                            <p>June 07, 2020</p>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star-half-alt"></i>
-                          </div>
-                          <span className="badge badge-light">Verified Buyer</span>
-                        </div>
+                      {productDetails?.product.reviews?.map((review) => {
+                        return(
 
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                          Suspendisse varius enim in eros elementum tristique. Duis
-                          cursus, mi quis viverra ornare, eros dolor interdum nulla,
-                          ut commodo diam libero vitae erat. Aenean faucibus nibh et
-                          justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
-                          risus tristique posuere. Maecenas faucibus mollis
-                          interdum.Praesent commodo cursus magna, vel scelerisque nisl
-                          consectetur et. Aenean lacinia bibendum
-                        </p>
-                      </div>
-                      <div className="veiw1">
-                        <div className="info">
-                          <img src={image} alt="" />
-                          <div>
-                            <h4>Sacha Kariono</h4>
-                            <p>June 27, 2020</p>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star-half-alt"></i>
+                        <div key={review._id} className="veiw1">
+                          <div className="info">
+                            <img src={image} alt="" />
+                            <div>
+                              <h4>{review.name}</h4>
+                              <p>{review.createdAt.substring(0, 10)}</p>
+                              <Rating rating={review.rating} caption=" "></Rating>
+                            </div>
+                            <span className="badge badge-light">Verified Buyer</span>
                           </div>
-                          <span className="badge badge-light">Verified Buyer</span>
-                        </div>
 
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                          Suspendisse varius enim in eros elementum tristique. Duis
-                          cursus, mi quis viverra ornare, eros dolor interdum nulla,
-                          ut commodo diam libero vitae erat. Aenean faucibus nibh et
-                          justo cursus id rutrum lorem imperdiet.
-                        </p>
-                      </div>
-                    
+                          <p>
+                            {review.comment}
+                          </p>
+                        </div>
+                        )}
+                      )}
                       <div>
-                        <h2 id="reviews">Reviews</h2>
                         {productDetails?.product?.reviews?.length === 0 && (
                           <MessageBox>There is no review</MessageBox>
                         )}
-                        <ul>
-                          {productDetails?.product.reviews?.map((review) => (
-                            <li key={review._id}>
-                              <strong>{review.name}</strong>
-                              <Rating rating={review.rating} caption=" "></Rating>
-                              <p>{review.createdAt.substring(0, 10)}</p>
-                              <p>{review.comment}</p>
-                            </li>
-                          ))}
-                          <li>
+                        
                             {userInfo ? (
-                              <form className="form" onSubmit={submitHandler}>
+                              <form className="form w-50" onSubmit={submitHandler}>
                                 <div>
                                   <h2>Write a customer review</h2>
                                 </div>
-                                <div>
+                                <div className="form-group">
                                   <label htmlFor="rating">Rating</label>
                                   <select
                                     id="rating"
+                                    className="form-control"
                                     value={rating}
                                     onChange={(e) => setRating(e.target.value)}
                                   >
@@ -363,19 +316,18 @@ const ProductDetail = (props) => {
                                     <option value="5">5- Excelent</option>
                                   </select>
                                 </div>
-                                <div>
+                                <div className="form-group">
                                   <label htmlFor="comment">Comment</label>
                                   <textarea
                                     id="comment"
+                                    className="form-control"
                                     value={comment}
                                     onChange={(e) => setComment(e.target.value)}
                                   ></textarea>
                                 </div>
-                                <div>
-                                  <label />
-                                  <button className="primary" type="submit">
-                                    Submit
-                                  </button>
+                                <div className="form-group text-center mb-5">
+                                  <label></label>
+                                  <button className="btn btn-warning w-50" type="submit"><strong>Submit</strong></button>
                                 </div>
                                 <div>
                                   {loadingReviewCreate && <LoadingBox></LoadingBox>}
@@ -391,8 +343,6 @@ const ProductDetail = (props) => {
                                 Please <Link to="/signin">Sign In</Link> to write a review
                               </MessageBox>
                             )}
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
@@ -405,7 +355,7 @@ const ProductDetail = (props) => {
                 <h2>Related products</h2>
               </div>
               <div className="row">
-                {productList?.products?.data?.slice(1, 5).map((product, index) => {
+                {productList?.products?.slice(1, 5).map((product, index) => {
                   return (
                     <div className="c-product-thumb" key={index}>
                       <ProductItem product={product} />
@@ -414,8 +364,8 @@ const ProductDetail = (props) => {
                 })}
               </div>
             </div>
-          </div>)}
-
+          </div>
+        )}
     </>
   );
 };
