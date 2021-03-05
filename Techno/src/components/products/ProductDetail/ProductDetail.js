@@ -35,7 +35,7 @@ const ProductDetail = (props) => {
   const productId = props.match.params.id;
   const dispatch = useDispatch();
   const productDetails = useSelector(state => state.productDetails);
-  useEffect(() => { 
+  useEffect(() => {
     if (successReviewCreate) {
       window.alert('Review Submitted Successfully');
       setRating('');
@@ -68,9 +68,9 @@ const ProductDetail = (props) => {
   return (
     <>
 
-    {productDetails.loading?<LoadingBox/>
-    :
-    productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
+      {productDetails.loading?<LoadingBox/>
+      :
+        productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
 
         : (
           <div className="section">
@@ -149,9 +149,12 @@ const ProductDetail = (props) => {
                   <div class="home">
                     <div class="head">
                       <a href="/">Home</a>/
-                <a href="/shop">{(i18n.language == "en") ? productDetails?.product?.data?.name : productDetails?.product?.data?.nameAr}</a>/ {productDetails?.product?.data?.description}
+                      <a href="/shop">
+                        {(i18n.language == "en") ? productDetails?.product?.data?.name.toUpperCase() : productDetails?.product?.data?.nameAr}
+                      </a>/
+                      {(i18n.language == "en") ? productDetails?.product?.data?.description.toUpperCase() : productDetails?.product?.data?.descriptionAr}
                     </div>
-                    <h1 className="details">{productDetails?.product?.data?.name.toUpperCase()}</h1>
+                    <h1 className="details">{(i18n.language == "en") ? productDetails?.product?.data?.name.toUpperCase() : productDetails?.product?.data?.nameAr}</h1>
                     <div className="view">
                       <i className="fas fa-star"></i>
                       <i className="fas fa-star"></i>
@@ -327,7 +330,7 @@ const ProductDetail = (props) => {
                           justo cursus id rutrum lorem imperdiet.
                         </p>
                       </div>
-                    
+
                       <div>
                         <h2 id="reviews">Reviews</h2>
                         {productDetails?.product?.reviews?.length === 0 && (
