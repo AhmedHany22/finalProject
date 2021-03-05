@@ -174,38 +174,38 @@ const ProductDetail = (props) => {
                     <input className="quantity-input" type="text" value={counter} />
                     <a className="quantity-button is-plus" onClick={increment}>+</a>
                     <a className="btnCard" onClick={addToCartHandler}>
-                      <div>ADD TO CARD</div>
+                      <div>{t("ADD TO CARD")}</div>
                     </a>
                   </div>
                   <hr />
                   <div className="layout">
                     <div>
-                      <h4>SKU</h4>
-                      <h4>Categories</h4>
-                      <h4>Tags</h4>
+                      <h4>{t("SKU")}</h4>
+                      <h4>{t("Categories")}</h4>
+                      <h4>{t("Tags")}</h4>
                     </div>
                     <div class="info">82934
                 <br /><br />
-                      <a href="/shop">Armhair</a>,{" "}
-                      <a href="/shop">Wooden Leg</a>,{" "}
-                      <a href="/shop">Satin</a>
+                      <a href="/shop">{t("Computer Accessories")}</a>,{" "}
+                      <a href="/shop">{t("Smart Screen")}</a>,{" "}
+                      <a href="/shop">{t("Electronic")}</a>
                       <br /><br />
-                      <a href="/shop">Tosca</a>,{" "}
-                      <a href="/shop">Living Room</a>,{" "}
-                      <a href="/shop">Modern</a>
+                      <a href="/shop">{t("laptop")}</a>,{" "}
+                      <a href="/shop">{t("Camera")}</a>,{" "}
+                      <a href="/shop">{t("Mobile")}</a>
                     </div>
                   </div>
                   <hr />
                   <div class="delivery">
-                    <a href="" class="fas fa-map-marker-alt">{" "}Store availability</a>
-                    <a href="" class="fas fa-sync-alt">{" "}Delivery and return</a>
-                    <a href="/contact" class="fas fa-comments">{" "}Ask a question</a>
+                    <a href="" class="fas fa-map-marker-alt">{" "}{t("Store availability")}</a>
+                    <a href="" class="fas fa-sync-alt">{" "}{t("Delivery and return")}</a>
+                    <a href="/contact" class="fas fa-comments">{" "}{t("Ask a question")}</a>
                   </div>
                   <hr />
                   <div class="share">
-                    <a href="/shoppingCart" class="far fa-heart">&nbsp; Add to wishlist</a>
+                    <a href="/shoppingCart" class="far fa-heart">&nbsp; {t("Add to wishlist")}</a>
                     <div>
-                      <p className="share">Share</p>
+                      <p className="share">{t("Share")}</p>
                       <a
                         href="https://www.facebook.com/"
                         className="fab fa-facebook-f"
@@ -230,51 +230,44 @@ const ProductDetail = (props) => {
                     <ul className="nav nav-tabs">
                       <li className="active">
                         <a data-toggle="tab" href="#home">
-                          Description
+                          {t("Description")}
                   </a>
                       </li>
                       <li>
                         <a data-toggle="tab" href="#menu1">
-                          Additional Information
+                         {t("Additional Information")}
                   </a>
                       </li>
                       <li>
                         <a data-toggle="tab" href="#menu2">
-                          Reviews ({productDetails?.product?.data?.numReviews})
+                        {t("Reviews")} ({productDetails?.product?.data?.numReviews})
                   </a>
                       </li>
                     </ul>
                   </div>
                   <div className="tab-content">
                     <div id="home" className="tab-pane active">
-                      <p>
-                        Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel
-                        augue laoreet rutrum faucibus dolor auctor. Integer posuere
-                        erat a ante venenatis dapibus posuere velit aliquet.
-                        Vestibulum id ligula porta felis euismod semper. Integer
-                        posuere erat a ante venenatis dapibus posuere velit aliquet.
+                      <p dir="auto" style={{textAlign: 'start'}}>
+                     {t("aboutp2")}
                 </p>
-                      <p>
-                        Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac
-                        facilisis in, egestas eget quam. Aenean eu leo quam.
-                        Pellentesque ornare sem lacinia quam venenatis vestibulum.
-                        Vestibulum id ligula porta felis euismod semper.
+                      <p dir="auto" style={{textAlign: 'start'}}>
+                      {t("aboutp2")}
                 </p>
                     </div>
                     <div id="menu1" className="tab-pane fade">
                       <div className="addInfo">
-                        <p>Ram</p>
-                        <p>Screen Resolution </p>
-                        <p>Storage</p>
-                        <p>Battery</p>
-                        <p>Color</p>
+                        <p> {t("Ram")}</p>
+                        <p> {t("Screen Resolution")} </p>
+                        <p> {t("Storage")}</p>
+                        <p> {t("Battery")}</p>
+                        <p> {t("Color")}</p>
                       </div>
                       <div>
-                        <p>8G</p>
-                        <p>Full HD </p>
-                        <p>500G</p>
-                        <p>10 Hours</p>
-                        <p>Black, seliver, White</p>
+                        <p> {t("8G")}</p>
+                        <p>  {t("Full HD")}</p>
+                        <p> {t("500G")}</p>
+                        <p> {t("10 Hours")}</p>
+                        <p> {t("Black, seliver, White")}</p>
                       </div>
                     </div>
                     <div id="menu2" className="tab-pane fade">
@@ -290,7 +283,7 @@ const ProductDetail = (props) => {
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star-half-alt"></i>
                           </div>
-                          <span className="badge badge-light">Verified Buyer</span>
+                          <span className="badge badge-light">{t("Verified Buyer")}</span>
                         </div>
 
                         <p>
@@ -316,20 +309,16 @@ const ProductDetail = (props) => {
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star-half-alt"></i>
                           </div>
-                          <span className="badge badge-light">Verified Buyer</span>
+                          <span className="badge badge-light">{t("Verified Buyer")}</span>
                         </div>
 
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                          Suspendisse varius enim in eros elementum tristique. Duis
-                          cursus, mi quis viverra ornare, eros dolor interdum nulla,
-                          ut commodo diam libero vitae erat. Aenean faucibus nibh et
-                          justo cursus id rutrum lorem imperdiet.
+                        https://docs.google.com/spreadsheets/d/1gJjIijXKXTiCo4BL1rEq7pGnDLsyvWtPJtSVWz5F6iw/edit#gid=0
                         </p>
                       </div>
                     
                       <div>
-                        <h2 id="reviews">Reviews</h2>
+                        <h2 id="reviews">{t("Reviews")}</h2>
                         {productDetails?.product?.reviews?.length === 0 && (
                           <MessageBox>There is no review</MessageBox>
                         )}
@@ -346,25 +335,25 @@ const ProductDetail = (props) => {
                             {userInfo ? (
                               <form className="form" onSubmit={submitHandler}>
                                 <div>
-                                  <h2>Write a customer review</h2>
+                                  <h2>{t("Write a customer review")}</h2>
                                 </div>
                                 <div>
-                                  <label htmlFor="rating">Rating</label>
+                                  <label htmlFor="rating">{t("Rating")}</label>
                                   <select
                                     id="rating"
                                     value={rating}
                                     onChange={(e) => setRating(e.target.value)}
                                   >
-                                    <option value="">Select...</option>
-                                    <option value="1">1- Poor</option>
-                                    <option value="2">2- Fair</option>
-                                    <option value="3">3- Good</option>
-                                    <option value="4">4- Very good</option>
-                                    <option value="5">5- Excelent</option>
+                                    <option value="">{t("Select...")}</option>
+                                    <option value="1">1- {t("Poor")}</option>
+                                    <option value="2">2- {t("Fair")}</option>
+                                    <option value="3">3- {t("Good")}</option>
+                                    <option value="4">4- {t("Very good")}</option>
+                                    <option value="5">5- {t("Excelent")}</option>
                                   </select>
                                 </div>
                                 <div>
-                                  <label htmlFor="comment">Comment</label>
+                                  <label htmlFor="comment">{t("Comment")}</label>
                                   <textarea
                                     id="comment"
                                     value={comment}
@@ -374,7 +363,7 @@ const ProductDetail = (props) => {
                                 <div>
                                   <label />
                                   <button className="primary" type="submit">
-                                    Submit
+                                  {t("submit")}
                                   </button>
                                 </div>
                                 <div>
@@ -402,7 +391,7 @@ const ProductDetail = (props) => {
             <hr />
             <div className="container destance ">
               <div className="row rProudt ">
-                <h2>Related products</h2>
+                <h2>{t("Related products")}</h2>
               </div>
               <div className="row">
                 {productList?.products?.data?.slice(1, 5).map((product, index) => {
