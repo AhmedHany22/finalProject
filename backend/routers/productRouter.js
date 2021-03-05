@@ -52,8 +52,11 @@ productRouter.post(
       seller: req.user._id,
       image: '../assets/Products/pro-1.jpg',
       brand: 'sample brand',
+      brandAr: 'نموذج براند',
       category: 'sample category',
+      categoryAr: 'نموذج الفئة',
       description: 'sample description',
+      descriptionAr: 'نموذج وصف',
       price: 0,
       discount: 0,
       countInStock: 0,
@@ -82,9 +85,12 @@ productRouter.put(
       product.price = req.body.price;
       product.image = req.body.image;
       product.category = req.body.category;
+      product.categoryAr = req.body.categoryAr;
       product.brand = req.body.brand;
+      product.brandAr = req.body.brandAr;
       product.countInStock = req.body.countInStock;
       product.description = req.body.description;
+      product.descriptionAr = req.body.descriptionAr;
       const updatedProduct = await product.save();
       res.send({ message: 'Product Updated', product: updatedProduct });
     } else {
@@ -140,8 +146,8 @@ productRouter.post(
       product.reviews.push(review);
       product.numReviews = product.reviews.length;
       product.rating =
-        product.reviews.reduce((a, c) => c.rating + a, 0) /
-        product.reviews.length;
+      product.reviews.reduce((a, c) => c.rating + a, 0) /
+      product.reviews.length;
       const updatedProduct = await product.save();
       res.status(201).send({
         message: 'Review Created',

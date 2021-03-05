@@ -2,7 +2,7 @@ import "./ProductDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import image from "../../../assets/4.jpg";
 import ProductItem from "../productItem/productItem";
-import data from '../../../data'
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { createReview, detailsProducts, listProducts } from "../../../store/actions/ProductActions";
@@ -13,6 +13,7 @@ import Rating from "../../Rating/Rating";
 import { Link } from "react-router-dom";
 
 const ProductDetail = (props) => {
+  const { t, i18n } = useTranslation();
   const dispatchList = useDispatch();
   const productList = useSelector((state) => state.productList)
   useEffect(() => { dispatchList(listProducts({})); }, []);
@@ -33,7 +34,7 @@ const ProductDetail = (props) => {
   const productId = props.match.params.id;
   const dispatch = useDispatch();
   const productDetails = useSelector(state => state.productDetails);
-  useEffect(() => { 
+  useEffect(() => {
     if (successReviewCreate) {
       window.alert('Review Submitted Successfully');
       setRating('');
@@ -66,9 +67,9 @@ const ProductDetail = (props) => {
   return (
     <>
 
-    {productDetails.loading?<LoadingBox/>
-    :
-    productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
+      {productDetails.loading?<LoadingBox/>
+      :
+        productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
 
         : (
           <div className="section">
@@ -147,9 +148,12 @@ const ProductDetail = (props) => {
                   <div class="home">
                     <div class="head">
                       <a href="/">Home</a>/
-                <a href="/shop">{productDetails?.product?.data?.name}</a>/ {productDetails?.product?.data?.description}
+                      <a href="/shop">
+                        {(i18n.language == "en") ? productDetails?.product?.data?.name.toUpperCase() : productDetails?.product?.data?.nameAr}
+                      </a>/
+                      {(i18n.language == "en") ? productDetails?.product?.data?.description.toUpperCase() : productDetails?.product?.data?.descriptionAr}
                     </div>
-                    <h1 className="details">{productDetails?.product?.data?.name.toUpperCase()}</h1>
+                    <h1 className="details">{(i18n.language == "en") ? productDetails?.product?.data?.name.toUpperCase() : productDetails?.product?.data?.nameAr}</h1>
                     <div className="view">
                       <i className="fas fa-star"></i>
                       <i className="fas fa-star"></i>
@@ -159,45 +163,47 @@ const ProductDetail = (props) => {
                       <a href="#">{productDetails?.product?.data?.numReviews} Reviews</a>
                     </div>
                     <h2 className="paragraph">${productDetails?.product?.data?.discount ? productDetails?.product?.data?.price - productDetails?.product?.data?.discount : productDetails?.product?.data?.price}</h2>
-                    <p>{productDetails?.product?.data?.description}</p>
+                    <p>
+                      {(i18n.language == "en") ? productDetails?.product?.data?.description.toUpperCase() : productDetails?.product?.data?.descriptionAr}
+                    </p>
                   </div>
                   <div id="addTo">
                     <a className="is-minus" onClick={decrement}>-</a>
                     <input className="quantity-input" type="text" value={counter} />
                     <a className="quantity-button is-plus" onClick={increment}>+</a>
                     <a className="btnCard" onClick={addToCartHandler}>
-                      <div>ADD TO CARD</div>
+                      <div>{t("ADD TO CARD")}</div>
                     </a>
                   </div>
                   <hr />
                   <div className="layout">
                     <div>
-                      <h4>SKU</h4>
-                      <h4>Categories</h4>
-                      <h4>Tags</h4>
+                      <h4>{t("SKU")}</h4>
+                      <h4>{t("Categories")}</h4>
+                      <h4>{t("Tags")}</h4>
                     </div>
                     <div class="info">82934
+                <br /><br />
+                      <a href="/shop">{t("Computer Accessories")}</a>,{" "}
+                      <a href="/shop">{t("Smart Screen")}</a>,{" "}
+                      <a href="/shop">{t("Electronic")}</a>
                       <br /><br />
-                      <a href="/shop">Armhair</a>,{" "}
-                      <a href="/shop">Wooden Leg</a>,{" "}
-                      <a href="/shop">Satin</a>
-                      <br /><br />
-                      <a href="/shop">Tosca</a>,{" "}
-                      <a href="/shop">Living Room</a>,{" "}
-                      <a href="/shop">Modern</a>
+                      <a href="/shop">{t("laptop")}</a>,{" "}
+                      <a href="/shop">{t("Camera")}</a>,{" "}
+                      <a href="/shop">{t("Mobile")}</a>
                     </div>
                   </div>
                   <hr />
                   <div class="delivery">
-                    <a href="" class="fas fa-map-marker-alt">{" "}Store availability</a>
-                    <a href="" class="fas fa-sync-alt">{" "}Delivery and return</a>
-                    <a href="/contact" class="fas fa-comments">{" "}Ask a question</a>
+                    <a href="" class="fas fa-map-marker-alt">{" "}{t("Store availability")}</a>
+                    <a href="" class="fas fa-sync-alt">{" "}{t("Delivery and return")}</a>
+                    <a href="/contact" class="fas fa-comments">{" "}{t("Ask a question")}</a>
                   </div>
                   <hr />
                   <div class="share">
-                    <a href="/shoppingCart" class="far fa-heart">&nbsp; Add to wishlist</a>
+                    <a href="/shoppingCart" class="far fa-heart">&nbsp; {t("Add to wishlist")}</a>
                     <div>
-                      <p className="share">Share</p>
+                      <p className="share">{t("Share")}</p>
                       <a
                         href="https://www.facebook.com/"
                         className="fab fa-facebook-f"
@@ -222,51 +228,44 @@ const ProductDetail = (props) => {
                     <ul className="nav nav-tabs">
                       <li className="active">
                         <a data-toggle="tab" href="#home">
-                          Description
+                          {t("Description")}
                   </a>
                       </li>
                       <li>
                         <a data-toggle="tab" href="#menu1">
-                          Additional Information
+                         {t("Additional Information")}
                   </a>
                       </li>
                       <li>
                         <a data-toggle="tab" href="#menu2">
-                          Reviews ({productDetails?.product?.data?.numReviews})
+                        {t("Reviews")} ({productDetails?.product?.data?.numReviews})
                   </a>
                       </li>
                     </ul>
                   </div>
                   <div className="tab-content">
                     <div id="home" className="tab-pane active">
-                      <p>
-                        Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel
-                        augue laoreet rutrum faucibus dolor auctor. Integer posuere
-                        erat a ante venenatis dapibus posuere velit aliquet.
-                        Vestibulum id ligula porta felis euismod semper. Integer
-                        posuere erat a ante venenatis dapibus posuere velit aliquet.
-                      </p>
-                      <p>
-                        Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac
-                        facilisis in, egestas eget quam. Aenean eu leo quam.
-                        Pellentesque ornare sem lacinia quam venenatis vestibulum.
-                        Vestibulum id ligula porta felis euismod semper.
-                      </p>
+                      <p dir="auto" style={{textAlign: 'start'}}>
+                     {t("aboutp2")}
+                </p>
+                      <p dir="auto" style={{textAlign: 'start'}}>
+                      {t("aboutp2")}
+                </p>
                     </div>
                     <div id="menu1" className="tab-pane fade">
                       <div className="addInfo">
-                        <p>Ram</p>
-                        <p>Screen Resolution </p>
-                        <p>Storage</p>
-                        <p>Battery</p>
-                        <p>Color</p>
+                        <p> {t("Ram")}</p>
+                        <p> {t("Screen Resolution")} </p>
+                        <p> {t("Storage")}</p>
+                        <p> {t("Battery")}</p>
+                        <p> {t("Color")}</p>
                       </div>
                       <div>
-                        <p>8G</p>
-                        <p>Full HD </p>
-                        <p>500G</p>
-                        <p>10 Hours</p>
-                        <p>Black, seliver, White</p>
+                        <p> {t("8G")}</p>
+                        <p>  {t("Full HD")}</p>
+                        <p> {t("500G")}</p>
+                        <p> {t("10 Hours")}</p>
+                        <p> {t("Black, seliver, White")}</p>
                       </div>
                     </div>
                     <div id="menu2" className="tab-pane fade">
@@ -281,7 +280,7 @@ const ProductDetail = (props) => {
                               <p>{review.createdAt.substring(0, 10)}</p>
                               <Rating rating={review.rating} caption=" "></Rating>
                             </div>
-                            <span className="badge badge-light">Verified Buyer</span>
+                            <span className="badge badge-light">{t("Verified Buyer")}</span>
                           </div>
 
                           <p>
@@ -295,29 +294,29 @@ const ProductDetail = (props) => {
                           <MessageBox>There is no review</MessageBox>
                         )}
                         
-                            {userInfo ? (
+                        {userInfo ? (
                               <form className="form w-50" onSubmit={submitHandler}>
                                 <div>
-                                  <h2>Write a customer review</h2>
+                                  <h2>{t("Write a customer review")}</h2>
                                 </div>
                                 <div className="form-group">
-                                  <label htmlFor="rating">Rating</label>
+                                  <label htmlFor="rating">{t("Rating")}</label>
                                   <select
                                     id="rating"
                                     className="form-control"
                                     value={rating}
                                     onChange={(e) => setRating(e.target.value)}
                                   >
-                                    <option value="">Select...</option>
-                                    <option value="1">1- Poor</option>
-                                    <option value="2">2- Fair</option>
-                                    <option value="3">3- Good</option>
-                                    <option value="4">4- Very good</option>
-                                    <option value="5">5- Excelent</option>
+                                    <option value="">{t("Select...")}</option>
+                                    <option value="1">1- {t("Poor")}</option>
+                                    <option value="2">2- {t("Fair")}</option>
+                                    <option value="3">3- {t("Good")}</option>
+                                    <option value="4">4- {t("Very good")}</option>
+                                    <option value="5">5- {t("Excelent")}</option>
                                   </select>
                                 </div>
                                 <div className="form-group">
-                                  <label htmlFor="comment">Comment</label>
+                                  <label htmlFor="comment">{t("Comment")}</label>
                                   <textarea
                                     id="comment"
                                     className="form-control"
@@ -327,7 +326,7 @@ const ProductDetail = (props) => {
                                 </div>
                                 <div className="form-group text-center mb-5">
                                   <label></label>
-                                  <button className="btn btn-warning w-50" type="submit"><strong>Submit</strong></button>
+                                  <button className="btn btn-warning w-50" type="submit"><strong>{t("submit")}</strong></button>
                                 </div>
                                 <div>
                                   {loadingReviewCreate && <LoadingBox></LoadingBox>}
@@ -352,7 +351,7 @@ const ProductDetail = (props) => {
             <hr />
             <div className="container destance ">
               <div className="row rProudt ">
-                <h2>Related products</h2>
+                <h2>{t("Related products")}</h2>
               </div>
               <div className="row">
                 {productList?.products?.slice(1, 5).map((product, index) => {

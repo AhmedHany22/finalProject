@@ -13,7 +13,8 @@ import { Navbar } from 'react-bootstrap';
 
 const changeLanguage =(ln) =>{
   return()=>{
-    i18n.changeLanguage(ln);
+   i18n.changeLanguage(localStorage.getItem('lang'))
+    localStorage.setItem('lang', ln);
     console.log(`language changed to ${ln}`)
   }
 }

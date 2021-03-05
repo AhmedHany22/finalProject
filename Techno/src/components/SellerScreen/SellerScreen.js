@@ -4,6 +4,8 @@ import { detailsUser } from '../../store/actions/userActions'
 import { listProducts } from '../../store/actions/ProductActions'
 import Rating from '../Rating/Rating'
 import MessageBox from '../MessageBox';
+import LoadingBox from '../LoadingBox';
+
 import ProductItem from '../products/productItem/productItem'
 export default function SellerScreen(props) {
     const sellerId = props.match.params.id;
@@ -61,9 +63,15 @@ export default function SellerScreen(props) {
                             <>
                                 {products.length === 0 && (<MessageBox>No Product Found</MessageBox>)}
                                 <div className="row center">
-                                    {products.map((product) => (
-                                        <ProductItem Key={product._id} product={product}></ProductItem>
-                                    ))}
+                                {productList?.products?.data?.slice(1, 5).map((product, index) => {
+                                    return (
+                                      <div className="c-product-thumb" key={index}>
+                                        <ProductItem product={product} />
+                                      </div>
+                                    )
+                                  })}
+                                    
+
                                 </div>
                             </>
                         )}

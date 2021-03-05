@@ -72,6 +72,7 @@
     "Company":"الشركة",
     "Contact":"اتصل بنا",
     "Category":"الفئات",
+    "CategoryAr":"الفئات بالعربية",
     "Computer pc":"الكمبيوتر",
     "Accessories":"اكسسوارات الكمبيوتر",
     "Smart screen":"شاشات ذكية",
@@ -81,9 +82,9 @@
     "comment4":"checkout",
     "Checkout":"الدفع",
     "Billing Address":"عـنــوان الفــاتــورة",
-    "Shipping Method":"طــريــقـة الـشـحـن",
+    "Shipping Method":"طــريــقــــة الـشـحــــن",
     "Payment Method":"طـــريــقـــة الــــدفــــع",
-    "Orders Review":" مـراجـعـة الطــلــب",
+    "Orders Review":" مـراجــعـــــة الطــلــب",
     "Billing Details":"تـفـاصـيـل الفـاتـورة",
     "FirstName:":"الاسم الاول",
     "LastName:":"اسم العائلة",
@@ -154,6 +155,7 @@
     "PRICE":"السعر",
     "CATEGORY":"الفئة",
     "Brand":"الماركة",
+    "BrandAr":"الماركة بالعربيه",
     "ACTIONS":"حالة المنتج",
     "Edit":"تعديل",
     "Delete":"حذف",
@@ -205,18 +207,85 @@
     "Enter price":"ادخل السعر",
     "Enter image":"ادخل الصورة",
     "Enter category":"ادخل الفئة",
+    "Enter categoryAr":"ادخل الفئة بالعربيه",
     "Enter brand":"ادخل الماركة",
+    "Enter brandAr":"ادخل الماركة بالعربيه",
     "Count In Stock":"العدد فى المخزن",
     "Enter countInStock":"ادخل العدد فى المخزن",
     "Description":"الوصف",
+    "DescriptionAr":"الوصف بالعربيه",
     "Enter description":"ادخل الوصف" ,
+    "Enter descriptionAr":"ادخل الوصف بالعربيه" ,
     "Enter discount":"ادخل الخصم",
     "Deliver Order":"أطلب",
     "user Details":"تفاصيل المستخدم",
     "Is Seller":"بائع؟",
     "Is Admin":"أدمن؟",
     "Continue with Google":"المتابعة بجوجل",
-    "Users List" :"قائمة المستخدمين"
+    "Users List" :"قائمة المستخدمين",
+    "ADD TO CARD":"أضف الى العربة",
+    "Categories":"الفئات",
+    "Computer Accessories":"اكسسوارات الموبايل",
+    "Smart Screen":"الشاشات الذكية",
+    "Electronic":"الالكترونيات",
+    "laptop":"لاب توب",
+    "Camera":"كاميرا",
+    "Mobile":"موبايل",
+    "Tags":"التاجات",
+    "SKU":"وحدة حفظ المخزون",
+    "Store availability":"المتاح فى المخزن",
+    "Delivery and return":"التوصيل واعادد الشحن",
+    "Ask a question":"اسالنا",
+    "Add to wishlist":"أضف لقائمة الأمنيات",
+    "Share":"شارك",
+    "Additional Information":"معلومات اضافية",
+    "Reviews":"التقيمات",
+    "Ram":"سعة الذاكرة",
+    "8G":" 8 جيجابايت",
+    "Screen Resolution":"دقة الشاشة",
+    "Storage":"الذاكرة",
+    "Battery":"لبطارية",
+    "Color":"اللون",
+    "Full HD":"دقة عالية الجودة",
+    "500G":"500 جيجا بايت",
+    "10 Hours":"10 ساعات",
+    "Black, seliver, White":"اسود فضى ابيض",
+    "Verified Buyer":"مشترى معتمد",
+    "Write a customer review":"اكتب تقييم المشترى",
+    "Rating":"التقييم",
+    "Poor":"ضعيف",
+    "Fair":"مقبول",
+    "Good":"جيد",
+    "Very good":"جيد جدا",
+    "Excelent":"ممتاز",
+    "Select...":"...اختار",
+    "Comment":"تعليق",
+    "Related products":" منتجات ذات صلة"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

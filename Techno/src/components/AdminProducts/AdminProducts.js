@@ -84,8 +84,8 @@ export default function ProductListScreen(props) {
                     <td>{product._id}</td>
                     <td>{(i18n.language == "en") ? product.name : product.nameAr}</td>
                     <td>{product.price}</td>
-                    <td>{product.category}</td>
-                    <td>{product.brand}</td>
+                    <td>{(i18n.language == "en") ? product.category : product.categoryAr}</td>
+                    <td>{(i18n.language == "en") ? product.brand : product.brandAr}</td>
                     <td>
                       <button type="button" className="btn btn-primary mr-2"onClick={()=>props.history.push(`/product/${product._id}/edit`)}>{t("Edit")}</button>
                       <button type="button" className="btn btn-danger" onClick={() => deleteHandler(product)}>{t("Delete")}</button>

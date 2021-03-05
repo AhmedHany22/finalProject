@@ -18,7 +18,7 @@ i18n
 .use(initReactI18next)
 .init({
     resources,
-    lng: 'ar',
+    lng:localStorage.getItem('lang'),
 
     keySeparator :false, //we do not use keys in from messages,welcome
 
