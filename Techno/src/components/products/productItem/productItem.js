@@ -6,9 +6,10 @@ import data from '../../../data';
 
 export default function ProductItem(props) {
   let discountPresent = 10;
-  const { product }  = props;
+  const { product } = props;
   const category = data.category;
   console.log(product);
+
   if (product) { discountPresent = Math.round((product.discount / product.price) * 100); }
 
   return (
@@ -26,16 +27,16 @@ export default function ProductItem(props) {
             <Rating rating={product.rating} numReviews={product.numReviews}></Rating>
             <a className="fa fa-eye float-right text-secondary mr-2 mt-2"></a>
           </div>
-          <hr/>
-      <div className="row">
-      <p>${product ? product.price - product.discount : 2000}{" "}<span>${product ? product.price : 2500}</span></p>
-      <link to={`/seller/${product?.seller?._id}`}>
-      {product?.seller?.name}
-        </link>
-      </div>
+          <hr />
+          <div className="row">
+            <p>${product ? product.price - product.discount : 2000}{" "}<span>${product ? product.price : 2500}</span></p>
+            <link to={`/seller/${product?.seller?.seller?._id}`}>
+              {product?.seller?.seller?.name}
+            </link>
           </div>
+        </div>
       </div>
     </div>
 
-    )
+  )
 }
