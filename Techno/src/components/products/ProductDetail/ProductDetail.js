@@ -2,7 +2,8 @@ import "./ProductDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import image from "../../../assets/4.jpg";
 import ProductItem from "../productItem/productItem";
-import data from '../../../data'
+import data from '../../../data';
+import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { detailsProducts, listProducts } from "../../../store/actions/ProductActions";
@@ -13,14 +14,12 @@ const ProductDetail = (props) => {
   const dispatchList = useDispatch();
   const productList = useSelector((state) => state.productList)
   useEffect(() => { dispatchList(listProducts({})); }, []);
-
   console.log(productList.products);
-
+  const {t,i18n} = useTranslation();
   const productId = props.match.params.id;
   const dispatch = useDispatch();
   const productDetails = useSelector(state => state.productDetails);
   useEffect(() => { dispatch(detailsProducts(productId)) }, [dispatch, productId]);
-
   const [counter, setCounter] = useState(1);
   const increment = () => { setCounter(counter + 1) };
   const decrement = () => { counter > 1 ? setCounter(counter - 1) : setCounter(counter) };
@@ -113,7 +112,7 @@ const ProductDetail = (props) => {
                   <div class="home">
                     <div class="head">
                       <a href="/">Home</a>/
-                <a href="/shop">{productDetails?.product?.data?.name}</a>/ {productDetails?.product?.data?.description}
+                <a href="/shop">{(i18n.language == "en") ? productDetails?.product?.data?.name : productDetails?.product?.data?.nameAr}</a>/ {productDetails?.product?.data?.description}
                     </div>
                     <h1 className="details">{productDetails?.product?.data?.description.toUpperCase()}</h1>
                     <div className="view">
