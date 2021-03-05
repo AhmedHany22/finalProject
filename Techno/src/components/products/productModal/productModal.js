@@ -1,109 +1,88 @@
-export default function productModal(){
-    return(
-        <div className="modal fade" id="myModal">
-        <div className="modal-dialog modal-xl">
-          <div className="modal-content">
-            <button type="button" className="close" data-dismiss="modal">
-              &times;
-            </button>
-            <div className="modal-body">
-              <div className="container">
-                <div className="row d-flex align-items-center" className="first">
-                  <div
-                    className="col-6 col-sm-12 col-lg-6 justify-content-center"
-                    className="second"
-                  >
-                    <div id="myCarousel" className="carousel slide">
-                      <div className="carousel-inner">
-                        <div className="carousel-item active">
-                          {" "}
-                          <img src={image} />{" "}
-                        </div>
-                        <div className="carousel-item">
-                          {" "}
-                          <img src={image} />{" "}
-                        </div>
-                        <div className="carousel-item">
-                          {" "}
-                          <img src={image} />{" "}
-                        </div>
-                        <div className="carousel-item">
-                          {" "}
-                          <img src={image} />{" "}
-                        </div>
-                        <div className="carousel-item">
-                          {" "}
-                          <img src={image} />{" "}
-                        </div>
-                        <div className="carousel-item">
-                          {" "}
-                          <img src={image} />{" "}
-                        </div>
-                      </div>
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { detailsProducts } from "../../../store/actions/ProductActions";
+import LoadingBox from "../../LoadingBox";
+import MessageBox from "../../MessageBox";
+import Rating from "../../Rating/Rating";
 
-                      <ol className="carousel-indicators">
-                        <li
-                          data-target="#myCarousel"
-                          data-slide-to="0"
-                          className="active"
-                        ></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                        <li data-target="#myCarousel" data-slide-to="3"></li>
-                        <li data-target="#myCarousel" data-slide-to="4"></li>
-                        <li data-target="#myCarousel" data-slide-to="5"></li>
-                      </ol>
+export default function ProductModal(props){
+  const { product }  = props;
+  const productId=product?._id;
+  console.log(product);
+  const [counter, setCounter] = useState(1);
+  const increment =()=> {setCounter(counter +1)};
+  const decrement =()=> { counter > 1? setCounter(counter -1):setCounter(counter)};
 
-                      <a
-                        className="carousel-control-prev"
-                        href="#myCarousel"
-                        role="button"
-                        data-slide="prev"
-                      >
-                        <span className="fas fa-chevron-left"></span>
-                      </a>
-                      <a
-                        className="carousel-control-next"
-                        href="#myCarousel"
-                        role="button"
-                        data-slide="next"
-                      >
-                        <span className="fas fa-chevron-right"></span>
-                      </a>
-                    </div>
-                  </div>
+  
+  return(
+    <>
+    <div className="modal fade myModal" id="myModal">
+            <div className="modal-dialog modal-xl">
+                <div className="modal-content">
+                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                    <div className="modal-body">
+                        <div className="container">
+                            <div className="row d-flex align-items-center mt-4 mb-4">
+                                <div className="col-6 col-sm-12 col-lg-6 justify-content-center" style={{justifyContent:'center'}}>
+                                    <div id="myCarousel" className="carousel slide">
+                                        {/* <!-- slides --> */}
+                                        <div className="carousel-inner">
+                                            <div className="carousel-item active"> <img src={product?.image}/> </div>
+                                            <div className="carousel-item"> <img src={product?.image}/> </div>
+                                            <div className="carousel-item"> <img src={product?.image}/> </div>
+                                            <div className="carousel-item"> <img src={product?.image}/> </div>
+                                            <div className="carousel-item"> <img src={product?.image}/> </div>
+                                            <div className="carousel-item"> <img src={product?.image}/> </div>
+                                        </div>
 
-                  <div className="sPart col-6 col-sm-12 col-lg-6">
-                    <div className="home">
-                      <h1 className="icons">Albert Armchair, Nubuck White</h1>
-                      <div className="view">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star-half-alt"></i>
-                      </div>
-                      <h2 className="para">$120</h2>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse varius enim in eros elementum tristique.
-                      </p>
+                                        <ol className='carousel-indicators'>
+
+                                            <li data-target='#myCarousel' data-slide-to='0' className='active'></li>
+                                            <li data-target='#myCarousel' data-slide-to='1'></li>
+                                            <li data-target='#myCarousel' data-slide-to='2'></li>
+                                            <li data-target='#myCarousel' data-slide-to='3'></li>
+                                            <li data-target='#myCarousel' data-slide-to='4'></li>
+                                            <li data-target='#myCarousel' data-slide-to='5'></li>
+                                        </ol>
+
+                                        {/* <!-- Controls --> */}
+                                        <a className="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                            <span className="fas fa-chevron-left"></span>
+                                        </a>
+                                        <a className="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                            <span className="fas fa-chevron-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div className="sPart col-6 col-sm-12 col-lg-6">
+                                    <div className="home">
+
+                                        <h1 style={{fontSize: '25px', color: 'black'}}>{product.name.toUpperCase()}, {product.category.toUpperCase()}</h1>
+                                        <Rating className="view" rating={product.rating} numReviews={product.numReviews}>
+                                        </Rating>
+                                        <h2 style={{fontSize: '24px', fontWeight: '500', color: 'black'}}>${product.price-product.discount}</h2>
+                                        <p>
+                                            {product.description}
+                                        </p>
+                                    </div>
+                                    <div id="addTo">
+                                        <a className="is-minus" onClick={decrement}>-</a>
+                                        <input className="quantity-input" type="text" value={counter}/>
+                                        <a className="quantity-button is-plus" onClick={increment}>+</a>
+                                        <Link className="btnCard btn btn-primary" to={`/shoppingCart/${productId}?qty=${counter}`}>
+                                            <div>ADD TO CARD</div>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="addTo">
-                      <a className="is-minus">-</a>
-                      <input className="quantity-input" type="text" value="1" />
-                      <a className="quantity-button is-plus">+</a>
-                      <a className="btnCard">
-                        <div>ADD TO CARD</div>
-                      </a>
-                    </div>
-                  </div>
+
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-
-    )
+    </>
+  )
 }
