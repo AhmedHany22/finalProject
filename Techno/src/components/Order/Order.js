@@ -80,7 +80,7 @@ export default function Order(props) {
                 </div>
                 <div className="col-sm-6">
                   <h4 className="mt-4 mb-2" dir="auto" style={{textAlign: 'start'}}><strong>{t("Address")}</strong></h4>
-                  <h6 >
+                  <h6 dir="auto" style={{textAlign: 'end'}}>
                     {order.shippingAddress.city},{' '}{order.shippingAddress.postalCode},{' '}{order.shippingAddress.address}
                     ,{' '}{order.shippingAddress.region},{' '}{order.shippingAddress.country}
                   </h6>
