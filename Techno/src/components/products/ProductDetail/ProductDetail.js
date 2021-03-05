@@ -35,7 +35,7 @@ const ProductDetail = (props) => {
   const productId = props.match.params.id;
   const dispatch = useDispatch();
   const productDetails = useSelector(state => state.productDetails);
-  useEffect(() => { 
+  useEffect(() => {
     if (successReviewCreate) {
       window.alert('Review Submitted Successfully');
       setRating('');
@@ -68,9 +68,9 @@ const ProductDetail = (props) => {
   return (
     <>
 
-    {productDetails.loading?<LoadingBox/>
-    :
-    productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
+      {productDetails.loading?<LoadingBox/>
+      :
+        productDetails?.error?(<MessageBox variant="danger">{productDetails?.error}</MessageBox>)
 
         : (
           <div className="section">
@@ -149,9 +149,12 @@ const ProductDetail = (props) => {
                   <div class="home">
                     <div class="head">
                       <a href="/">Home</a>/
-                <a href="/shop">{(i18n.language == "en") ? productDetails?.product?.data?.name : productDetails?.product?.data?.nameAr}</a>/ {productDetails?.product?.data?.description}
+                      <a href="/shop">
+                        {(i18n.language == "en") ? productDetails?.product?.data?.name.toUpperCase() : productDetails?.product?.data?.nameAr}
+                      </a>/
+                      {(i18n.language == "en") ? productDetails?.product?.data?.description.toUpperCase() : productDetails?.product?.data?.descriptionAr}
                     </div>
-                    <h1 className="details">{productDetails?.product?.data?.name.toUpperCase()}</h1>
+                    <h1 className="details">{(i18n.language == "en") ? productDetails?.product?.data?.name.toUpperCase() : productDetails?.product?.data?.nameAr}</h1>
                     <div className="view">
                       <i className="fas fa-star"></i>
                       <i className="fas fa-star"></i>
@@ -162,12 +165,8 @@ const ProductDetail = (props) => {
                     </div>
                     <h2 className="paragraph">${productDetails?.product?.data?.discount ? productDetails?.product?.data?.price - productDetails?.product?.data?.discount : productDetails?.product?.data?.price}</h2>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse varius enim in eros elementum tristique. Duis
-                      cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-                      commodo diam libero vitae erat. Aenean faucibus nibh et justo
-                      cursus id rutrum lorem imperdiet.
-              </p>
+                      {(i18n.language == "en") ? productDetails?.product?.data?.description.toUpperCase() : productDetails?.product?.data?.descriptionAr}
+                    </p>
                   </div>
                   <div id="addTo">
                     <a className="is-minus" onClick={decrement}>-</a>
@@ -316,7 +315,7 @@ const ProductDetail = (props) => {
                         https://docs.google.com/spreadsheets/d/1gJjIijXKXTiCo4BL1rEq7pGnDLsyvWtPJtSVWz5F6iw/edit#gid=0
                         </p>
                       </div>
-                    
+
                       <div>
                         <h2 id="reviews">{t("Reviews")}</h2>
                         {productDetails?.product?.reviews?.length === 0 && (

@@ -26,9 +26,8 @@ export default function ProductItem(props) {
             <div className="show vImage3" data-toggle="modal" data-target="#myModal"><a className="fas"> QUICK VIEW</a></div>
           </div>
           <div className="card-body">
-            <a className="card-text" href={`/details/${product._id}`}>
-              {(i18n.language == "en") ? product.name : product.nameAr}</a>
-          , <a href="/shop"> {product.category.toUpperCase()}</a>
+            <a className="card-text" href={`/details/${product._id}`}>{(i18n.language == "en") ? product.name : product.nameAr}</a>,
+            <a href="/shop">{(i18n.language == "en") ? product.category.toUpperCase() : product.categoryAr}</a>
             <div>
               <Rating rating={product.rating} numReviews={product.numReviews}></Rating>
               <a className="fa fa-eye float-right text-secondary mr-2 mt-2"></a>
