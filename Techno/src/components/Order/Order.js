@@ -143,7 +143,7 @@ export default function Order(props) {
                         <div className="my-4">
                           <h6>{item.name}</h6>
                           <h6>{t("Quantity")} : {item.qty}</h6>
-                          
+
                           <strong>{t("Total Price")} = {t("$")}{item.qty * (item.price - item.discount)}</strong>
                         </div>
                       </li>

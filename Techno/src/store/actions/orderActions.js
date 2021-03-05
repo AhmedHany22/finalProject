@@ -95,7 +95,7 @@ export const listOrders = ({seller=''}) => async (dispatch, getState) => {
     });
     console.log(data);
     dispatch({ type: ORDER_LIST_SUCCESS, payload: data });
-  } 
+  }
   catch (error) {
     const message =
       error.response && error.response.data.message

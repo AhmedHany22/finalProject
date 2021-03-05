@@ -18,14 +18,35 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Techno', {
     useCreateIndex: true,
 });
 
-app.use('/api/users', userRouter);
-app.use('/api/products', productRouter);
+// app.get('/api/products/:id',(req,res)=>{
+//     const id=req.params.id
+//     const product=data.products.find((x)=> x._id===id)
+
+//     if(product){
+//         res.send(product)
+//     }
+//     else{
+//         res.status(404).send({message:'product not found'})
+//     }
+// })
+
+// app.get('/api/products',(req,res)=>{
+//     res.send(data.products)
+// })
+
+app.get('/api/category',(req,res)=>{
+    res.send(data.category)
+})
+
+// userRouter,productRouter
+app.use('/api/users' , userRouter);
+app.use('/api/products' ,productRouter);
 app.use('/api/orders', orderRouter);
 
 app.get('/api/config/paypal', (req, res) => {
-    res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
+  res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
-app.get('/', (req, res) => {
+app.get('/',(req,res)=>{
     res.send('server is ready')
 })
 

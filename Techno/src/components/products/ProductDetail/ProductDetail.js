@@ -2,7 +2,8 @@ import "./ProductDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import image from "../../../assets/4.jpg";
 import ProductItem from "../productItem/productItem";
-import data from '../../../data'
+import data from '../../../data';
+import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { createReview, detailsProducts, listProducts } from "../../../store/actions/ProductActions";
@@ -13,6 +14,7 @@ import Rating from "../../Rating/Rating";
 import { Link } from "react-router-dom";
 
 const ProductDetail = (props) => {
+  const {t,i18n} = useTranslation();
   const dispatchList = useDispatch();
   const productList = useSelector((state) => state.productList)
   useEffect(() => { dispatchList(listProducts({})); }, []);
@@ -147,9 +149,9 @@ const ProductDetail = (props) => {
                   <div class="home">
                     <div class="head">
                       <a href="/">Home</a>/
-                <a href="/shop">{productDetails?.product?.data?.name}</a>/ {productDetails?.product?.data?.description}
+                <a href="/shop">{(i18n.language == "en") ? productDetails?.product?.data?.name : productDetails?.product?.data?.nameAr}</a>/ {productDetails?.product?.data?.description}
                     </div>
-                    <h1 className="details">{productDetails?.product?.data?.description.toUpperCase()}</h1>
+                    <h1 className="details">{productDetails?.product?.data?.name.toUpperCase()}</h1>
                     <div className="view">
                       <i className="fas fa-star"></i>
                       <i className="fas fa-star"></i>

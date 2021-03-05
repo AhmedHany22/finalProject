@@ -84,7 +84,7 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
           : error.message;
       dispatch({ type: USER_DETAILS_FAIL, payload: message });
     }
-  }; 
+  };
 
 export const updateUserProfile=(user)=> async(dispatch,getState)=>{
     dispatch({type: USER_UPDATE_PROFILE_REQUEST, payload: user})
@@ -140,7 +140,7 @@ export const deleteUser = (userId) => async (dispatch, getState) => {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: USER_DELETE_SUCCESS, payload: data });
-    } 
+    }
     catch (error) {
       const message =
         error.response && error.response.data.message
@@ -162,7 +162,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
       });
       dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
       console.log(data);
-    } 
+    }
     catch (error) {
       const message =
         error.response && error.response.data.message

@@ -8,16 +8,17 @@ import MessageBox from '../MessageBox';
 import {useTranslation} from 'react-i18next';
 
 export default function ProductListScreen(props) {
-  const sellerMode = props.match.path.indexOf('/seller')>=0;
+  const sellerMode = props.match.path.indexOf('/seller') >= 0;
   const productList = useSelector((state) => state.productList);
   const { loading, error, data } = productList;
   const productCreate = useSelector((state) => state.productCreate);
   const productDelete = useSelector((state) => state.productDelete);
   const { loading: loadingDelete, error: errorDelete, success: successDelete, } = productDelete;
   const { loading: loadingCreate, error: errorCreate, success: successCreate, product: createdProduct, } = productCreate;
- const userSignin = useSelector((state) => state.userSignin);
- const {userInfo} = userSignin;
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
@@ -81,7 +82,7 @@ export default function ProductListScreen(props) {
                   <tr key={product._id}>
                     <td>{index}</td>
                     <td>{product._id}</td>
-                    <td>{product.name}</td>
+                    <td>{(i18n.language == "en") ? product.name : product.nameAr}</td>
                     <td>{product.price}</td>
                     <td>{product.category}</td>
                     <td>{product.brand}</td>

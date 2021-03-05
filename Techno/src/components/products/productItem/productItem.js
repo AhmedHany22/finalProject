@@ -5,6 +5,7 @@ import Rating from '../../Rating/Rating';
 import data from '../../../data';
 import { useState } from "react";
 import ProductModal from "../productModal/productModal";
+import { useTranslation } from "react-i18next";
 
 export default function ProductItem(props) {
   let discountPresent = 10;
@@ -12,6 +13,7 @@ export default function ProductItem(props) {
   const category = data.category;
   console.log(product);
   if (product) { discountPresent = Math.round((product.discount / product.price) * 100); }
+  const {t,i18n} = useTranslation();
 
   return (
     <>
@@ -23,9 +25,9 @@ export default function ProductItem(props) {
           <div className="show vImage3" data-toggle="modal" data-target="#myModal"><a className="fas"> QUICK VIEW</a></div>
         </div>
         <div className="card-body">
-          <a className="card-text" href={`/details/${product._id}`}>{product.name.toUpperCase()}</a>
-          , 
-          <a href="/shop"> {product.category.toUpperCase()}</a>
+          <a className="card-text" href={`/details/${product._id}`}>
+          {(i18n.language == "en") ? product.name : product.nameAr}</a>
+          , <a href="/shop"> {product.category.toUpperCase()}</a>
           <div>
             <Rating rating={product.rating} numReviews={product.numReviews}></Rating>
             <a className="fa fa-eye float-right text-secondary mr-2 mt-2"></a>
