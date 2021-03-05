@@ -1,4 +1,4 @@
-
+import {useTranslation} from 'react-i18next';
 import "./productItem.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Rating from '../../Rating/Rating';
@@ -11,6 +11,7 @@ export default function ProductItem(props) {
   console.log(product);
 
   if (product) { discountPresent = Math.round((product.discount / product.price) * 100); }
+  const {t,i18n} = useTranslation();
 
   return (
     <div className="col-4 col-lg-4 col-md-6 col-sm-6">
@@ -21,7 +22,8 @@ export default function ProductItem(props) {
           <div className="show vImage3" data-toggle="modal" data-target="#myModal"><a className="fas"> QUICK VIEW</a></div>
         </div>
         <div className="card-body">
-          <a className="card-text" href={`/details/${product._id}`}>{product ? product.name.toUpperCase() : "Name"}</a>
+          <a className="card-text" href={`/details/${product._id}`}>
+          {(i18n.language == "en") ? product.name : product.nameAr}</a>
           , <a href="/shop"> Cat</a>
           <div>
             <Rating rating={product.rating} numReviews={product.numReviews}></Rating>
