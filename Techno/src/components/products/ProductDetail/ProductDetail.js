@@ -2,8 +2,7 @@ import "./ProductDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import image from "../../../assets/4.jpg";
 import ProductItem from "../productItem/productItem";
-import data from '../../../data';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { createReview, detailsProducts, listProducts } from "../../../store/actions/ProductActions";
@@ -14,7 +13,7 @@ import Rating from "../../Rating/Rating";
 import { Link } from "react-router-dom";
 
 const ProductDetail = (props) => {
-  const {t,i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatchList = useDispatch();
   const productList = useSelector((state) => state.productList)
   useEffect(() => { dispatchList(listProducts({})); }, []);
@@ -270,76 +269,41 @@ const ProductDetail = (props) => {
                       </div>
                     </div>
                     <div id="menu2" className="tab-pane fade">
-                      <div className="veiw1">
-                        <div className="info">
-                          <img src={image} alt="" />
-                          <div>
-                            <h4>Walter Cook</h4>
-                            <p>June 07, 2020</p>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star-half-alt"></i>
+                      {productDetails?.product.reviews?.map((review) => {
+                        return(
+
+                        <div key={review._id} className="veiw1">
+                          <div className="info">
+                            <img src={image} alt="" />
+                            <div>
+                              <h4>{review.name}</h4>
+                              <p>{review.createdAt.substring(0, 10)}</p>
+                              <Rating rating={review.rating} caption=" "></Rating>
+                            </div>
+                            <span className="badge badge-light">{t("Verified Buyer")}</span>
                           </div>
-                          <span className="badge badge-light">{t("Verified Buyer")}</span>
+
+                          <p>
+                            {review.comment}
+                          </p>
                         </div>
-
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                          Suspendisse varius enim in eros elementum tristique. Duis
-                          cursus, mi quis viverra ornare, eros dolor interdum nulla,
-                          ut commodo diam libero vitae erat. Aenean faucibus nibh et
-                          justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
-                          risus tristique posuere. Maecenas faucibus mollis
-                          interdum.Praesent commodo cursus magna, vel scelerisque nisl
-                          consectetur et. Aenean lacinia bibendum
-                        </p>
-                      </div>
-                      <div className="veiw1">
-                        <div className="info">
-                          <img src={image} alt="" />
-                          <div>
-                            <h4>Sacha Kariono</h4>
-                            <p>June 27, 2020</p>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star-half-alt"></i>
-                          </div>
-                          <span className="badge badge-light">{t("Verified Buyer")}</span>
-                        </div>
-
-                        <p>
-                        https://docs.google.com/spreadsheets/d/1gJjIijXKXTiCo4BL1rEq7pGnDLsyvWtPJtSVWz5F6iw/edit#gid=0
-                        </p>
-                      </div>
-
+                        )}
+                      )}
                       <div>
-                        <h2 id="reviews">{t("Reviews")}</h2>
                         {productDetails?.product?.reviews?.length === 0 && (
                           <MessageBox>There is no review</MessageBox>
                         )}
-                        <ul>
-                          {productDetails?.product.reviews?.map((review) => (
-                            <li key={review._id}>
-                              <strong>{review.name}</strong>
-                              <Rating rating={review.rating} caption=" "></Rating>
-                              <p>{review.createdAt.substring(0, 10)}</p>
-                              <p>{review.comment}</p>
-                            </li>
-                          ))}
-                          <li>
-                            {userInfo ? (
-                              <form className="form" onSubmit={submitHandler}>
+                        
+                        {userInfo ? (
+                              <form className="form w-50" onSubmit={submitHandler}>
                                 <div>
                                   <h2>{t("Write a customer review")}</h2>
                                 </div>
-                                <div>
+                                <div className="form-group">
                                   <label htmlFor="rating">{t("Rating")}</label>
                                   <select
                                     id="rating"
+                                    className="form-control"
                                     value={rating}
                                     onChange={(e) => setRating(e.target.value)}
                                   >
@@ -351,19 +315,18 @@ const ProductDetail = (props) => {
                                     <option value="5">5- {t("Excelent")}</option>
                                   </select>
                                 </div>
-                                <div>
+                                <div className="form-group">
                                   <label htmlFor="comment">{t("Comment")}</label>
                                   <textarea
                                     id="comment"
+                                    className="form-control"
                                     value={comment}
                                     onChange={(e) => setComment(e.target.value)}
                                   ></textarea>
                                 </div>
-                                <div>
-                                  <label />
-                                  <button className="primary" type="submit">
-                                  {t("submit")}
-                                  </button>
+                                <div className="form-group text-center mb-5">
+                                  <label></label>
+                                  <button className="btn btn-warning w-50" type="submit"><strong>{t("submit")}</strong></button>
                                 </div>
                                 <div>
                                   {loadingReviewCreate && <LoadingBox></LoadingBox>}
@@ -379,8 +342,6 @@ const ProductDetail = (props) => {
                                 Please <Link to="/signin">Sign In</Link> to write a review
                               </MessageBox>
                             )}
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
@@ -393,7 +354,7 @@ const ProductDetail = (props) => {
                 <h2>{t("Related products")}</h2>
               </div>
               <div className="row">
-                {productList?.products?.data?.slice(1, 5).map((product, index) => {
+                {productList?.products?.slice(1, 5).map((product, index) => {
                   return (
                     <div className="c-product-thumb" key={index}>
                       <ProductItem product={product} />
@@ -402,8 +363,8 @@ const ProductDetail = (props) => {
                 })}
               </div>
             </div>
-          </div>)}
-
+          </div>
+        )}
     </>
   );
 };

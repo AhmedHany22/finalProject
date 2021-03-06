@@ -24,7 +24,7 @@ export default function SearchPage(props) {
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <div>{products?.length} Results</div>
+          <div className="font-weight-bold">{products?.length}: Results</div>
         )}
       </div>
       <div className="row top">
