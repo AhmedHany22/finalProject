@@ -188,7 +188,7 @@ const Checkout = (props) => {
                             <div>
                               <select name="inputRegion" className="form-control" onChange={(e) => setRegion(e.target.value)} value={region}>
                                 <option>{t("cairo")}</option>
-                                <option>{t("giza")}</option>
+                                <option>{t("cairo")}</option>
                                 <option>{t("giza")}</option>
                               </select>
                             </div>
