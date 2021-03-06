@@ -18,7 +18,6 @@ const SignUp = (props) => {
   const redirect = props.location.search
     ? props.location.search.split('=')[1]
     : '/';
-
   const userSignup = useSelector((state) => state.userSignup);
 
   const dispatch = useDispatch();
@@ -31,21 +30,13 @@ const SignUp = (props) => {
     else
     {
       dispatch(register(name,email, password))
-
-    }
-  };
-
-  useEffect(() => {
-    if (userSignup?.userInfo) {
       props.history.push(redirect);
     }
-  },[props.history,redirect ,userSignup?.userInfo]);
+  };
+  console.log(userSignup);
+  
 
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     props.history.push(redirect);
-  //   }
-  // },[props.history,redirect ,userInfo]);
+  
   const {t,i18n} = useTranslation();
 
   return (

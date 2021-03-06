@@ -72,8 +72,9 @@ const ShoppingCart = (props) => {
                   </div>
                   <div className="col-12 row p-0 mt-3 mx-auto">
                     <Rating rating={item.rate} numReviews={item.review}></Rating>
-                    <a className="col-4 p-0 text-danger ml-5" onClick={() => removeFromCartHandler(item.product)}>
-                      Remove from cart</a>
+                    <a className="col-4 p-0 text-danger ml-5" style={{cursor:'pointer'}} onClick={() => removeFromCartHandler(item.product)}>
+                      Remove from cart
+                    </a>
                   </div>
                 </div>
               </div>

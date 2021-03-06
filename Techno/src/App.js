@@ -34,7 +34,7 @@ function App(props) {
   return (
     <>
     <div>
-      <Router>
+      <Router onUpdate={() => window.scrollTo(0, 0)}>
         <Navbar sticky="top" className="row navbar navbar-expand-sm navbar-fixed-top navbar-light py-3 bg-white">
           <div className="container">
             <div className="col-2">
