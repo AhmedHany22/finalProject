@@ -4,6 +4,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import SellerRoute from './components/SellerRoute';
 import SellerScreen from "./components/SellerScreen/SellerScreen";
+const Dashboard = React.lazy(() => import("./components/Dashboard/Dashboard"));
 
 const About = React.lazy(() => import("./components/About/About"));
 const Checkout = React.lazy(() => import("./components/Checkout/Checkout"));
@@ -28,6 +29,8 @@ const Routes = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <Switch>
+      <Route path="/dashboard" component={Dashboard}></Route>
+
         <Route path="/seller/:id" component={SellerScreen}></Route>
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
