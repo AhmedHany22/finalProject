@@ -1,4 +1,4 @@
-import "./userProfile.scss";
+import "../AdminEditProducts/AdminEditProducts.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from 'react-redux'
 import { detailsUser, updateUserProfile } from '../../store/actions/userActions'
@@ -57,14 +57,17 @@ const UserProfile=()=>{
     const { t, i18n } = useTranslation();
     return(
         
-        <div className="container bodyLogin">
-        <div className="row">
-                <div className="login bg-white ">
-                <div className="profileImage">
-                    <i className="fas fa-user-circle"></i>
+        <div>
+            <div className="d-flex justify-content-center align-items-center flex-column mb-5 sectioH">
+                <div className="container text-center">
+                <div className="text-center text-white">
+                    <h1>{t("My Profile")}</h1>
+                    <h1 className="mt-5">{t("Edit User")}: {userDetails?.user?.name}</h1>
                 </div>
-                <h1>{t("My Profile")}</h1>
-                <form className="form" onSubmit={SubmitHandler}>
+                </div>
+            </div>
+            
+            <form className="form container w-50" onSubmit={SubmitHandler}>
                 {userDetails?.loading? <LoadingBox></LoadingBox>
                 :
                 userDetails?.error? (<MessageBox variant="danger">{userDetails?.error}</MessageBox>)
@@ -119,31 +122,47 @@ const UserProfile=()=>{
                     {
                         userDetails?.user?.isSeller && (
                             <>
-                            <h2>{t("Seller")}</h2>
-                            <div>
-                            <label htmlFor="sellerName">{t("Seller Name")}</label>
-                            <input id="sellerName" type="text" placeholder={t("Enter Seller Name")}
-                            value={sellerName} onChange={(e) => setsellerName(e.target.value)}></input>
+                            <div className="form-group">
+                                <label htmlFor="sellerName">{t("Seller Name")}</label>
+                                <input 
+                                id="sellerName"
+                                className="form-control" 
+                                type="text" 
+                                placeholder={t("Enter Seller Name")}
+                                value={sellerName} onChange={(e) => setsellerName(e.target.value)}
+                                />
                             </div>
-                            <div>
-                            <label htmlFor="sellerLogo">{t("Seller Logo")}</label>
-                            <input id="sellerLogo" type="text" placeholder={t("Enter Seller Logo")}
-                            value={sellerLogo} onChange={(e) => setsellerLogo(e.target.value)}></input>
+                            
+                            <div className="form-group">
+                                <label htmlFor="sellerLogo">{t("Seller Logo")}</label>
+                                <input 
+                                id="sellerLogo" 
+                                className="form-control" 
+                                type="text" 
+                                placeholder={t("Enter Seller Logo")}
+                                value={sellerLogo} 
+                                onChange={(e) => setsellerLogo(e.target.value)}></input>
                             </div>
-                            <div>
-                            <label htmlFor="sellerDescription">{t("Seller Description")}</label>
-                            <input id="sellerDescription" type="text" placeholder={t("Enter Seller Description")}
-                            value={sellerDescription} onChange={(e) => setsellerDescription(e.target.value)}></input>
+                            <div className="form-group">
+                                <label htmlFor="sellerDescription">{t("Seller Description")}</label>
+                                <input 
+                                id="sellerDescription" 
+                                className="form-control"
+                                type="text" 
+                                placeholder={t("Enter Seller Description")}
+                                value={sellerDescription} 
+                                onChange={(e) => setsellerDescription(e.target.value)}></input>
                             </div>
                             </>
                         )
                     }
-                    <button className="btn btn-primary" type="submit">{t("Update")}</button>
+                    <div className="form-group text-center mb-5">
+                        <label></label>
+                        <button className="btn btn-warning w-50" type="submit"><strong>{t("Update")}</strong></button>
+                    </div>
                     </>
                 )}
                 </form>
-                </div>
-        </div>
         </div>
     )
 }

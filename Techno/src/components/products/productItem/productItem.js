@@ -6,6 +6,7 @@ import data from '../../../data';
 import { useState } from "react";
 import ProductModal from "../productModal/productModal";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export default function ProductItem(props) {
   let discountPresent = 10;
@@ -26,14 +27,16 @@ export default function ProductItem(props) {
             <div className="show vImage3" data-toggle="modal" data-target="#myModal"><a className="fas"> QUICK VIEW</a></div>
           </div>
           <div className="card-body">
-            <a className="card-text" href={`/details/${product._id}`}>{(i18n.language == "en") ? product.name : product.nameAr}</a>,
+            <div className="pb-2" style={{height:'50px'}}>
+            <Link className="card-text" to={`/details/${product._id}`}>{(i18n.language == "en") ? product.name : product.nameAr}</Link>,
             <a href="/shop">{(i18n.language == "en") ? product.category.toUpperCase() : product.categoryAr}</a>
+            </div>
             <div>
               <Rating rating={product.rating} numReviews={product.numReviews}></Rating>
-              <a className="fa fa-eye float-right text-secondary mr-2 mt-2"></a>
+              <Link className="fa fa-eye float-right text-secondary mr-2 mt-2" to={`/details/${product._id}`}></Link>
             </div>
-            <hr />
-            <div className="row">
+            <hr/>
+            <div>
               <p>${product ? product.price - product.discount : 2000}{" "}<span>${product ? product.price : 2500}</span></p>
               <link to={`/seller/${product?.seller?.seller?._id}`}>
                 {product?.seller?.seller?.name}
