@@ -97,6 +97,7 @@ export const updateUserProfile=(user)=> async(dispatch,getState)=>{
         dispatch({type: USER_UPDATE_PROFILE_SUCCESS, payload:data})
         dispatch({type: USER_SIGNIN_SUCCESS, payload:data})
         localStorage.setItem('userInfo', JSON.stringify(data))
+        console.log(data);
     }
     catch(error){
         dispatch({
@@ -106,7 +107,6 @@ export const updateUserProfile=(user)=> async(dispatch,getState)=>{
             :error.message
         })
     }
-
 }
 
 export const listUsers = () => async (dispatch, getState) => {
@@ -140,6 +140,7 @@ export const deleteUser = (userId) => async (dispatch, getState) => {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: USER_DELETE_SUCCESS, payload: data });
+      console.log(data);
     }
     catch (error) {
       const message =
