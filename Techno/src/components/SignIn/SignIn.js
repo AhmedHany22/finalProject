@@ -57,13 +57,13 @@ const SignIn = (props) => {
             <form onSubmit={submitHandler}>
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant="danger">{error}</MessageBox>}
-              <div className="form-group">
+            <div className="form-group">
                 <label for="email"></label>
                 <input dir="auto" style={{textAlign: 'start'}}  className="form-control" type="email" id="email" name="email" dir="auto" style={{textAlign: 'start'}} placeholder={t("enteremail")}
                   onChange={(e) => setEmail(e.target.value)} />
 
-              </div>
-              <div className="form-group">
+            </div>
+            <div className="form-group">
                 <input className="form-control" type="password" id="pwd" placeholder={t("Enter your password")}
                   onChange={(e) => setPassword(e.target.value)} />
 

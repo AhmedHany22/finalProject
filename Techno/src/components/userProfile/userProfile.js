@@ -52,7 +52,6 @@ const UserProfile=()=>{
         else{
             dispatch(updateUserProfile({userId: userDetails.user._id, name, email, password ,sellerName,sellerLogo,sellerDescription,}))
         }
-
     }
     const { t, i18n } = useTranslation();
     return(
@@ -104,7 +103,7 @@ const UserProfile=()=>{
                         <input 
                         id="password"
                         className="form-control" 
-                        type="text" 
+                        type="password" 
                         placeholder={t("Enter your password")}
                         onChange={(e)=>{setPassword(e.target.value)}}
                         />
@@ -114,7 +113,7 @@ const UserProfile=()=>{
                         <input 
                         id="confirmPassword"
                         className="form-control" 
-                        type="text" 
+                        type="password" 
                         placeholder={t("Enter your password")}
                         onChange={(e)=>{setConfirmPassword(e.target.value)}}
                         />
