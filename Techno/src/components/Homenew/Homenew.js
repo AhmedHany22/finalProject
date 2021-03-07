@@ -110,40 +110,40 @@ const Homenew = () => {
               <p />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-              <img src="../assets/Banner/rr1.jpg" className="img-fluid" style={{width: '100%'}} />
+              <img src="../assets/Banner/productseven.jpeg" className="img-fluid" style={{width: '100%'}} />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-            <h5 dir="auto" style={{textAlign: 'start'}}>{t("Mobile")}</h5>
+            <h5 dir="auto" style={{textAlign: 'start'}}>{t("laptops")}</h5>
             <ul className="typesOfLaps">
               <li dir="auto" style={{textAlign: 'start'}}>
                 <i className="fa fa-angle-right" aria-hidden="true" />
-                {t("Sumsung")}</li>
+                {t("dell3")}</li>
               <li dir="auto" style={{textAlign: 'start'}}>
                 <i className="fa fa-angle-right" aria-hidden="true" />
                 {t("lenovo3")}</li>
               <li dir="auto" style={{textAlign: 'start'}}>
                 <i className="fa fa-angle-right" aria-hidden="true" />
-                {t("Huawei")}</li>
+                {t("acer")}</li>
             </ul>
               <a href="/shop">{t("View all")}
                 <i className="fa fa-angle-right" aria-hidden="true" />
               </a>
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-              <img src="../assets/Banner/ss.jpg" className="img-fluid " style={{width: '100%'}} />
+              <img src="../assets/Banner/r11.jpg" className="img-fluid " style={{width: '100%'}} />
             </div>
             <div className="col-6 col-sm-6 col-md-2">
-            <h5 dir="auto" style={{textAlign: 'start'}}>{t("Smart Screen")}</h5>
+            <h5 dir="auto" style={{textAlign: 'start'}}>{t("laptops")}</h5>
             <ul className="typesOfLaps">
               <li dir="auto" style={{textAlign: 'start'}}>
                 <i className="fa fa-angle-right" aria-hidden="true" />
-                {t("Toshiba")}</li>
+                {t("dell3")}</li>
               <li dir="auto" style={{textAlign: 'start'}}>
                 <i className="fa fa-angle-right" aria-hidden="true" />
-                {t("Banasonic")}</li>
+                {t("lenovo3")}</li>
               <li dir="auto" style={{textAlign: 'start'}}>
                 <i className="fa fa-angle-right" aria-hidden="true" />
-                {t("Sumsung")}</li>
+                {t("acer")}</li>
             </ul>
               <a href="/shop">{t("View all")}
                 <i className="fa fa-angle-right" aria-hidden="true" />

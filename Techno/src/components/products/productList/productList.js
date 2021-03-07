@@ -8,15 +8,13 @@ import data from "../../../data";
 import { Link } from "react-router-dom";
 
 
-export default function ProductList(props) {
-    const sellerMode = props.match.path.indexOf('/seller')>=0 
+export default function ProductList() {
+
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList)
 
-    const userSignin = useSelector((state) =>state.userSignin);
-    const {userInfo} =userSignin;
     useEffect(() => {
-        dispatch(listProducts({seller:sellerMode?userInfo._id:''}));
+        dispatch(listProducts({}));
     }, [dispatch]);
 
 
@@ -193,4 +191,3 @@ export default function ProductList(props) {
         </>
     )
 }
-

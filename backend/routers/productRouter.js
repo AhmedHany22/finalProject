@@ -2,44 +2,44 @@ import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import data from '../../Techno/src/data.js'
 import Product from '../models/productModel.js';
-import { isAdmin, isAuth, isSellerOrAdmin } from '../utils.js';
+import { isAdmin, isAuth ,isSellerOrAdmin} from '../utils.js';
 
 const productRouter = express.Router();
 productRouter.get(
-  '/',
-  expressAsyncHandler(async (req, res) => {
-    const name = req.query.name || '';
-    const category = req.query.category || '';
-    const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
-    const seller = req.query.seller || '';
-    const sellerFilter = seller ? { seller } : {};
-    const categoryFilter = category ? { category } : {};
-    const products = await Product.find({
-      ...sellerFilter,
-      ...nameFilter,
-      ...categoryFilter,
-    }).populate('seller', 'seller.name seller.logo');
-    res.send(products);
-  })
+    '/',
+    expressAsyncHandler(async(req, res) => {
+      const name = req.query.name || '';
+      const category = req.query.category || '';
+      const seller = req.query.seller || '';
+      const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
+      const sellerFilter = seller ? { seller } : {};
+      const categoryFilter = category ? { category } : {};
+      const products = await Product.find({
+        ...sellerFilter,
+        ...nameFilter,
+        ...categoryFilter,
+      }).populate('seller', 'seller.name seller.logo');
+      res.send(products);
+    })
 );
 
 productRouter.get(
-  '/seed',
-  expressAsyncHandler(async (req, res) => {
-    await Product.remove({});
-    const createdProducts = await Product.insertMany(data.products);
-    res.send({ createdProducts });
-  })
+    '/seed',
+    expressAsyncHandler(async (req, res) => {
+        await Product.remove({});
+        const createdProducts = await Product.insertMany(data.products);
+        res.send({ createdProducts });
+    })
 );
 //details product aPi
-productRouter.get('/:id',
-  expressAsyncHandler(async (req, res) => {
+productRouter.get( '/:id',
+  expressAsyncHandler(async(req,res) =>{
     const product = await Product.findById(req.params.id).populate(
       'seller',
       'seller.name seller.logo seller.rating seller.numReviews'
     );
-    if (product) { res.send(product); }
-    else { res.status(404).send({ message: 'Product Not Found' }); }
+    if(product){ res.send(product); }
+    else{ res.status(404).send({message:'Product Not Found'});}
   })
 );
 
@@ -71,6 +71,7 @@ productRouter.post(
 productRouter.put(
   '/:id',
   isAuth,
+  isAdmin,
   isSellerOrAdmin,
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
@@ -145,8 +146,8 @@ productRouter.post(
       product.reviews.push(review);
       product.numReviews = product.reviews.length;
       product.rating =
-        product.reviews.reduce((a, c) => c.rating + a, 0) /
-        product.reviews.length;
+      product.reviews.reduce((a, c) => c.rating + a, 0) /
+      product.reviews.length;
       const updatedProduct = await product.save();
       res.status(201).send({
         message: 'Review Created',
