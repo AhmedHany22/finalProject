@@ -10,7 +10,6 @@ import {useTranslation} from 'react-i18next';
 export default function ProductListScreen(props) {
   const sellerMode = props.match.path.indexOf('/seller') >= 0;
   const productList = useSelector((state) => state.productList);
-  const { loading, error, data } = productList;
   const productCreate = useSelector((state) => state.productCreate);
   const productDelete = useSelector((state) => state.productDelete);
   const { loading: loadingDelete, error: errorDelete, success: successDelete, } = productDelete;

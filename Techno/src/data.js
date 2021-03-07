@@ -9,38 +9,36 @@ const data = {
       email: 'admin@example.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: true,
-      isSeller: true
+      isSeller: true,
+      seller: {
+        name: 'Puma',
+        logo: '../assets/user.jpg',
+        description: 'best seller',
+        rating: 4.5,
+        numReviews: 120,
+      },
     },
     {
       name: 'eman',
-      email: 'user1@example.com',
+      email: 'user@example.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: false,
-      isSeller: true
+      isSeller: false,
     },
-
     {
       name: 'ahmed',
-      email: 'user2@example.com',
+      email: 'user@example.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: false,
-      isSeller: true
+      isSeller: true,
+      seller: {
+        name: 'amazon',
+        logo: '../assets/user.jpg',
+        description: 'best seller',
+        rating: 4,
+        numReviews: 120,
+      },
     },
-    {
-      name: 'ali',
-      email: 'user3@example.com',
-      password: bcrypt.hashSync('1234', 8),
-      isAdmin: false,
-      isSeller: false
-    },
-    {
-      name: 'mohamed',
-      email: 'user4@example.com',
-      password: bcrypt.hashSync('1234', 8),
-      isAdmin: false,
-      isSeller: false
-    },
-
   ],
   products: [
     {   name: 'Dell XPS 15 (2020)',                      category:'laptop',               image: '../assets/Products/pro-1.jpg',  price: 184165, discount:200, countInStock: 17 ,brand:'Dell',     rating: 4.5 ,numReviews: 10 ,description: "this is laptop"       ,brandAr:'ديل'         ,descriptionAr: "هذا كمبيوتر محمول"       ,categoryAr:'لاب توب'             ,nameAr:'ديل اكس بي اس 15 (2020)' },

@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import data from '../Techno/src/data.js';
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 import orderRouter from './routers/orderRouter.js';
@@ -18,10 +17,6 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Techno', {
     useUnifiedTopology: true,
     useCreateIndex: true,
 });
-
-app.get('/api/category',(req,res)=>{
-    res.send(data.category)
-})
 
 // userRouter,productRouter
 app.use('/api/users' , userRouter);
