@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route, NavLink, Link } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import SellerRoute from './components/SellerRoute';
-import SellerScreen from "./components/SellerScreen/SellerScreen";
 const Dashboard = React.lazy(() => import("./components/Dashboard/Dashboard"));
 
 const About = React.lazy(() => import("./components/About/About"));
@@ -29,9 +28,6 @@ const Routes = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <Switch>
-      <Route path="/dashboard" component={Dashboard}></Route>
-
-        <Route path="/seller/:id" component={SellerScreen}></Route>
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/signin" exact component={SignIn} />
@@ -47,6 +43,7 @@ const Routes = () => {
         <Route path="/search/category/:category" component={SearchPage} exact></Route>
         <Route path="/productModal/:id" component={ProductModal} exact></Route>
         <PrivateRoute path="/profile" exact component={UserProfile} />
+        <AdminRoute path="/dashboard" component={Dashboard}></AdminRoute>
         <AdminRoute path="/AdminProducts" exact component={AdminProducts} />
         <AdminRoute path="/AdminOrderList" exact component={AdminOrderList} />
         <SellerRoute path="/AdminProducts/seller" component={AdminProducts}></SellerRoute>

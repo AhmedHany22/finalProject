@@ -54,7 +54,7 @@ userRouter.post('/signup', expressAsyncHandler(async (req, res) => {
         name: createdUser.name,
         email: createdUser.email,
         isAdmin: createdUser.isAdmin,
-        isSeller: user.isSeller,
+        // isSeller: user.isSeller,
         token: generateToken(createdUser),
     });
 })
@@ -105,9 +105,9 @@ userRouter.put(
       user.name = req.body.name;
       user.email = req.body.email;
       if (user?.isSeller) {
-        user.seller.name = req.body.sellerName;
-        user.seller.logo = req.body.sellerLogo;
-        user.seller.description = req.body.sellerDescription;
+        user.seller.name = req.body.sellerName || user.seller.name;
+        user.seller.logo = req.body.sellerLogo || user.seller.logo;
+        user.seller.description = req.body.sellerDescription || user.seller.description;
       }
       if (req.body.password) {
         user.password = bcrypt.hashSync(req.body.password, 8);

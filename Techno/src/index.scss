@@ -74,11 +74,11 @@ code {
 }
 
 .search button {
-  position: absolute;
   border-radius: 0 0.5rem 0.5rem 0;
   border-right: none;
 }
 .search input {
+  width: 75%;
   border-radius: 0.5rem 0 0 0.5rem;
   border-right: none;
   margin-left: 0.5rem;

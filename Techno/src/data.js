@@ -5,41 +5,45 @@ const data = {
 
   users: [
     {
-      name: 'Eman',
+      name: 'nancy',
       email: 'admin@example.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: true,
-      isSeller: true,
-      seller: {
-        name: 'Puma',
-        logo: '../assets/use.jpg',
-        description: 'best seller',
-        rating: 4.5,
-        numReviews: 120,
-      },
+      isSeller: true
     },
     {
-      name: 'Nancy',
-      email: 'nancy@example.com',
+      name: 'eman',
+      email: 'user1@example.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: false,
+      isSeller: true
+    },
+
+    {
+      name: 'ahmed',
+      email: 'user2@example.com',
+      password: bcrypt.hashSync('1234', 8),
+      isAdmin: false,
+      isSeller: true
     },
     {
-      name: 'Ahmed',
-      email: 'ahmed@example.com',
+      name: 'ali',
+      email: 'user3@example.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: false,
+      isSeller: false
     },
     {
-      name: 'Ali',
-      email: 'ali@example.com',
+      name: 'mohamed',
+      email: 'user4@example.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: false,
+      isSeller: false
     },
-    
+
   ],
   products: [
-    {   name: 'Dell XPS 15 (2020)',                      category:'laptop',               image: '../assets/Products/pro-1.jpg',  price: 184165, discount:200, countInStock: 17 ,brand:'Dell',     rating: 4.5 ,numReviews: 10 ,description: "this is laptop"       ,brandAr:'ديل'         ,descriptionAr: "هذا كمبيوتر محمول"       ,categoryAr:'لاب توب'             ,nameAr:'ديل اكس بي اس 15 (2020)' ,},
+    {   name: 'Dell XPS 15 (2020)',                      category:'laptop',               image: '../assets/Products/pro-1.jpg',  price: 184165, discount:200, countInStock: 17 ,brand:'Dell',     rating: 4.5 ,numReviews: 10 ,description: "this is laptop"       ,brandAr:'ديل'         ,descriptionAr: "هذا كمبيوتر محمول"       ,categoryAr:'لاب توب'             ,nameAr:'ديل اكس بي اس 15 (2020)' },
     {   name: 'Lenovo ThinkPad L13 Yoga',                category:'laptop',               image: '../assets/Products/pro-2.jpg',  price: 10190,  discount:600, countInStock: 17 ,brand:'Lenovo',   rating: 4.5 ,numReviews: 10 ,description: "this is laptop"       ,brandAr:'لينوفو'      ,descriptionAr: "هذا كمبيوتر محمول"       ,categoryAr:'لاب توب'             ,nameAr:'لينوفو ثينك باد ال13 يوجا' },
     {   name: 'Canon Zoemini S',                         category:'computer accessories', image: '../assets/Products/pro-3.jpg',  price: 61225,  discount:500, countInStock: 17 ,brand:'Canon',    rating: 4.5 ,numReviews: 10 ,description: "this is camera"       ,brandAr:'كانون'       ,descriptionAr: "هذه الكاميرا"            ,categoryAr:'ملحقات الكمبيوتر'  ,nameAr:'كانون زوي ميني اس' },
     {   name: 'Acer Swift 3 (2019)',                     category:'laptop',               image: '../assets/Products/pro-4.jpg',  price: 10976,  discount:800, countInStock: 17 ,brand:'Acer',     rating: 4.5 ,numReviews: 10 ,description: "this is laptop"       ,brandAr:'أثير'        ,descriptionAr: "هذا كمبيوتر محمول"       ,categoryAr:'لاب توب'             ,nameAr:'أيسر سويفت 3 (2019)' },

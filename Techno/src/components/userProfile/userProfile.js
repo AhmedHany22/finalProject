@@ -6,7 +6,6 @@ import LoadingBox from '../LoadingBox'
 import MessageBox from '../MessageBox'
 import { USER_UPDATE_PROFILE_RESET } from "../../store/types/userConstants";
 import { useTranslation } from "react-i18next";
-import {Link} from 'react-router-dom'
 
 const UserProfile=()=>{
     const [name, setName] = useState('');

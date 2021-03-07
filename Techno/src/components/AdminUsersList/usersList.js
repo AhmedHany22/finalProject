@@ -10,6 +10,7 @@ import {useTranslation} from 'react-i18next';
 export default function UsersList(props){
     const userList = useSelector((state) => state.userList);
     const { loading, error, users } = userList;
+    console.log(userList);
   
     const userDelete = useSelector((state) => state.userDelete);
     const {
@@ -66,7 +67,7 @@ export default function UsersList(props){
                     {loading? (<LoadingBox/>)
                     :error?(<MessageBox variant="danger">{error}</MessageBox>)
                     :(
-                        users?.createdUsers?.map((user,index)=>{
+                        users?.map((user,index)=>{
                         return(
                         <tr key={user._id}>
                             <td>{index+1}</td>
