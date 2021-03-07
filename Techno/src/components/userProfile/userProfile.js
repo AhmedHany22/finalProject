@@ -1,7 +1,7 @@
 import "../AdminEditProducts/AdminEditProducts.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from 'react-redux'
-import { detailsUser, updateUserProfile } from '../../store/actions/userActions'
+import { detailsUser, singout, updateUserProfile } from '../../store/actions/userActions'
 import LoadingBox from '../LoadingBox'
 import MessageBox from '../MessageBox'
 import { USER_UPDATE_PROFILE_RESET } from "../../store/types/userConstants";
@@ -15,7 +15,6 @@ const UserProfile=()=>{
     const [sellerName, setsellerName] = useState('');
     const [sellerLogo, setsellerLogo] = useState('');
     const [sellerDescription, setsellerDescription] = useState('');
-
 
     const userSignin=useSelector(state=> state.userSignin)
     const dispatch=useDispatch()
@@ -51,6 +50,7 @@ const UserProfile=()=>{
         }
         else{
             dispatch(updateUserProfile({userId: userDetails.user._id, name, email, password ,sellerName,sellerLogo,sellerDescription,}))
+            dispatch(singout())
         }
     }
     const { t, i18n } = useTranslation();
