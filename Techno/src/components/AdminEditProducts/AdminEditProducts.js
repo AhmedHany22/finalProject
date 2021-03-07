@@ -37,6 +37,7 @@ export default function AdminEditProducts(props) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
       dispatch(detailsProducts(productId));
       setName(productDetails?.product?.data?.name);
+      setNameAr(productDetails?.product?.data?.nameAr);
       setPrice(productDetails?.product?.data?.price);
       setImage(productDetails?.product?.data?.image);
       setCategory(productDetails?.product?.data?.category);
@@ -57,6 +58,7 @@ export default function AdminEditProducts(props) {
       updateProduct({
         _id: productId,
         name,
+        nameAr,
         price,
         image,
         category,
